@@ -8,6 +8,7 @@ Nemu provides a framework to write web applications in C++.
 - [Examples](https://github.com/NemuFramework/Nemu/tree/master/Examples) - A series of examples showing how to use the framework.
 - Makefiles - The makefiles for the project.
 - Source - The source files for the project.
+- Tests - The test suite for the project.
 
 # Project Status
 

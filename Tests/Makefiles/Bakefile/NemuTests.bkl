@@ -1,3 +1,5 @@
+nemupath = envvar("NEMU");
+import $(nemupath)/Nemu/Include/NemuFramework/Nemu.bkl;
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
@@ -8,7 +10,7 @@ vs2017.solutionfile = ../VC15/NemuTests.sln;
 vs2015.solutionfile = ../VC14/NemuTests.sln;
 vs2013.solutionfile = ../VC12/NemuTests.sln;
 
-program NemuTests : IshikoTestFrameworkCore
+program NemuTests : Nemu, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 

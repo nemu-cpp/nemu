@@ -37,6 +37,7 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
+#      NEMUFRAMEWORK_NEMU_ROOT    Path to the Nemu installation
 #      BOOST_ROOT                 Path to the Boost installation
 #      ISHIKO_PROCESS_ROOT        Path to the Ishiko Process installation
 #      ISHIKO_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
@@ -60,6 +61,8 @@ endif
 # Configurable settings:
 # 
 
+# Path to the Nemu installation
+NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
 # Path to the Boost installation
 BOOST_ROOT ?= $(BOOST)
 # Path to the Ishiko Process installation
@@ -72,13 +75,13 @@ ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
 all: $(_builddir)NemuTests
 
 $(_builddir)NemuTests: $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -pthread
 
 $(_builddir)NemuTests_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/main.cpp
 
 $(_builddir)NemuTests_ConfigurationTests.o: ../../Source/ConfigurationTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/ConfigurationTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/ConfigurationTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o

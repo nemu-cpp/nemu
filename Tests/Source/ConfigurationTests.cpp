@@ -21,10 +21,28 @@
 */
 
 #include "ConfigurationTests.h"
+#include "NemuFramework/Nemu/Configuration.h"
 
 using namespace Ishiko::TestFramework;
 
 void ConfigurationTests::AddTests(TestHarness& theTestHarness)
 {
     TestSequence& configurationTestSequence = theTestHarness.appendTestSequence("Configuration tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, configurationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, configurationTestSequence);
+}
+
+TestResult::EOutcome ConfigurationTests::CreationTest1()
+{
+    int argc = 1;
+    char* argv[] = { "NemuTests" };
+    Nemu::Configuration configuration(argc, argv);
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ConfigurationTests::CreationTest2()
+{
+    Nemu::Configuration configuration("0.0.0.0", 80);
+    return TestResult::ePassed;
 }
