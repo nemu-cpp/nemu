@@ -1,0 +1,20 @@
+setting NEMUFRAMEWORK_NEMU_ROOT
+{
+    help = "Path to the Nemu installation";
+    default = '$(NEMU)/Nemu';
+}
+
+template Nemu
+{
+    includedirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Lib/$(arch);
+    }
+}
