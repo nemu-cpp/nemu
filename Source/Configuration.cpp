@@ -21,3 +21,12 @@
 */
 
 #include "Configuration.h"
+
+namespace Nemu
+{
+
+Configuration::Configuration(int argc, char* argv[])
+{
+}
+
+}
