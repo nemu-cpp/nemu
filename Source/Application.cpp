@@ -21,3 +21,12 @@
 */
 
 #include "Application.h"
+
+namespace Nemu
+{
+
+void Application::start()
+{
+}
+
+}

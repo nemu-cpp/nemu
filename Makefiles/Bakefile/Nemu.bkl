@@ -30,6 +30,7 @@ library Nemu
     headers
     {
         ../../Include/NemuFramework/Nemu/Application.h
+        ../../Include/NemuFramework/Nemu/Configuration.h
         ../../Include/NemuFramework/Nemu/Route.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
     }
@@ -37,6 +38,7 @@ library Nemu
     sources
     {
         ../../Source/Application.cpp
+        ../../Source/Configuration.cpp
         ../../Source/Route.cpp
     }
 }

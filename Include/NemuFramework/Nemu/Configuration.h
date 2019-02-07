@@ -20,18 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_APPLICATION_H_
-#define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
-
-namespace Nemu
-{
-
-class Application
-{
-public:
-    void start();
-};
-
-}
+#ifndef _NEMUFRAMEWORK_NEMU_CONFIGURATION_H_
+#define _NEMUFRAMEWORK_NEMU_CONFIGURATION_H_
 
 #endif

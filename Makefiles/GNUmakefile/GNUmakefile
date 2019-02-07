@@ -56,12 +56,15 @@ $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_er
 endif
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o
-	$(AR) rc $@ $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Application.o $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Route.o
+	$(AR) rc $@ $(_builddir)Nemu_Application.o $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Route.o
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Application.o: ../../Source/Application.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
+
+$(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Configuration.cpp
 
 $(_builddir)Nemu_Route.o: ../../Source/Route.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
