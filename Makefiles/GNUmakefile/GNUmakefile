@@ -45,13 +45,30 @@ _false :=
 _not    = $(if $(1),$(_false),$(_true_))
 _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 
+
+# The directory for the build files, may be overridden on make command line.
+builddir = .
+
+ifneq ($(builddir),.)
+_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
+_builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
+$(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
+endif
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a:
-	$(AR) rc $@ 
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Application.o
+	$(AR) rc $@ $(_builddir)Nemu_Application.o
 	$(RANLIB) $@
 
+$(_builddir)Nemu_Application.o: ../../Source/Application.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
+
 clean:
+	rm -f $(_builddir)*.o
+	rm -f $(_builddir)*.d
 	rm -f ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
 .PHONY: all clean
+
+# Dependencies tracking:
+-include $(_builddir)*.d

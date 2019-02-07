@@ -150,6 +150,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Application.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

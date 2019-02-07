@@ -29,6 +29,12 @@ library Nemu
 
     headers
     {
+        ../../Include/NemuFramework/Nemu/Application.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/Application.cpp
     }
 }
