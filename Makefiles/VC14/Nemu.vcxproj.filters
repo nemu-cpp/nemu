@@ -20,12 +20,18 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Route.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -151,9 +151,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Application.cpp" />
+    <ClCompile Include="..\..\Source\Route.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
