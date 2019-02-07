@@ -12,8 +12,14 @@ program NemuTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/ConfigurationTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/ConfigurationTests.cpp
     }
 }

@@ -20,11 +20,14 @@
     IN THE SOFTWARE.
 */
 
+#include "ConfigurationTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("Nemu");
+
+    ConfigurationTests::AddTests(theTestHarness);
 
     return theTestHarness.run();
 }

@@ -71,11 +71,14 @@ ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
 
 all: $(_builddir)NemuTests
 
-$(_builddir)NemuTests: $(_builddir)NemuTests_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -pthread
+$(_builddir)NemuTests: $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -pthread
 
 $(_builddir)NemuTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/main.cpp
+
+$(_builddir)NemuTests_ConfigurationTests.o: ../../Source/ConfigurationTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/ConfigurationTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o

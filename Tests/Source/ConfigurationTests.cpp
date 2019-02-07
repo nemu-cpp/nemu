@@ -20,17 +20,11 @@
     IN THE SOFTWARE.
 */
 
-#include "Configuration.h"
+#include "ConfigurationTests.h"
 
-namespace Nemu
+using namespace Ishiko::TestFramework;
+
+void ConfigurationTests::AddTests(TestHarness& theTestHarness)
 {
-
-Configuration::Configuration(int argc, char* argv[])
-{
-}
-
-Configuration::Configuration(const std::string& address, unsigned short port)
-{
-}
-
+    TestSequence& configurationTestSequence = theTestHarness.appendTestSequence("Configuration tests");
 }

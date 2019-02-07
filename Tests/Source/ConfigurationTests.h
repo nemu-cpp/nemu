@@ -20,17 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "Configuration.h"
+#ifndef _NEMUFRAMEWORK_NEMU_TESTS_CONFIGURATIONTESTS_H_
+#define _NEMUFRAMEWORK_NEMU_TESTS_CONFIGURATIONTESTS_H_
 
-namespace Nemu
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+class ConfigurationTests
 {
+public:
+    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+};
 
-Configuration::Configuration(int argc, char* argv[])
-{
-}
-
-Configuration::Configuration(const std::string& address, unsigned short port)
-{
-}
-
-}
+#endif

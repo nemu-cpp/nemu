@@ -23,6 +23,8 @@
 #ifndef _NEMUFRAMEWORK_NEMU_CONFIGURATION_H_
 #define _NEMUFRAMEWORK_NEMU_CONFIGURATION_H_
 
+#include <string>
+
 namespace Nemu
 {
 
@@ -30,6 +32,7 @@ class Configuration
 {
 public:
     Configuration(int argc, char* argv[]);
+    Configuration(const std::string& address, unsigned short port);
 };
 
 }
