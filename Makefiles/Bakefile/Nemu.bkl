@@ -34,7 +34,7 @@ library Nemu : Boost
     {
         ../../Include/NemuFramework/Nemu/Configuration.h
         ../../Include/NemuFramework/Nemu/Application.h
-        ../../Include/NemuFramework/Nemu/Server.h
+        ../../Include/NemuFramework/Nemu/HTTPServer.h
         ../../Include/NemuFramework/Nemu/Route.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
     }
@@ -43,7 +43,7 @@ library Nemu : Boost
     {
         ../../Source/Configuration.cpp
         ../../Source/Application.cpp
-        ../../Source/Server.cpp
+        ../../Source/HTTPServer.cpp
         ../../Source/Route.cpp
     }
 }

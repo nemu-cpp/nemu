@@ -20,4 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Server.h"
+#ifndef _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
+#define _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
+
+#endif

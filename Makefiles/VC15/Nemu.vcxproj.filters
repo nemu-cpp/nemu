@@ -23,7 +23,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h">
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\HTTPServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h">
@@ -40,7 +40,7 @@
     <ClCompile Include="..\..\Source\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Server.cpp">
+    <ClCompile Include="..\..\Source\HTTPServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Route.cpp">
