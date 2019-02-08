@@ -33,6 +33,13 @@ class Configuration
 public:
     Configuration(int argc, char* argv[]);
     Configuration(const std::string& address, unsigned short port);
+
+    const std::string& address() const;
+    unsigned short port() const;
+
+private:
+    std::string m_address;
+    unsigned short m_port;
 };
 
 }

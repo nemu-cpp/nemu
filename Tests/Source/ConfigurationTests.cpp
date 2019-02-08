@@ -35,14 +35,28 @@ void ConfigurationTests::AddTests(TestHarness& theTestHarness)
 
 TestResult::EOutcome ConfigurationTests::CreationTest1()
 {
+    TestResult::EOutcome result = TestResult::eFailed;
+
     int argc = 1;
     char* argv[] = { "NemuTests" };
     Nemu::Configuration configuration(argc, argv);
-    return TestResult::ePassed;
+    if ((configuration.address() == "0.0.0.0") && (configuration.port() == 80))
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }
 
 TestResult::EOutcome ConfigurationTests::CreationTest2()
 {
+    TestResult::EOutcome result = TestResult::eFailed;
+
     Nemu::Configuration configuration("0.0.0.0", 80);
-    return TestResult::ePassed;
+    if ((configuration.address() == "0.0.0.0") && (configuration.port() == 80))
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }

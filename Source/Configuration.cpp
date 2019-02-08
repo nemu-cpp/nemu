@@ -21,16 +21,40 @@
 */
 
 #include "Configuration.h"
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options/variables_map.hpp>
+#include <boost/program_options/parsers.hpp>
 
 namespace Nemu
 {
 
 Configuration::Configuration(int argc, char* argv[])
 {
+    boost::program_options::options_description description("Command line arguments");
+    description.add_options()
+        ("address", boost::program_options::value<std::string>(&m_address)->value_name("str")->default_value("0.0.0.0"),
+            "the listening IP address")
+        ("port", boost::program_options::value<unsigned short>(&m_port)->value_name("p")->default_value(80),
+            "the listening port");
+
+    boost::program_options::variables_map vm;
+    boost::program_options::store(boost::program_options::parse_command_line(argc, argv, description), vm);
+    boost::program_options::notify(vm);
 }
 
 Configuration::Configuration(const std::string& address, unsigned short port)
+    : m_address(address), m_port(port)
 {
+}
+
+const std::string& Configuration::address() const
+{
+    return m_address;
+}
+
+unsigned short Configuration::port() const
+{
+    return m_port;
 }
 
 }

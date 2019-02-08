@@ -33,6 +33,11 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      BOOST_ROOT  Path to the Boost installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +59,16 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+
+# ------------
+
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
 ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Application.o $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Route.o
@@ -61,13 +76,13 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Application.o: ../../Source/Application.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
 
 $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Configuration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Configuration.cpp
 
 $(_builddir)Nemu_Route.o: ../../Source/Route.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
 
 clean:
 	rm -f $(_builddir)*.o
