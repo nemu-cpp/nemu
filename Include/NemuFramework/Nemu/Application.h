@@ -24,6 +24,8 @@
 #define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 
 #include "Configuration.h"
+#include "Server.h"
+#include <vector>
 
 namespace Nemu
 {
@@ -34,6 +36,9 @@ public:
     Application(const Configuration& configuration);
 
     void start();
+
+private:
+    std::vector<std::shared_ptr<Server>> m_servers;
 };
 
 }

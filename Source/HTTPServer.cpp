@@ -21,3 +21,12 @@
 */
 
 #include "HTTPServer.h"
+
+namespace Nemu
+{
+
+void HTTPServer::start()
+{
+}
+
+}

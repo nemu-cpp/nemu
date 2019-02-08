@@ -23,4 +23,17 @@
 #ifndef _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
 #define _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
 
+#include "Server.h"
+
+namespace Nemu
+{
+
+class HTTPServer : public Server
+{
+public:
+    void start() override;
+};
+
+}
+
 #endif

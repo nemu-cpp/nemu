@@ -23,4 +23,19 @@
 #ifndef _NEMUFRAMEWORK_NEMU_SERVER_H_
 #define _NEMUFRAMEWORK_NEMU_SERVER_H_
 
+namespace Nemu
+{
+
+class Server
+{
+public:
+    virtual ~Server() = default;
+
+    virtual void start() = 0;
+};
+
+}
+
+#include "linkoptions.h"
+
 #endif

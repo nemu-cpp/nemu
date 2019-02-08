@@ -21,16 +21,22 @@
 */
 
 #include "Application.h"
+#include "HTTPServer.h"
 
 namespace Nemu
 {
 
 Application::Application(const Configuration& configuration)
 {
+    m_servers.emplace_back(std::make_shared<HTTPServer>());
 }
 
 void Application::start()
 {
+    for (std::shared_ptr<Server>& server : m_servers)
+    {
+        server->start();
+    }
 }
 
 }
