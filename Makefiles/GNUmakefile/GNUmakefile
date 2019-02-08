@@ -37,7 +37,8 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOOST_ROOT  Path to the Boost installation
+#      ISHIKO_ERRORS_ROOT  Path to the Ishiko Errors installation
+#      BOOST_ROOT          Path to the Boost installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -64,6 +65,8 @@ endif
 # Configurable settings:
 # 
 
+# Path to the Ishiko Errors installation
+ISHIKO_ERRORS_ROOT ?= $(ISHIKO)/Errors
 # Path to the Boost installation
 BOOST_ROOT ?= $(BOOST)
 
@@ -76,22 +79,22 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Configuration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Configuration.cpp
 
 $(_builddir)Nemu_Application.o: ../../Source/Application.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
 
 $(_builddir)Nemu_Route.o: ../../Source/Route.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
 
 $(_builddir)Nemu_HTTPServer.o: ../../Source/HTTPServer.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPServer.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPServer.cpp
 
 $(_builddir)Nemu_HTTPListener.o: ../../Source/HTTPListener.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPListener.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPListener.cpp
 
 $(_builddir)Nemu_HTTPSession.o: ../../Source/HTTPSession.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPSession.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPSession.cpp
 
 clean:
 	rm -f $(_builddir)*.o

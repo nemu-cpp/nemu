@@ -25,6 +25,7 @@
 
 #include "Configuration.h"
 #include "Server.h"
+#include "Ishiko/Errors.h"
 #include <vector>
 
 namespace Nemu

@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO");
+import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 
 setting NEMUFRAMEWORK_NEMU_ROOT
@@ -7,7 +8,7 @@ setting NEMUFRAMEWORK_NEMU_ROOT
     default = '$(NEMU)/Nemu';
 }
 
-template Nemu : Boost
+template Nemu : IshikoErrors, Boost
 {
     includedirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Include;
 
