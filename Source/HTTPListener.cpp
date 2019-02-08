@@ -21,3 +21,17 @@
 */
 
 #include "HTTPListener.h"
+
+namespace Nemu
+{
+
+HTTPListener::HTTPListener(boost::asio::io_context& io_ctx, boost::asio::ip::tcp::endpoint endpoint)
+    : m_acceptor(io_ctx)
+{
+}
+
+void HTTPListener::run()
+{
+}
+
+}

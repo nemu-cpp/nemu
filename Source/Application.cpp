@@ -28,7 +28,8 @@ namespace Nemu
 
 Application::Application(const Configuration& configuration)
 {
-    m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads()));
+    m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
+        configuration.port()));
 }
 
 void Application::start()

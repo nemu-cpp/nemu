@@ -22,18 +22,23 @@
 
 #include "HTTPServer.h"
 
+using namespace boost::asio;
+
 namespace Nemu
 {
 
-
-HTTPServer::HTTPServer(size_t numberOfThreads)
+HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port)
     : m_IOContext((int)numberOfThreads)
 {
+    ip::tcp::endpoint endpoint = ip::tcp::endpoint(ip::make_address(address), port);
+    m_listener = std::make_shared<HTTPListener>(m_IOContext, endpoint);
     m_threads.resize(numberOfThreads);
 }
 
 void HTTPServer::start()
 {
+    m_listener->run();
+
     // Run the I/O service on the requested number of threads
     for (std::thread& t : m_threads)
     {

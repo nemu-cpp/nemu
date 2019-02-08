@@ -23,4 +23,23 @@
 #ifndef _NEMUFRAMEWORK_NEMU_HTTPLISTENER_H_
 #define _NEMUFRAMEWORK_NEMU_HTTPLISTENER_H_
 
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/io_context.hpp>
+
+namespace Nemu
+{
+
+class HTTPListener
+{
+public:
+    HTTPListener(boost::asio::io_context& io_ctx, boost::asio::ip::tcp::endpoint endpoint);
+
+    void run();
+
+private:
+    boost::asio::ip::tcp::acceptor m_acceptor;
+};
+
+}
+
 #endif
