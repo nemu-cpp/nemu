@@ -34,16 +34,22 @@ library Nemu : Boost
     {
         ../../Include/NemuFramework/Nemu/Configuration.h
         ../../Include/NemuFramework/Nemu/Application.h
-        ../../Include/NemuFramework/Nemu/HTTPServer.h
+        ../../Include/NemuFramework/Nemu/Server.h
         ../../Include/NemuFramework/Nemu/Route.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
+
+        ../../Source/HTTPServer.h
+        ../../Source/HTTPListener.h
+        ../../Source/HTTPSession.h
     }
 
     sources
     {
         ../../Source/Configuration.cpp
         ../../Source/Application.cpp
-        ../../Source/HTTPServer.cpp
         ../../Source/Route.cpp
+        ../../Source/HTTPServer.cpp
+        ../../Source/HTTPListener.cpp
+        ../../Source/HTTPSession.cpp
     }
 }

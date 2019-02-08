@@ -71,8 +71,8 @@ BOOST_ROOT ?= $(BOOST)
 
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_Route.o
-	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_Route.o
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o
+	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
@@ -81,11 +81,17 @@ $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
 $(_builddir)Nemu_Application.o: ../../Source/Application.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Application.cpp
 
+$(_builddir)Nemu_Route.o: ../../Source/Route.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
+
 $(_builddir)Nemu_HTTPServer.o: ../../Source/HTTPServer.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPServer.cpp
 
-$(_builddir)Nemu_Route.o: ../../Source/Route.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Route.cpp
+$(_builddir)Nemu_HTTPListener.o: ../../Source/HTTPListener.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPListener.cpp
+
+$(_builddir)Nemu_HTTPSession.o: ../../Source/HTTPSession.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPSession.cpp
 
 clean:
 	rm -f $(_builddir)*.o

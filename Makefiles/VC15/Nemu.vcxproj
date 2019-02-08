@@ -152,15 +152,20 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Configuration.cpp" />
     <ClCompile Include="..\..\Source\Application.cpp" />
-    <ClCompile Include="..\..\Source\HTTPServer.cpp" />
     <ClCompile Include="..\..\Source\Route.cpp" />
+    <ClCompile Include="..\..\Source\HTTPServer.cpp" />
+    <ClCompile Include="..\..\Source\HTTPListener.cpp" />
+    <ClCompile Include="..\..\Source\HTTPSession.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\HTTPServer.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
+    <ClInclude Include="..\..\Source\HTTPServer.h" />
+    <ClInclude Include="..\..\Source\HTTPListener.h" />
+    <ClInclude Include="..\..\Source\HTTPSession.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
