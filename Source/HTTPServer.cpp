@@ -25,8 +25,28 @@
 namespace Nemu
 {
 
+
+HTTPServer::HTTPServer(size_t numberOfThreads)
+    : m_IOContext((int)numberOfThreads)
+{
+    m_threads.resize(numberOfThreads);
+}
+
 void HTTPServer::start()
 {
+    // Run the I/O service on the requested number of threads
+    for (std::thread& t : m_threads)
+    {
+        t = std::thread([this]{ m_IOContext.run(); });
+    }
+}
+
+void HTTPServer::join()
+{
+    for (std::thread& t : m_threads)
+    {
+        t.join();
+    }
 }
 
 }

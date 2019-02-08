@@ -35,7 +35,9 @@ Configuration::Configuration(int argc, char* argv[])
         ("address", boost::program_options::value<std::string>(&m_address)->value_name("str")->default_value("0.0.0.0"),
             "the listening IP address")
         ("port", boost::program_options::value<unsigned short>(&m_port)->value_name("p")->default_value(80),
-            "the listening port");
+            "the listening port")
+        ("threads", boost::program_options::value<size_t>(&m_numberOfThreads)->value_name("n")->default_value(1),
+            "the number of threads that will be used to process incoming requests");
 
     boost::program_options::variables_map vm;
     boost::program_options::store(boost::program_options::parse_command_line(argc, argv, description), vm);
@@ -45,6 +47,11 @@ Configuration::Configuration(int argc, char* argv[])
 Configuration::Configuration(const std::string& address, unsigned short port)
     : m_address(address), m_port(port)
 {
+}
+
+size_t Configuration::numberOfThreads() const
+{
+    return m_numberOfThreads;
 }
 
 const std::string& Configuration::address() const

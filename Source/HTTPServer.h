@@ -24,6 +24,8 @@
 #define _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
 
 #include "Server.h"
+#include <boost/asio/io_context.hpp>
+#include <thread>
 
 namespace Nemu
 {
@@ -31,7 +33,14 @@ namespace Nemu
 class HTTPServer : public Server
 {
 public:
+    HTTPServer(size_t numberOfThreads);
+
     void start() override;
+    void join() override;
+
+private:
+    boost::asio::io_context m_IOContext;
+    std::vector<std::thread> m_threads;
 };
 
 }

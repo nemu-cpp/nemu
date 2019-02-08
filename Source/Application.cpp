@@ -28,14 +28,23 @@ namespace Nemu
 
 Application::Application(const Configuration& configuration)
 {
-    m_servers.emplace_back(std::make_shared<HTTPServer>());
+    m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads()));
 }
 
 void Application::start()
 {
+    // First we start all the servers, note that the Server::start()
+    // function does not block
     for (std::shared_ptr<Server>& server : m_servers)
     {
         server->start();
+    }
+
+    // By default we want the Application::start() function to block
+    // so we call Server::join() on all the servers
+    for (std::shared_ptr<Server>& server : m_servers)
+    {
+        server->join();
     }
 }
 

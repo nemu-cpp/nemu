@@ -34,10 +34,12 @@ public:
     Configuration(int argc, char* argv[]);
     Configuration(const std::string& address, unsigned short port);
 
+    size_t numberOfThreads() const;
     const std::string& address() const;
     unsigned short port() const;
 
 private:
+    size_t m_numberOfThreads;
     std::string m_address;
     unsigned short m_port;
 };
