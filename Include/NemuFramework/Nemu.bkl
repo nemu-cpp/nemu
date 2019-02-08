@@ -1,10 +1,13 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
+
 setting NEMUFRAMEWORK_NEMU_ROOT
 {
     help = "Path to the Nemu installation";
     default = '$(NEMU)/Nemu';
 }
 
-template Nemu
+template Nemu : Boost
 {
     includedirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Include;
 

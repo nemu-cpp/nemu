@@ -25,6 +25,10 @@
 namespace Nemu
 {
 
+Application::Application(const Configuration& configuration)
+{
+}
+
 void Application::start()
 {
 }

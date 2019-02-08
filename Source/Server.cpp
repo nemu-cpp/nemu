@@ -20,24 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_APPLICATION_H_
-#define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
-
-#include "Configuration.h"
-
-namespace Nemu
-{
-
-class Application
-{
-public:
-    Application(const Configuration& configuration);
-
-    void start();
-};
-
-}
-
-#include "linkoptions.h"
-
-#endif
+#include "Server.h"
