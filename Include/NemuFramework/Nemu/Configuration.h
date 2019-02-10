@@ -31,7 +31,7 @@ namespace Nemu
 class Configuration
 {
 public:
-    Configuration(int argc, char* argv[]);
+    Configuration(int argc, char* argv[], const std::string& defaultAddress = "0.0.0.0", unsigned short defaultPort = 80);
     Configuration(const std::string& address, unsigned short port);
 
     size_t numberOfThreads() const;

@@ -31,6 +31,7 @@ void ConfigurationTests::AddTests(TestHarness& theTestHarness)
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, configurationTestSequence);
     new HeapAllocationErrorsTest("Creation test 2", CreationTest2, configurationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 3", CreationTest3, configurationTestSequence);
 }
 
 TestResult::EOutcome ConfigurationTests::CreationTest1()
@@ -49,6 +50,21 @@ TestResult::EOutcome ConfigurationTests::CreationTest1()
 }
 
 TestResult::EOutcome ConfigurationTests::CreationTest2()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    int argc = 1;
+    char* argv[] = { "NemuTests" };
+    Nemu::Configuration configuration(argc, argv, "127.0.0.1", 8080);
+    if ((configuration.address() == "127.0.0.1") && (configuration.port() == 8080))
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ConfigurationTests::CreationTest3()
 {
     TestResult::EOutcome result = TestResult::eFailed;
 

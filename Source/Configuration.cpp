@@ -28,13 +28,13 @@
 namespace Nemu
 {
 
-Configuration::Configuration(int argc, char* argv[])
+Configuration::Configuration(int argc, char* argv[], const std::string& defaultAddress, unsigned short defaultPort)
 {
     boost::program_options::options_description description("Command line arguments");
     description.add_options()
-        ("address", boost::program_options::value<std::string>(&m_address)->value_name("str")->default_value("0.0.0.0"),
+        ("address", boost::program_options::value<std::string>(&m_address)->value_name("str")->default_value(defaultAddress),
             "the listening IP address")
-        ("port", boost::program_options::value<unsigned short>(&m_port)->value_name("p")->default_value(80),
+        ("port", boost::program_options::value<unsigned short>(&m_port)->value_name("p")->default_value(defaultPort),
             "the listening port")
         ("threads", boost::program_options::value<size_t>(&m_numberOfThreads)->value_name("n")->default_value(1),
             "the number of threads that will be used to process incoming requests");
