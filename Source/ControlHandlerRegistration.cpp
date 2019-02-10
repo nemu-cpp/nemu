@@ -21,3 +21,47 @@
 */
 
 #include "ControlHandlerRegistration.h"
+
+#ifdef _WIN32
+#include "Application.h"
+#include <windows.h>
+
+namespace Nemu
+{
+
+std::atomic<size_t> ControlHandlerRegistration::sm_count = 0;
+
+BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
+{
+    switch (fdwCtrlType)
+    {
+    case CTRL_C_EVENT:
+        Application::StopAllApplications();
+        return TRUE;
+
+    default:
+        return FALSE;
+    }
+}
+
+ControlHandlerRegistration::ControlHandlerRegistration()
+{
+    ++sm_count;
+    if (sm_count == 1)
+    {
+        SetConsoleCtrlHandler(ControlHandler, TRUE);
+    }
+}
+
+ControlHandlerRegistration::~ControlHandlerRegistration()
+{
+    --sm_count;
+    if (sm_count == 0)
+    {
+        SetConsoleCtrlHandler(ControlHandler, FALSE);
+    }
+}
+
+}
+
+#endif

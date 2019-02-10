@@ -23,4 +23,24 @@
 #ifndef _NEMUFRAMEWORK_NEMU_CONTROLHANDLERREGISTRATION_H_
 #define _NEMUFRAMEWORK_NEMU_CONTROLHANDLERREGISTRATION_H_
 
+#ifdef _WIN32
+#include <atomic>
+
+namespace Nemu
+{
+
+class ControlHandlerRegistration
+{
+public:
+    ControlHandlerRegistration();
+    ~ControlHandlerRegistration();
+
+private:
+    static std::atomic<size_t> sm_count;
+};
+
+}
+
+#endif
+
 #endif
