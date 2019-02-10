@@ -77,8 +77,8 @@ BOOST_ROOT ?= $(BOOST)
 
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o
-	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o $(_builddir)Nemu_ControlHandlerRegistration.o
+	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_HTTPServer.o $(_builddir)Nemu_HTTPListener.o $(_builddir)Nemu_HTTPSession.o $(_builddir)Nemu_ControlHandlerRegistration.o
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
@@ -98,6 +98,9 @@ $(_builddir)Nemu_HTTPListener.o: ../../Source/HTTPListener.cpp
 
 $(_builddir)Nemu_HTTPSession.o: ../../Source/HTTPSession.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/HTTPSession.cpp
+
+$(_builddir)Nemu_ControlHandlerRegistration.o: ../../Source/ControlHandlerRegistration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/ControlHandlerRegistration.cpp
 
 clean:
 	rm -f $(_builddir)*.o

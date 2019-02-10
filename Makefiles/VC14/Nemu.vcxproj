@@ -156,6 +156,7 @@
     <ClCompile Include="..\..\Source\HTTPServer.cpp" />
     <ClCompile Include="..\..\Source\HTTPListener.cpp" />
     <ClCompile Include="..\..\Source\HTTPSession.cpp" />
+    <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="..\..\Source\HTTPServer.h" />
     <ClInclude Include="..\..\Source\HTTPListener.h" />
     <ClInclude Include="..\..\Source\HTTPSession.h" />
+    <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

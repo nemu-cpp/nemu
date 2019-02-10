@@ -43,6 +43,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/HTTPServer.h
         ../../Source/HTTPListener.h
         ../../Source/HTTPSession.h
+        ../../Source/ControlHandlerRegistration.h
     }
 
     sources
@@ -53,5 +54,6 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/HTTPServer.cpp
         ../../Source/HTTPListener.cpp
         ../../Source/HTTPSession.cpp
+        ../../Source/ControlHandlerRegistration.cpp
     }
 }
