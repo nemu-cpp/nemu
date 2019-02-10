@@ -22,18 +22,37 @@
 
 #include "Application.h"
 #include "HTTPServer.h"
+#ifdef _WIN32
+#include "ControlHandlerRegistration.h"
+#endif
 
 namespace Nemu
 {
 
-Application::Application(const Configuration& configuration)
+std::mutex Application::sm_applicationsMutex;
+std::set<Application*> Application::sm_applications;
+
+Application::Application(const Configuration& configuration, Ishiko::Error& error)
 {
     m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port()));
+        configuration.port(), error));
+
+    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
+    sm_applications.insert(this);
+}
+
+Application::~Application()
+{
+    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
+    sm_applications.erase(this);
 }
 
 void Application::start()
 {
+#ifdef _WIN32
+    m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
+#endif
+
     // First we start all the servers, note that the Server::start()
     // function does not block
     for (std::shared_ptr<Server>& server : m_servers)
@@ -46,6 +65,27 @@ void Application::start()
     for (std::shared_ptr<Server>& server : m_servers)
     {
         server->join();
+    }
+}
+
+void Application::stop()
+{
+    for (std::shared_ptr<Server>& server : m_servers)
+    {
+        server->stop();
+    }
+
+#ifdef _WIN32
+    m_controlHandlerRegistration.reset();
+#endif
+}
+
+void Application::StopAllApplications()
+{
+    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
+    for (Application* app : Application::sm_applications)
+    {
+        app->stop();
     }
 }
 

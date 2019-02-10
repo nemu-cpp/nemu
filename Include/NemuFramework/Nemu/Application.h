@@ -25,20 +25,35 @@
 
 #include "Configuration.h"
 #include "Server.h"
-#include "Ishiko/Errors.h"
+#include "Ishiko/Errors/Error.h"
 #include <vector>
+#include <set>
+#include <mutex>
 
 namespace Nemu
 {
 
+#ifdef _WIN32
+class ControlHandlerRegistration;
+#endif
+
 class Application
 {
 public:
-    Application(const Configuration& configuration);
+    Application(const Configuration& configuration, Ishiko::Error& error);
+    ~Application();
 
     void start();
+    void stop();
+
+    static void StopAllApplications();
 
 private:
+    static std::mutex sm_applicationsMutex;
+    static std::set<Application*> sm_applications;
+#ifdef _WIN32
+    std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
+#endif
     std::vector<std::shared_ptr<Server>> m_servers;
 };
 
