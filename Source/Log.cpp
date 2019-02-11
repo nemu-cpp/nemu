@@ -21,3 +21,15 @@
 */
 
 #include "Log.h"
+
+namespace Nemu
+{
+
+Log::Log(const std::string& filename_prefix)
+{
+    m_worker = g3::LogWorker::createLogWorker();
+    m_handle = m_worker->addDefaultLogger(filename_prefix, ".");
+    g3::initializeLogging(m_worker.get());
+}
+
+}

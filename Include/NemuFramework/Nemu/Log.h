@@ -23,4 +23,23 @@
 #ifndef _NEMUFRAMEWORK_NEMU_LOG_H_
 #define _NEMUFRAMEWORK_NEMU_LOG_H_
 
+#include <g3log/g3log.hpp>
+#include <g3log/logworker.hpp>
+#include <string>
+
+namespace Nemu
+{
+
+class Log
+{
+public:
+    Log(const std::string& filename_prefix);
+
+private:
+    std::unique_ptr<g3::LogWorker> m_worker;
+    std::unique_ptr<g3::FileSinkHandle> m_handle;
+};
+
+}
+
 #endif
