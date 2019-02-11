@@ -47,6 +47,7 @@ BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
 
 ControlHandlerRegistration::ControlHandlerRegistration()
 {
+    std::lock_guard<std::mutex> guard(sm_mutex);
     if (sm_count++ == 0)
     {
         SetConsoleCtrlHandler(ControlHandler, TRUE);
@@ -55,6 +56,7 @@ ControlHandlerRegistration::ControlHandlerRegistration()
 
 ControlHandlerRegistration::~ControlHandlerRegistration()
 {
+    std::lock_guard<std::mutex> guard(sm_mutex);
     if (--sm_count == 0)
     {
         SetConsoleCtrlHandler(ControlHandler, FALSE);
