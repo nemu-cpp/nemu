@@ -25,6 +25,7 @@
 
 #include "Server.h"
 #include "HTTPListener.h"
+#include "Ishiko/Errors/Error.h"
 #include <boost/asio/io_context.hpp>
 #include <thread>
 #include <memory>
@@ -35,9 +36,10 @@ namespace Nemu
 class HTTPServer : public Server
 {
 public:
-    HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port);
+    HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port, Ishiko::Error& error);
 
     void start() override;
+    void stop() override;
     void join() override;
 
 private:
