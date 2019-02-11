@@ -46,8 +46,7 @@ BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
 
 ControlHandlerRegistration::ControlHandlerRegistration()
 {
-    ++sm_count;
-    if (sm_count == 1)
+    if (sm_count++ == 0)
     {
         SetConsoleCtrlHandler(ControlHandler, TRUE);
     }
@@ -55,8 +54,7 @@ ControlHandlerRegistration::ControlHandlerRegistration()
 
 ControlHandlerRegistration::~ControlHandlerRegistration()
 {
-    --sm_count;
-    if (sm_count == 0)
+    if (--sm_count == 0)
     {
         SetConsoleCtrlHandler(ControlHandler, FALSE);
     }
