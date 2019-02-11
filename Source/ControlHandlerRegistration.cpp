@@ -29,7 +29,8 @@
 namespace Nemu
 {
 
-std::atomic<size_t> ControlHandlerRegistration::sm_count = 0;
+std::mutex ControlHandlerRegistration::sm_mutex;
+size_t ControlHandlerRegistration::sm_count = 0;
 
 BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
 {

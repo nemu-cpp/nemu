@@ -24,7 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_CONTROLHANDLERREGISTRATION_H_
 
 #ifdef _WIN32
-#include <atomic>
+#include <mutex>
 
 namespace Nemu
 {
@@ -36,7 +36,8 @@ public:
     ~ControlHandlerRegistration();
 
 private:
-    static std::atomic<size_t> sm_count;
+    static std::mutex sm_mutex;
+    static size_t sm_count;
 };
 
 }
