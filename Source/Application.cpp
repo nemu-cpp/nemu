@@ -32,9 +32,46 @@ namespace Nemu
 std::mutex Application::sm_applicationsMutex;
 std::set<Application*> Application::sm_applications;
 
-Application::Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
-    : m_observer(observer)
+void Application::Observers::add(std::shared_ptr<Observer> observer)
 {
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return (o.first.lock() == observer);
+        }
+    );
+    if (it != m_observers.end())
+    {
+        ++it->second;
+    }
+    else
+    {
+        m_observers.push_back(std::pair<std::weak_ptr<Observer>, size_t>(observer, 1));
+    }
+}
+
+void Application::Observers::remove(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return (o.first.lock() == observer);
+        }
+    );
+    if (it != m_observers.end())
+    {
+        --it->second;
+        if (it->second == 0)
+        {
+            m_observers.erase(it);
+        }
+    }
+}
+
+Application::Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
+{
+    m_observers.add(observer);
+
     m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), error));
 
