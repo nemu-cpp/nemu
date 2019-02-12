@@ -23,12 +23,36 @@
 #ifndef _NEMUFRAMEWORK_NEMU_SERVER_H_
 #define _NEMUFRAMEWORK_NEMU_SERVER_H_
 
+#include <vector>
+#include <memory>
+
 namespace Nemu
 {
 
 class Server
 {
 public:
+    class Observer
+    {
+    public:
+        virtual void onServerStarted(const Server& source);
+    };
+
+    class Observers final
+    {
+    public:
+        void add(std::shared_ptr<Observer> observer);
+        void remove(std::shared_ptr<Observer> observer);
+
+        void notifyServerStarted(const Server& source);
+
+    private:
+        void removeDeletedObservers();
+
+    private:
+        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
+    };
+
     virtual ~Server() = default;
 
     virtual void start() = 0;

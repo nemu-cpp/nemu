@@ -21,3 +21,76 @@
 */
 
 #include "Server.h"
+#include <algorithm>
+
+namespace Nemu
+{
+
+void Server::Observer::onServerStarted(const Server& source)
+{
+}
+
+void Server::Observers::add(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return (o.first.lock() == observer);
+        }
+    );
+    if (it != m_observers.end())
+    {
+        ++it->second;
+    }
+    else
+    {
+        m_observers.push_back(std::pair<std::weak_ptr<Observer>, size_t>(observer, 1));
+    }
+}
+
+void Server::Observers::remove(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return (o.first.lock() == observer);
+        }
+    );
+    if (it != m_observers.end())
+    {
+        --it->second;
+        if (it->second == 0)
+        {
+            m_observers.erase(it);
+        }
+    }
+}
+
+void Server::Observers::notifyServerStarted(const Server& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onServerStarted(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Server::Observers::removeDeletedObservers()
+{
+    auto it = std::remove_if(m_observers.begin(), m_observers.end(),
+        [](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return o.first.expired();
+        }
+    );
+    m_observers.erase(it, m_observers.end());
+}
+
+}
