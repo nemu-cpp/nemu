@@ -32,7 +32,8 @@ namespace Nemu
 std::mutex Application::sm_applicationsMutex;
 std::set<Application*> Application::sm_applications;
 
-Application::Application(const Configuration& configuration, Ishiko::Error& error)
+Application::Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
+    : m_observer(observer)
 {
     m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), error));

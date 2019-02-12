@@ -23,6 +23,7 @@
 #ifndef _NEMUFRAMEWORK_NEMU_LOG_H_
 #define _NEMUFRAMEWORK_NEMU_LOG_H_
 
+#include "Application.h"
 #include <g3log/g3log.hpp>
 #include <g3log/logworker.hpp>
 #include <string>
@@ -30,7 +31,7 @@
 namespace Nemu
 {
 
-class Log
+class Log : public Application::Observer
 {
 public:
     Log(const std::string& filename_prefix);

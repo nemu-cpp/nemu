@@ -29,6 +29,7 @@
 #include <vector>
 #include <set>
 #include <mutex>
+#include <memory>
 
 namespace Nemu
 {
@@ -40,7 +41,11 @@ class ControlHandlerRegistration;
 class Application
 {
 public:
-    Application(const Configuration& configuration, Ishiko::Error& error);
+    class Observer
+    {
+    };
+
+    Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
     ~Application();
 
     void start();
@@ -55,6 +60,7 @@ private:
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif
     std::vector<std::shared_ptr<Server>> m_servers;
+    std::shared_ptr<Observer> m_observer;
 };
 
 }
