@@ -93,4 +93,14 @@ void Server::Observers::removeDeletedObservers()
     m_observers.erase(it, m_observers.end());
 }
 
+Server::Server(std::shared_ptr<Observer> observer)
+{
+    m_observers.add(observer);
+}
+
+Server::Observers& Server::observers()
+{
+    return m_observers;
+}
+
 }

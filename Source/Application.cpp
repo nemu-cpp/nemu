@@ -25,12 +25,17 @@
 #ifdef _WIN32
 #include "ControlHandlerRegistration.h"
 #endif
+#include <algorithm>
 
 namespace Nemu
 {
 
 std::mutex Application::sm_applicationsMutex;
 std::set<Application*> Application::sm_applications;
+
+void Application::Observer::onApplicationStarted(const Application& source)
+{
+}
 
 void Application::Observers::add(std::shared_ptr<Observer> observer)
 {
@@ -68,12 +73,39 @@ void Application::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
+void Application::Observers::notifyApplicationStarted(const Application& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onApplicationStarted(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Application::Observers::removeDeletedObservers()
+{
+    auto it = std::remove_if(m_observers.begin(), m_observers.end(),
+        [](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+        {
+            return o.first.expired();
+        }
+    );
+    m_observers.erase(it, m_observers.end());
+}
+
 Application::Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
 {
     m_observers.add(observer);
 
     m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port(), error));
+        configuration.port(), observer, error));
 
     std::lock_guard<std::mutex> guard(sm_applicationsMutex);
     sm_applications.insert(this);
@@ -97,6 +129,8 @@ void Application::start()
     {
         server->start();
     }
+
+    m_observers.notifyApplicationStarted(*this);
 
     // By default we want the Application::start() function to block
     // so we call Server::join() on all the servers
@@ -125,6 +159,11 @@ void Application::StopAllApplications()
     {
         app->stop();
     }
+}
+
+Application::Observers& Application::observers()
+{
+    return m_observers;
 }
 
 }

@@ -53,11 +53,17 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
+    Server(std::shared_ptr<Observer> observer);
     virtual ~Server() = default;
 
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void join() = 0;
+
+    Observers& observers();
+
+private:
+    Observers m_observers;
 };
 
 }

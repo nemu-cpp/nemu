@@ -41,8 +41,10 @@ class ControlHandlerRegistration;
 class Application
 {
 public:
-    class Observer
+    class Observer : public Server::Observer
     {
+    public:
+        virtual void onApplicationStarted(const Application& source);
     };
 
     class Observers final
@@ -50,6 +52,11 @@ public:
     public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
+
+        void notifyApplicationStarted(const Application& source);
+
+    private:
+        void removeDeletedObservers();
 
     private:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
@@ -62,6 +69,8 @@ public:
     void stop();
 
     static void StopAllApplications();
+
+    Observers& observers();
 
 private:
     static std::mutex sm_applicationsMutex;
