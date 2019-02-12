@@ -51,6 +51,7 @@ library Nemu : IshikoErrors, G3log, Boost
     {
         ../../Source/Configuration.cpp
         ../../Source/Application.cpp
+        ../../Source/Server.cpp
         ../../Source/Route.cpp
         ../../Source/Log.cpp
 

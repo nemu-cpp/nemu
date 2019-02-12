@@ -55,6 +55,9 @@
     <ClCompile Include="..\..\Source\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Route.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
