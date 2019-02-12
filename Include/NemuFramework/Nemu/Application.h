@@ -44,7 +44,10 @@ public:
     class Observer : public Server::Observer
     {
     public:
+        virtual void onApplicationStarting(const Application& source);
         virtual void onApplicationStarted(const Application& source);
+        virtual void onApplicationStopping(const Application& source);
+        virtual void onApplicationStopped(const Application& source);
     };
 
     class Observers final
@@ -53,7 +56,10 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
+        void notifyApplicationStarting(const Application& source);
         void notifyApplicationStarted(const Application& source);
+        void notifyApplicationStopping(const Application& source);
+        void notifyApplicationStopped(const Application& source);
 
     private:
         void removeDeletedObservers();

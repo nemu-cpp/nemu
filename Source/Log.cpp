@@ -33,14 +33,34 @@ Log::Log(const std::string& filename_prefix)
     m_handle->call(&g3::FileSink::overrideLogDetails, &FormatMessage);
 }
 
+void Log::onApplicationStarting(const Application& source)
+{
+    LOG(INFO) << "Application starting";
+}
+
 void Log::onApplicationStarted(const Application& source)
 {
     LOG(INFO) << "Application started";
 }
 
+void Log::onApplicationStopping(const Application& source)
+{
+    LOG(INFO) << "Application stopping";
+}
+
+void Log::onApplicationStopped(const Application& source)
+{
+    LOG(INFO) << "Application stopped";
+}
+
 void Log::onServerStarted(const Server& source)
 {
     LOG(INFO) << "Server started";
+}
+
+void Log::onServerStopped(const Server& source)
+{
+    LOG(INFO) << "Server stopped";
 }
 
 std::string Log::FormatMessage(const g3::LogMessage& message)

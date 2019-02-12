@@ -36,6 +36,7 @@ public:
     {
     public:
         virtual void onServerStarted(const Server& source);
+        virtual void onServerStopped(const Server& source);
     };
 
     class Observers final
@@ -45,6 +46,7 @@ public:
         void remove(std::shared_ptr<Observer> observer);
 
         void notifyServerStarted(const Server& source);
+        void notifyServerStopped(const Server& source);
 
     private:
         void removeDeletedObservers();

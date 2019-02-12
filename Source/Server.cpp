@@ -30,6 +30,10 @@ void Server::Observer::onServerStarted(const Server& source)
 {
 }
 
+void Server::Observer::onServerStopped(const Server& source)
+{
+}
+
 void Server::Observers::add(std::shared_ptr<Observer> observer)
 {
     auto it = std::find_if(m_observers.begin(), m_observers.end(),
@@ -74,6 +78,22 @@ void Server::Observers::notifyServerStarted(const Server& source)
         if (observer)
         {
             observer->onServerStarted(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Server::Observers::notifyServerStopped(const Server& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onServerStopped(source);
         }
         else
         {

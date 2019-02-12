@@ -24,6 +24,7 @@
 
 #ifdef _WIN32
 #include "Application.h"
+#include <g3log/g3log.hpp>
 #include <windows.h>
 
 namespace Nemu
@@ -37,6 +38,7 @@ BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
     switch (fdwCtrlType)
     {
     case CTRL_C_EVENT:
+        LOG(INFO) << "Ctrl-C received, stopping all applications";
         Application::StopAllApplications();
         return TRUE;
 

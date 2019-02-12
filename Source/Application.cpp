@@ -33,7 +33,19 @@ namespace Nemu
 std::mutex Application::sm_applicationsMutex;
 std::set<Application*> Application::sm_applications;
 
+void Application::Observer::onApplicationStarting(const Application& source)
+{
+}
+
 void Application::Observer::onApplicationStarted(const Application& source)
+{
+}
+
+void Application::Observer::onApplicationStopping(const Application& source)
+{
+}
+
+void Application::Observer::onApplicationStopped(const Application& source)
 {
 }
 
@@ -73,6 +85,22 @@ void Application::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
+void Application::Observers::notifyApplicationStarting(const Application& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onApplicationStarting(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
 void Application::Observers::notifyApplicationStarted(const Application& source)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
@@ -81,6 +109,38 @@ void Application::Observers::notifyApplicationStarted(const Application& source)
         if (observer)
         {
             observer->onApplicationStarted(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Application::Observers::notifyApplicationStopping(const Application& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onApplicationStopping(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Application::Observers::notifyApplicationStopped(const Application& source)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onApplicationStopped(source);
         }
         else
         {
@@ -119,6 +179,8 @@ Application::~Application()
 
 void Application::start()
 {
+    m_observers.notifyApplicationStarting(*this);
+
 #ifdef _WIN32
     m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
 #endif
@@ -138,10 +200,14 @@ void Application::start()
     {
         server->join();
     }
+
+    m_observers.notifyApplicationStopped(*this);
 }
 
 void Application::stop()
 {
+    m_observers.notifyApplicationStopping(*this);
+
     for (std::shared_ptr<Server>& server : m_servers)
     {
         server->stop();
