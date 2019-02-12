@@ -30,6 +30,25 @@ Log::Log(const std::string& filename_prefix)
     m_worker = g3::LogWorker::createLogWorker();
     m_handle = m_worker->addDefaultLogger(filename_prefix, ".");
     g3::initializeLogging(m_worker.get());
+    m_handle->call(&g3::FileSink::overrideLogDetails, &FormatMessage);
+}
+
+void Log::onApplicationStarted(const Application& source)
+{
+    LOG(INFO) << "Application started";
+}
+
+void Log::onServerStarted(const Server& source)
+{
+    LOG(INFO) << "Server started";
+}
+
+std::string Log::FormatMessage(const g3::LogMessage& message)
+{
+    std::string out;
+    out.append(message.timestamp({"%Y-%m-%dT%H:%M:%S.%f6"}) + " (" + message.threadID() + ") [" + message.file() + ":"
+        + message.line() + "] " + message.level() + " ");
+    return out;
 }
 
 }

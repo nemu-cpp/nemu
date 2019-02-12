@@ -36,6 +36,12 @@ class Log : public Application::Observer
 public:
     Log(const std::string& filename_prefix);
 
+    void onApplicationStarted(const Application& source) override;
+    void onServerStarted(const Server& source) override;
+
+private:
+    static std::string FormatMessage(const g3::LogMessage& message);
+
 private:
     std::unique_ptr<g3::LogWorker> m_worker;
     std::unique_ptr<g3::FileSinkHandle> m_handle;
