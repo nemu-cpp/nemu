@@ -23,4 +23,28 @@
 #ifndef _NEMUFRAMEWORK_NEMU_SERVERS_H_
 #define _NEMUFRAMEWORK_NEMU_SERVERS_H_
 
+#include "Server.h"
+#include <vector>
+#include <memory>
+
+namespace Nemu
+{
+
+class Servers
+{
+public:
+    void startAll();
+    void stopAll();
+    void joinAll();
+
+    void append(std::shared_ptr<Server> server);
+
+    size_t numberOfRunningServers() const;
+
+private:
+    std::vector<std::shared_ptr<Server>> m_servers;
+};
+
+}
+
 #endif
