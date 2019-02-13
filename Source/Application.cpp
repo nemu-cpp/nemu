@@ -116,7 +116,7 @@ Application::Application(const Configuration& configuration, std::shared_ptr<Obs
 {
     m_observers.add(observer);
 
-    m_servers.emplace_back(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
+    m_servers.append(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), observer, error));
 
     std::lock_guard<std::mutex> guard(sm_applicationsMutex);
@@ -137,21 +137,14 @@ void Application::start()
     m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
 #endif
 
-    // First we start all the servers, note that the Server::start()
-    // function does not block
-    for (std::shared_ptr<Server>& server : m_servers)
-    {
-        server->start();
-    }
+    // First we start all the servers, note that the Servers::startAll() function does not block
+    m_servers.startAll();
 
     m_observers.notify(&Observer::onApplicationStarted, *this);
 
-    // By default we want the Application::start() function to block
-    // so we call Server::join() on all the servers
-    for (std::shared_ptr<Server>& server : m_servers)
-    {
-        server->join();
-    }
+    // By default we want the Application::start() function to block so we call Servers::joinAll() which will do a join
+    // on all the servers
+    m_servers.joinAll();
 
     m_observers.notify(&Observer::onApplicationStopped, *this);
 }
@@ -160,10 +153,7 @@ void Application::stop()
 {
     m_observers.notify(&Observer::onApplicationStopping, *this);
 
-    for (std::shared_ptr<Server>& server : m_servers)
-    {
-        server->stop();
-    }
+    m_servers.stopAll();
 
 #ifdef _WIN32
     m_controlHandlerRegistration.reset();
@@ -177,6 +167,11 @@ void Application::StopAllApplications()
     {
         app->stop();
     }
+}
+
+const Servers& Application::servers() const
+{
+    return m_servers;
 }
 
 Application::Observers& Application::observers()

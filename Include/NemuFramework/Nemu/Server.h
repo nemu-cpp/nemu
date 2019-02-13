@@ -62,6 +62,8 @@ public:
     virtual void stop() = 0;
     virtual void join() = 0;
 
+    virtual bool isRunning() const = 0;
+
     Observers& observers();
 
 private:

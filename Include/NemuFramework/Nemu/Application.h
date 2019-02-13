@@ -24,7 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 
 #include "Configuration.h"
-#include "Server.h"
+#include "Servers.h"
 #include "Ishiko/Errors/Error.h"
 #include <vector>
 #include <set>
@@ -73,6 +73,8 @@ public:
 
     static void StopAllApplications();
 
+    const Servers& servers() const;
+
     Observers& observers();
 
 private:
@@ -81,7 +83,7 @@ private:
 #ifdef _WIN32
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif
-    std::vector<std::shared_ptr<Server>> m_servers;
+    Servers m_servers;
     Observers m_observers;
 };
 

@@ -27,8 +27,9 @@ using namespace boost::asio;
 namespace Nemu
 {
 
-HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port, Ishiko::Error& error)
-    : m_IOContext((int)numberOfThreads)
+HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port,
+    std::shared_ptr<Observer> observer, Ishiko::Error& error)
+    : Server(observer), m_IOContext((int)numberOfThreads)
 {
     ip::tcp::endpoint endpoint = ip::tcp::endpoint(ip::make_address(address), port);
     m_listener = std::make_shared<HTTPListener>(m_IOContext, endpoint, error);
@@ -44,6 +45,8 @@ void HTTPServer::start()
     {
         t = std::thread([this]{ m_IOContext.run(); });
     }
+
+    observers().notifyServerStarted(*this);
 }
 
 void HTTPServer::stop()
@@ -57,6 +60,13 @@ void HTTPServer::join()
     {
         t.join();
     }
+
+    observers().notifyServerStopped(*this);
+}
+
+bool HTTPServer::isRunning() const
+{
+    return !m_IOContext.stopped();
 }
 
 }

@@ -40,7 +40,8 @@ void Log::onApplicationStarting(const Application& source)
 
 void Log::onApplicationStarted(const Application& source)
 {
-    LOG(INFO) << "Application started";
+    size_t running = source.servers().numberOfRunningServers();
+    LOG(INFO) << "Application started (" << running << " server" << ((running != 1) ? "s" : "") << " running)";
 }
 
 void Log::onApplicationStopping(const Application& source)
@@ -50,7 +51,8 @@ void Log::onApplicationStopping(const Application& source)
 
 void Log::onApplicationStopped(const Application& source)
 {
-    LOG(INFO) << "Application stopped";
+    size_t running = source.servers().numberOfRunningServers();
+    LOG(INFO) << "Application stopped (" << running << " server" << ((running != 1) ? "s" : "") << " running)";
 }
 
 void Log::onServerStarted(const Server& source)

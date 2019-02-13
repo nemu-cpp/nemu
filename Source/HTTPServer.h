@@ -36,11 +36,14 @@ namespace Nemu
 class HTTPServer : public Server
 {
 public:
-    HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port, Ishiko::Error& error);
+    HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port,
+        std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
     void start() override;
     void stop() override;
     void join() override;
+
+    bool isRunning() const override;
 
 private:
     boost::asio::io_context m_IOContext;
