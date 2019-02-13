@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\Source\Configuration.cpp" />
     <ClCompile Include="..\..\Source\Application.cpp" />
     <ClCompile Include="..\..\Source\Server.cpp" />
+    <ClCompile Include="..\..\Source\Servers.cpp" />
     <ClCompile Include="..\..\Source\Route.cpp" />
     <ClCompile Include="..\..\Source\Log.cpp" />
     <ClCompile Include="..\..\Source\HTTPServer.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Servers.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Log.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
