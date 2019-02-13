@@ -85,62 +85,14 @@ void Application::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Application::Observers::notifyApplicationStarting(const Application& source)
+void Application::Observers::notify(void (Observer::*fct)(const Application& source), const Application& source)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
         std::shared_ptr<Observer> observer = o.first.lock();
         if (observer)
         {
-            observer->onApplicationStarting(source);
-        }
-        else
-        {
-            removeDeletedObservers();
-        }
-    }
-}
-
-void Application::Observers::notifyApplicationStarted(const Application& source)
-{
-    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
-    {
-        std::shared_ptr<Observer> observer = o.first.lock();
-        if (observer)
-        {
-            observer->onApplicationStarted(source);
-        }
-        else
-        {
-            removeDeletedObservers();
-        }
-    }
-}
-
-void Application::Observers::notifyApplicationStopping(const Application& source)
-{
-    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
-    {
-        std::shared_ptr<Observer> observer = o.first.lock();
-        if (observer)
-        {
-            observer->onApplicationStopping(source);
-        }
-        else
-        {
-            removeDeletedObservers();
-        }
-    }
-}
-
-void Application::Observers::notifyApplicationStopped(const Application& source)
-{
-    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
-    {
-        std::shared_ptr<Observer> observer = o.first.lock();
-        if (observer)
-        {
-            observer->onApplicationStopped(source);
+            ((*observer).*fct)(source);
         }
         else
         {
@@ -179,7 +131,7 @@ Application::~Application()
 
 void Application::start()
 {
-    m_observers.notifyApplicationStarting(*this);
+    m_observers.notify(&Observer::onApplicationStarting, *this);
 
 #ifdef _WIN32
     m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
@@ -192,7 +144,7 @@ void Application::start()
         server->start();
     }
 
-    m_observers.notifyApplicationStarted(*this);
+    m_observers.notify(&Observer::onApplicationStarted, *this);
 
     // By default we want the Application::start() function to block
     // so we call Server::join() on all the servers
@@ -201,12 +153,12 @@ void Application::start()
         server->join();
     }
 
-    m_observers.notifyApplicationStopped(*this);
+    m_observers.notify(&Observer::onApplicationStopped, *this);
 }
 
 void Application::stop()
 {
-    m_observers.notifyApplicationStopping(*this);
+    m_observers.notify(&Observer::onApplicationStopping, *this);
 
     for (std::shared_ptr<Server>& server : m_servers)
     {

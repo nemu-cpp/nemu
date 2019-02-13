@@ -56,10 +56,7 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
-        void notifyApplicationStarting(const Application& source);
-        void notifyApplicationStarted(const Application& source);
-        void notifyApplicationStopping(const Application& source);
-        void notifyApplicationStopped(const Application& source);
+        void notify(void (Observer::*fct)(const Application& source), const Application& source);
 
     private:
         void removeDeletedObservers();
