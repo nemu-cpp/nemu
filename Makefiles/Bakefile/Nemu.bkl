@@ -39,6 +39,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Include/NemuFramework/Nemu/Server.h
         ../../Include/NemuFramework/Nemu/Servers.h
         ../../Include/NemuFramework/Nemu/Route.h
+        ../../Include/NemuFramework/Nemu/Routes.h
         ../../Include/NemuFramework/Nemu/Log.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
 
@@ -55,6 +56,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/Server.cpp
         ../../Source/Servers.cpp
         ../../Source/Route.cpp
+        ../../Source/Routes.cpp
         ../../Source/Log.cpp
 
         ../../Source/HTTPServer.cpp

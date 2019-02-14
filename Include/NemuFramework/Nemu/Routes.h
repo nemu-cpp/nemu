@@ -20,37 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
-#define _NEMUFRAMEWORK_NEMU_HTTPSERVER_H_
-
-#include "Server.h"
-#include "HTTPListener.h"
-#include "Ishiko/Errors/Error.h"
-#include <boost/asio/io_context.hpp>
-#include <thread>
-#include <memory>
-
-namespace Nemu
-{
-
-class HTTPServer : public Server
-{
-public:
-    HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port,
-        std::shared_ptr<Observer> observer, Ishiko::Error& error);
-
-    void start() override;
-    void stop() override;
-    void join() override;
-
-    bool isRunning() const override;
-
-private:
-    boost::asio::io_context m_ioContext;
-    std::shared_ptr<HTTPListener> m_listener;
-    std::vector<std::thread> m_threads;
-};
-
-}
+#ifndef _NEMUFRAMEWORK_NEMU_ROUTES_H_
+#define _NEMUFRAMEWORK_NEMU_ROUTES_H_
 
 #endif

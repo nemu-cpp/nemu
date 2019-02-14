@@ -29,10 +29,10 @@ namespace Nemu
 
 HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port,
     std::shared_ptr<Observer> observer, Ishiko::Error& error)
-    : Server(observer), m_IOContext((int)numberOfThreads)
+    : Server(observer), m_ioContext((int)numberOfThreads)
 {
     ip::tcp::endpoint endpoint = ip::tcp::endpoint(ip::make_address(address), port);
-    m_listener = std::make_shared<HTTPListener>(m_IOContext, endpoint, error);
+    m_listener = std::make_shared<HTTPListener>(m_ioContext, endpoint, error);
     m_threads.resize(numberOfThreads);
 }
 
@@ -43,7 +43,7 @@ void HTTPServer::start()
     // Run the I/O service on the requested number of threads
     for (std::thread& t : m_threads)
     {
-        t = std::thread([this]{ m_IOContext.run(); });
+        t = std::thread([this]{ m_ioContext.run(); });
     }
 
     observers().notifyServerStarted(*this);
@@ -51,7 +51,7 @@ void HTTPServer::start()
 
 void HTTPServer::stop()
 {
-    m_IOContext.stop();
+    m_ioContext.stop();
 }
 
 void HTTPServer::join()
@@ -66,7 +66,7 @@ void HTTPServer::join()
 
 bool HTTPServer::isRunning() const
 {
-    return !m_IOContext.stopped();
+    return !m_ioContext.stopped();
 }
 
 }
