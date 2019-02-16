@@ -23,4 +23,18 @@
 #ifndef _NEMUFRAMEWORK_NEMU_ROUTES_H_
 #define _NEMUFRAMEWORK_NEMU_ROUTES_H_
 
+#include "Route.h"
+#include <vector>
+
+namespace Nemu
+{
+
+class Routes
+{
+private:
+    std::vector<Route> m_routes;
+};
+
+}
+
 #endif

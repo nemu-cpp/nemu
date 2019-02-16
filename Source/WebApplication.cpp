@@ -30,7 +30,7 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
     : Application(observer)
 {
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port(), observer, error));
+        configuration.port(), m_routes, observer, error));
 }
 
 }

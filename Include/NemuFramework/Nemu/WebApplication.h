@@ -39,7 +39,7 @@ public:
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
 private:
-    Routes routes;
+    Routes m_routes;
 };
 
 }

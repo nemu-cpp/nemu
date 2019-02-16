@@ -23,7 +23,7 @@
 #include "ControlHandlerRegistration.h"
 
 #ifdef _WIN32
-#include "Application.h"
+#include "Applications.h"
 #include <g3log/g3log.hpp>
 #include <windows.h>
 
@@ -39,7 +39,7 @@ BOOL WINAPI ControlHandler(DWORD fdwCtrlType)
     {
     case CTRL_C_EVENT:
         LOG(INFO) << "Ctrl-C received, stopping all applications";
-        Application::StopAllApplications();
+        Applications::StopAllApplications();
         return TRUE;
 
     default:

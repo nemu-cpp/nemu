@@ -23,4 +23,13 @@
 #ifndef _NEMUFRAMEWORK_NEMU_ROUTE_H_
 #define _NEMUFRAMEWORK_NEMU_ROUTE_H_
 
+namespace Nemu
+{
+
+class Route
+{
+};
+
+}
+
 #endif
