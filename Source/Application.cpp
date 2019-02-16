@@ -21,6 +21,7 @@
 */
 
 #include "Application.h"
+#include "Applications.h"
 #include <algorithm>
 
 namespace Nemu
@@ -103,6 +104,16 @@ void Application::Observers::removeDeletedObservers()
         }
     );
     m_observers.erase(it, m_observers.end());
+}
+
+Application::Application()
+{
+    Applications::set(this);
+}
+
+Application::~Application()
+{
+    Applications::unset(this);
 }
 
 const Servers& Application::servers() const

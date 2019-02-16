@@ -55,6 +55,9 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
+    Application();
+    virtual ~Application();
+
     virtual void start() = 0;
     virtual void stop() = 0;
 

@@ -21,7 +21,6 @@
 */
 
 #include "WebApplication.h"
-#include "Applications.h"
 #include "BeastServer.h"
 #ifdef _WIN32
 #include "ControlHandlerRegistration.h"
@@ -36,13 +35,6 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
 
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), observer, error));
-
-    Applications::set(this);
-}
-
-WebApplication::~WebApplication()
-{
-    Applications::unset(this);
 }
 
 void WebApplication::start()
