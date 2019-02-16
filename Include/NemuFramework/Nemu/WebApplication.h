@@ -23,6 +23,7 @@
 #ifndef _NEMUFRAMEWORK_NEMU_WEBAPPLICATION_H_
 #define _NEMUFRAMEWORK_NEMU_WEBAPPLICATION_H_
 
+#include "Application.h"
 #include "Configuration.h"
 #include "Routes.h"
 #include "Servers.h"
@@ -39,7 +40,7 @@ namespace Nemu
 class ControlHandlerRegistration;
 #endif
 
-class WebApplication
+class WebApplication : public Application
 {
 public:
     class Observer : public Server::Observer
@@ -80,7 +81,7 @@ public:
 
 private:
     static std::mutex sm_applicationsMutex;
-    static std::set<Application*> sm_applications;
+    static std::set<WebApplication*> sm_applications;
 #ifdef _WIN32
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif

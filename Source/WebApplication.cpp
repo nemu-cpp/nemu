@@ -21,7 +21,7 @@
 */
 
 #include "WebApplication.h"
-#include "HTTPServer.h"
+#include "BeastServer.h"
 #ifdef _WIN32
 #include "ControlHandlerRegistration.h"
 #endif
@@ -30,26 +30,26 @@
 namespace Nemu
 {
 
-std::mutex Application::sm_applicationsMutex;
-std::set<Application*> Application::sm_applications;
+std::mutex WebApplication::sm_applicationsMutex;
+std::set<WebApplication*> WebApplication::sm_applications;
 
-void Application::Observer::onApplicationStarting(const Application& source)
+void WebApplication::Observer::onApplicationStarting(const Application& source)
 {
 }
 
-void Application::Observer::onApplicationStarted(const Application& source)
+void WebApplication::Observer::onApplicationStarted(const Application& source)
 {
 }
 
-void Application::Observer::onApplicationStopping(const Application& source)
+void WebApplication::Observer::onApplicationStopping(const Application& source)
 {
 }
 
-void Application::Observer::onApplicationStopped(const Application& source)
+void WebApplication::Observer::onApplicationStopped(const Application& source)
 {
 }
 
-void Application::Observers::add(std::shared_ptr<Observer> observer)
+void WebApplication::Observers::add(std::shared_ptr<Observer> observer)
 {
     auto it = std::find_if(m_observers.begin(), m_observers.end(),
         [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
@@ -67,7 +67,7 @@ void Application::Observers::add(std::shared_ptr<Observer> observer)
     }
 }
 
-void Application::Observers::remove(std::shared_ptr<Observer> observer)
+void WebApplication::Observers::remove(std::shared_ptr<Observer> observer)
 {
     auto it = std::find_if(m_observers.begin(), m_observers.end(),
         [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
@@ -85,7 +85,7 @@ void Application::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Application::Observers::notify(void (Observer::*fct)(const Application& source), const Application& source)
+void WebApplication::Observers::notify(void (Observer::*fct)(const Application& source), const Application& source)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
@@ -101,7 +101,7 @@ void Application::Observers::notify(void (Observer::*fct)(const Application& sou
     }
 }
 
-void Application::Observers::removeDeletedObservers()
+void WebApplication::Observers::removeDeletedObservers()
 {
     auto it = std::remove_if(m_observers.begin(), m_observers.end(),
         [](const std::pair<std::weak_ptr<Observer>, size_t>& o)
@@ -112,24 +112,24 @@ void Application::Observers::removeDeletedObservers()
     m_observers.erase(it, m_observers.end());
 }
 
-Application::Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
+WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
 {
     m_observers.add(observer);
 
-    m_servers.append(std::make_shared<HTTPServer>(configuration.numberOfThreads(), configuration.address(),
+    m_servers.append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), observer, error));
 
     std::lock_guard<std::mutex> guard(sm_applicationsMutex);
     sm_applications.insert(this);
 }
 
-Application::~Application()
+WebApplication::~WebApplication()
 {
     std::lock_guard<std::mutex> guard(sm_applicationsMutex);
     sm_applications.erase(this);
 }
 
-void Application::start()
+void WebApplication::start()
 {
     m_observers.notify(&Observer::onApplicationStarting, *this);
 
@@ -149,7 +149,7 @@ void Application::start()
     m_observers.notify(&Observer::onApplicationStopped, *this);
 }
 
-void Application::stop()
+void WebApplication::stop()
 {
     m_observers.notify(&Observer::onApplicationStopping, *this);
 
@@ -160,21 +160,21 @@ void Application::stop()
 #endif
 }
 
-void Application::StopAllApplications()
+void WebApplication::StopAllApplications()
 {
     std::lock_guard<std::mutex> guard(sm_applicationsMutex);
-    for (Application* app : Application::sm_applications)
+    for (WebApplication* app : WebApplication::sm_applications)
     {
         app->stop();
     }
 }
 
-const Servers& Application::servers() const
+const Servers& WebApplication::servers() const
 {
     return m_servers;
 }
 
-Application::Observers& Application::observers()
+WebApplication::Observers& WebApplication::observers()
 {
     return m_observers;
 }

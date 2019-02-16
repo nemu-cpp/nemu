@@ -27,7 +27,7 @@ using namespace boost::asio;
 namespace Nemu
 {
 
-HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsigned int port,
+BeastServer::BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
     std::shared_ptr<Observer> observer, Ishiko::Error& error)
     : Server(observer), m_ioContext((int)numberOfThreads)
 {
@@ -36,7 +36,7 @@ HTTPServer::HTTPServer(size_t numberOfThreads, const std::string& address, unsig
     m_threads.resize(numberOfThreads);
 }
 
-void HTTPServer::start()
+void BeastServer::start()
 {
     m_listener->run();
 

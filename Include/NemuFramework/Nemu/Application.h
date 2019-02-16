@@ -23,4 +23,13 @@
 #ifndef _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 #define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 
+namespace Nemu
+{
+
+class Application
+{
+};
+
+}
+
 #endif
