@@ -158,8 +158,8 @@
     <ClCompile Include="..\..\Source\Routes.cpp" />
     <ClCompile Include="..\..\Source\Log.cpp" />
     <ClCompile Include="..\..\Source\BeastServer.cpp" />
-    <ClCompile Include="..\..\Source\HTTPListener.cpp" />
-    <ClCompile Include="..\..\Source\HTTPSession.cpp" />
+    <ClCompile Include="..\..\Source\BeastListener.cpp" />
+    <ClCompile Include="..\..\Source\BeastSession.cpp" />
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,8 +173,8 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Log.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
     <ClInclude Include="..\..\Source\BeastServer.h" />
-    <ClInclude Include="..\..\Source\HTTPListener.h" />
-    <ClInclude Include="..\..\Source\HTTPSession.h" />
+    <ClInclude Include="..\..\Source\BeastListener.h" />
+    <ClInclude Include="..\..\Source\BeastSession.h" />
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

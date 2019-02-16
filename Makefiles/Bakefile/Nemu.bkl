@@ -45,8 +45,8 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Include/NemuFramework/Nemu/linkoptions.h
 
         ../../Source/BeastServer.h
-        ../../Source/HTTPListener.h
-        ../../Source/HTTPSession.h
+        ../../Source/BeastListener.h
+        ../../Source/BeastSession.h
         ../../Source/ControlHandlerRegistration.h
     }
 
@@ -61,8 +61,8 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/Log.cpp
 
         ../../Source/BeastServer.cpp
-        ../../Source/HTTPListener.cpp
-        ../../Source/HTTPSession.cpp
+        ../../Source/BeastListener.cpp
+        ../../Source/BeastSession.cpp
         ../../Source/ControlHandlerRegistration.cpp
     }
 }

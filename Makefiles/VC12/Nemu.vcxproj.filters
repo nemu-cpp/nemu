@@ -47,10 +47,10 @@
     <ClInclude Include="..\..\Source\BeastServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\HTTPListener.h">
+    <ClInclude Include="..\..\Source\BeastListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\HTTPSession.h">
+    <ClInclude Include="..\..\Source\BeastSession.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h">
@@ -82,10 +82,10 @@
     <ClCompile Include="..\..\Source\BeastServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HTTPListener.cpp">
+    <ClCompile Include="..\..\Source\BeastListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HTTPSession.cpp">
+    <ClCompile Include="..\..\Source\BeastSession.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp">
