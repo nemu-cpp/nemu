@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 
 #include "Configuration.h"
+#include "Routes.h"
 #include "Servers.h"
 #include "Ishiko/Errors/Error.h"
 #include <vector>
@@ -83,6 +84,7 @@ private:
 #ifdef _WIN32
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif
+    Routes routes;
     Servers m_servers;
     Observers m_observers;
 };
