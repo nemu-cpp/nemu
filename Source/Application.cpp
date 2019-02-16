@@ -106,8 +106,9 @@ void Application::Observers::removeDeletedObservers()
     m_observers.erase(it, m_observers.end());
 }
 
-Application::Application()
+Application::Application(std::shared_ptr<Observer> observer)
 {
+    m_observers.add(observer);
     Applications::set(this);
 }
 
@@ -118,17 +119,43 @@ Application::~Application()
 
 void Application::start()
 {
-    doStart();
+    m_observers.notify(&Observer::onApplicationStarting, *this);
+
+#ifdef _WIN32
+    m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
+#endif
+
+    // First we start all the servers, note that the Servers::startAll() function does not block
+    servers().startAll();
+
+    m_observers.notify(&Observer::onApplicationStarted, *this);
+
+    // By default we want the Application::start() function to block so we call Servers::joinAll() which will do a join
+    // on all the servers
+    servers().joinAll();
+
+    m_observers.notify(&Observer::onApplicationStopped, *this);
 }
 
 void Application::stop()
 {
-    doStop();
+    m_observers.notify(&Observer::onApplicationStopping, *this);
+
+    servers().stopAll();
+
+#ifdef _WIN32
+    m_controlHandlerRegistration.reset();
+#endif
 }
 
 const Servers& Application::servers() const
 {
     return m_servers;
+}
+
+Application::Observers& Application::observers()
+{
+    return m_observers;
 }
 
 Servers& Application::servers()

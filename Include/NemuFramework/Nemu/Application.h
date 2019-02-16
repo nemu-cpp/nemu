@@ -59,26 +59,24 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
-    Application();
+    Application(std::shared_ptr<Observer> observer);
     virtual ~Application();
 
     void start();
     void stop();
 
     const Servers& servers() const;
+    Observers& observers();
 
 protected:
     Servers& servers();
-
-private:
-    virtual void doStart() = 0;
-    virtual void doStop() = 0;
 
 private:
 #ifdef _WIN32
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif
     Servers m_servers;
+    Observers m_observers;
 };
 
 }

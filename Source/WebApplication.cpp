@@ -30,47 +30,10 @@ namespace Nemu
 {
 
 WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
+    : Application(observer)
 {
-    m_observers.add(observer);
-
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), observer, error));
-}
-
-void WebApplication::doStart()
-{
-    m_observers.notify(&Observer::onApplicationStarting, *this);
-
-#ifdef _WIN32
-    m_controlHandlerRegistration = std::make_unique<ControlHandlerRegistration>();
-#endif
-
-    // First we start all the servers, note that the Servers::startAll() function does not block
-    servers().startAll();
-
-    m_observers.notify(&Observer::onApplicationStarted, *this);
-
-    // By default we want the Application::start() function to block so we call Servers::joinAll() which will do a join
-    // on all the servers
-    servers().joinAll();
-
-    m_observers.notify(&Observer::onApplicationStopped, *this);
-}
-
-void WebApplication::doStop()
-{
-    m_observers.notify(&Observer::onApplicationStopping, *this);
-
-    servers().stopAll();
-
-#ifdef _WIN32
-    m_controlHandlerRegistration.reset();
-#endif
-}
-
-WebApplication::Observers& WebApplication::observers()
-{
-    return m_observers;
 }
 
 }

@@ -38,14 +38,8 @@ class WebApplication : public Application
 public:
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
-    void doStart() override;
-    void doStop() override;
-
-    Observers& observers();
-
 private:
     Routes routes;
-    Observers m_observers;
 };
 
 }
