@@ -116,6 +116,16 @@ Application::~Application()
     Applications::unset(this);
 }
 
+void Application::start()
+{
+    doStart();
+}
+
+void Application::stop()
+{
+    doStop();
+}
+
 const Servers& Application::servers() const
 {
     return m_servers;

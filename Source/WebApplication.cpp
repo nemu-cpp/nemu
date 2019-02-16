@@ -37,7 +37,7 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
         configuration.port(), observer, error));
 }
 
-void WebApplication::start()
+void WebApplication::doStart()
 {
     m_observers.notify(&Observer::onApplicationStarting, *this);
 
@@ -57,7 +57,7 @@ void WebApplication::start()
     m_observers.notify(&Observer::onApplicationStopped, *this);
 }
 
-void WebApplication::stop()
+void WebApplication::doStop()
 {
     m_observers.notify(&Observer::onApplicationStopping, *this);
 

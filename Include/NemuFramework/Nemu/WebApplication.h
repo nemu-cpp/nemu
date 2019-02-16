@@ -28,36 +28,22 @@
 #include "Routes.h"
 #include "Ishiko/Errors/Error.h"
 #include <vector>
-#include <set>
-#include <mutex>
 #include <memory>
 
 namespace Nemu
 {
 
-#ifdef _WIN32
-class ControlHandlerRegistration;
-#endif
-
 class WebApplication : public Application
 {
 public:
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
-    ~WebApplication();
 
-    void start();
-    void stop();
-
-    static void StopAllApplications();
+    void doStart() override;
+    void doStop() override;
 
     Observers& observers();
 
 private:
-    static std::mutex sm_applicationsMutex;
-    static std::set<WebApplication*> sm_applications;
-#ifdef _WIN32
-    std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
-#endif
     Routes routes;
     Observers m_observers;
 };

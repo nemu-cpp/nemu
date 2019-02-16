@@ -28,6 +28,10 @@
 namespace Nemu
 {
 
+#ifdef _WIN32
+class ControlHandlerRegistration;
+#endif
+
 class Application
 {
 public:
@@ -58,8 +62,8 @@ public:
     Application();
     virtual ~Application();
 
-    virtual void start() = 0;
-    virtual void stop() = 0;
+    void start();
+    void stop();
 
     const Servers& servers() const;
 
@@ -67,6 +71,13 @@ protected:
     Servers& servers();
 
 private:
+    virtual void doStart() = 0;
+    virtual void doStop() = 0;
+
+private:
+#ifdef _WIN32
+    std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
+#endif
     Servers m_servers;
 };
 
