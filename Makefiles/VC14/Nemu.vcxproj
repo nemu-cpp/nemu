@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Configuration.cpp" />
     <ClCompile Include="..\..\Source\Application.cpp" />
+    <ClCompile Include="..\..\Source\Applications.cpp" />
     <ClCompile Include="..\..\Source\WebApplication.cpp" />
     <ClCompile Include="..\..\Source\Server.cpp" />
     <ClCompile Include="..\..\Source\Servers.cpp" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Applications.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebApplication.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Servers.h" />
