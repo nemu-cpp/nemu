@@ -54,6 +54,14 @@ public:
     private:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
+
+    const Servers& servers() const;
+
+protected:
+    Servers& servers();
+
+private:
+    Servers m_servers;
 };
 
 }

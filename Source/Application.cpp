@@ -105,4 +105,14 @@ void Application::Observers::removeDeletedObservers()
     m_observers.erase(it, m_observers.end());
 }
 
+const Servers& Application::servers() const
+{
+    return m_servers;
+}
+
+Servers& Application::servers()
+{
+    return m_servers;
+}
+
 }
