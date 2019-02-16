@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Configuration.cpp" />
+    <ClCompile Include="..\..\Source\Application.cpp" />
     <ClCompile Include="..\..\Source\WebApplication.cpp" />
     <ClCompile Include="..\..\Source\Server.cpp" />
     <ClCompile Include="..\..\Source\Servers.cpp" />

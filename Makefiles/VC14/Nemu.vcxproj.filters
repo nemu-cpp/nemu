@@ -61,6 +61,9 @@
     <ClCompile Include="..\..\Source\Configuration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WebApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
