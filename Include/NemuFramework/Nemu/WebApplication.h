@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_APPLICATION_H_
-#define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
+#ifndef _NEMUFRAMEWORK_NEMU_WEBAPPLICATION_H_
+#define _NEMUFRAMEWORK_NEMU_WEBAPPLICATION_H_
 
 #include "Configuration.h"
 #include "Routes.h"
@@ -39,7 +39,7 @@ namespace Nemu
 class ControlHandlerRegistration;
 #endif
 
-class Application
+class WebApplication
 {
 public:
     class Observer : public Server::Observer
@@ -66,8 +66,8 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
-    Application(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
-    ~Application();
+    WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
+    ~WebApplication();
 
     void start();
     void stop();
