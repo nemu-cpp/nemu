@@ -35,6 +35,7 @@ library Nemu : IshikoErrors, G3log, Boost
     headers
     {
         ../../Include/NemuFramework/Nemu/Configuration.h
+        ../../Include/NemuFramework/Nemu/Application.h
         ../../Include/NemuFramework/Nemu/WebApplication.h
         ../../Include/NemuFramework/Nemu/Server.h
         ../../Include/NemuFramework/Nemu/Servers.h

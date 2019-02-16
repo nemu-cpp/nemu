@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebApplication.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Servers.h" />

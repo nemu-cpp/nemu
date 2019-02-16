@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>

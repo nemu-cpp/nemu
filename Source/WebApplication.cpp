@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Application.h"
+#include "WebApplication.h"
 #include "HTTPServer.h"
 #ifdef _WIN32
 #include "ControlHandlerRegistration.h"
