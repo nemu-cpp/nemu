@@ -26,7 +26,6 @@
 #include "Application.h"
 #include "Configuration.h"
 #include "Routes.h"
-#include "Servers.h"
 #include "Ishiko/Errors/Error.h"
 #include <vector>
 #include <set>
@@ -43,30 +42,6 @@ class ControlHandlerRegistration;
 class WebApplication : public Application
 {
 public:
-    class Observer : public Server::Observer
-    {
-    public:
-        virtual void onApplicationStarting(const Application& source);
-        virtual void onApplicationStarted(const Application& source);
-        virtual void onApplicationStopping(const Application& source);
-        virtual void onApplicationStopped(const Application& source);
-    };
-
-    class Observers final
-    {
-    public:
-        void add(std::shared_ptr<Observer> observer);
-        void remove(std::shared_ptr<Observer> observer);
-
-        void notify(void (Observer::*fct)(const Application& source), const Application& source);
-
-    private:
-        void removeDeletedObservers();
-
-    private:
-        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
-    };
-
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
     ~WebApplication();
 
@@ -74,8 +49,6 @@ public:
     void stop();
 
     static void StopAllApplications();
-
-    const Servers& servers() const;
 
     Observers& observers();
 
@@ -86,7 +59,6 @@ private:
     std::unique_ptr<ControlHandlerRegistration> m_controlHandlerRegistration;
 #endif
     Routes routes;
-    Servers m_servers;
     Observers m_observers;
 };
 
