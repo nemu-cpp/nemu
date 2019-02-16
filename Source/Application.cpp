@@ -22,6 +22,9 @@
 
 #include "Application.h"
 #include "Applications.h"
+#ifdef _WIN32
+#include "ControlHandlerRegistration.h"
+#endif
 #include <algorithm>
 
 namespace Nemu

@@ -22,9 +22,6 @@
 
 #include "WebApplication.h"
 #include "BeastServer.h"
-#ifdef _WIN32
-#include "ControlHandlerRegistration.h"
-#endif
 
 namespace Nemu
 {
