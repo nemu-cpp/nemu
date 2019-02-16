@@ -151,27 +151,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Configuration.cpp" />
-    <ClCompile Include="..\..\Source\Application.cpp" />
+    <ClCompile Include="..\..\Source\WebApplication.cpp" />
     <ClCompile Include="..\..\Source\Server.cpp" />
     <ClCompile Include="..\..\Source\Servers.cpp" />
     <ClCompile Include="..\..\Source\Route.cpp" />
     <ClCompile Include="..\..\Source\Routes.cpp" />
     <ClCompile Include="..\..\Source\Log.cpp" />
-    <ClCompile Include="..\..\Source\HTTPServer.cpp" />
+    <ClCompile Include="..\..\Source\BeastServer.cpp" />
     <ClCompile Include="..\..\Source\HTTPListener.cpp" />
     <ClCompile Include="..\..\Source\HTTPSession.cpp" />
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebApplication.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Servers.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Routes.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Log.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
-    <ClInclude Include="..\..\Source\HTTPServer.h" />
+    <ClInclude Include="..\..\Source\BeastServer.h" />
     <ClInclude Include="..\..\Source\HTTPListener.h" />
     <ClInclude Include="..\..\Source\HTTPSession.h" />
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />

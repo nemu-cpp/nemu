@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Application.h">
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Server.h">
@@ -41,7 +41,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\HTTPServer.h">
+    <ClInclude Include="..\..\Source\BeastServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\HTTPListener.h">
@@ -58,7 +58,7 @@
     <ClCompile Include="..\..\Source\Configuration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Application.cpp">
+    <ClCompile Include="..\..\Source\WebApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Server.cpp">
@@ -76,7 +76,7 @@
     <ClCompile Include="..\..\Source\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HTTPServer.cpp">
+    <ClCompile Include="..\..\Source\BeastServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HTTPListener.cpp">

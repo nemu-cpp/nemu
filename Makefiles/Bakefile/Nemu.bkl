@@ -35,7 +35,7 @@ library Nemu : IshikoErrors, G3log, Boost
     headers
     {
         ../../Include/NemuFramework/Nemu/Configuration.h
-        ../../Include/NemuFramework/Nemu/Application.h
+        ../../Include/NemuFramework/Nemu/WebApplication.h
         ../../Include/NemuFramework/Nemu/Server.h
         ../../Include/NemuFramework/Nemu/Servers.h
         ../../Include/NemuFramework/Nemu/Route.h
@@ -43,7 +43,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Include/NemuFramework/Nemu/Log.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
 
-        ../../Source/HTTPServer.h
+        ../../Source/BeastServer.h
         ../../Source/HTTPListener.h
         ../../Source/HTTPSession.h
         ../../Source/ControlHandlerRegistration.h
@@ -52,14 +52,14 @@ library Nemu : IshikoErrors, G3log, Boost
     sources
     {
         ../../Source/Configuration.cpp
-        ../../Source/Application.cpp
+        ../../Source/WebApplication.cpp
         ../../Source/Server.cpp
         ../../Source/Servers.cpp
         ../../Source/Route.cpp
         ../../Source/Routes.cpp
         ../../Source/Log.cpp
 
-        ../../Source/HTTPServer.cpp
+        ../../Source/BeastServer.cpp
         ../../Source/HTTPListener.cpp
         ../../Source/HTTPSession.cpp
         ../../Source/ControlHandlerRegistration.cpp
