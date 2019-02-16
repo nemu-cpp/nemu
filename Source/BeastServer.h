@@ -24,7 +24,8 @@
 #define _NEMUFRAMEWORK_NEMU_BEASTSERVER_H_
 
 #include "Server.h"
-#include "HTTPListener.h"
+#include "Routes.h"
+#include "BeastListener.h"
 #include "Ishiko/Errors/Error.h"
 #include <boost/asio/io_context.hpp>
 #include <thread>
@@ -37,7 +38,7 @@ class BeastServer : public Server
 {
 public:
     BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
-        std::shared_ptr<Observer> observer, Ishiko::Error& error);
+        Routes& routes, std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
     void start() override;
     void stop() override;
@@ -46,8 +47,9 @@ public:
     bool isRunning() const override;
 
 private:
+    Routes& m_routes;
     boost::asio::io_context m_ioContext;
-    std::shared_ptr<HTTPListener> m_listener;
+    std::shared_ptr<BeastListener> m_listener;
     std::vector<std::thread> m_threads;
 };
 

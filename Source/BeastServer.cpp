@@ -28,11 +28,11 @@ namespace Nemu
 {
 
 BeastServer::BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
-    std::shared_ptr<Observer> observer, Ishiko::Error& error)
-    : Server(observer), m_ioContext((int)numberOfThreads)
+    Routes& routes, std::shared_ptr<Observer> observer, Ishiko::Error& error)
+    : Server(observer), m_routes(routes), m_ioContext((int)numberOfThreads)
 {
     ip::tcp::endpoint endpoint = ip::tcp::endpoint(ip::make_address(address), port);
-    m_listener = std::make_shared<HTTPListener>(m_ioContext, endpoint, error);
+    m_listener = std::make_shared<BeastListener>(m_ioContext, endpoint, error);
     m_threads.resize(numberOfThreads);
 }
 
