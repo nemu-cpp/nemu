@@ -55,6 +55,9 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
+    virtual void start() = 0;
+    virtual void stop() = 0;
+
     const Servers& servers() const;
 
 protected:

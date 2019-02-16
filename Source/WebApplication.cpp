@@ -21,6 +21,7 @@
 */
 
 #include "WebApplication.h"
+#include "Applications.h"
 #include "BeastServer.h"
 #ifdef _WIN32
 #include "ControlHandlerRegistration.h"
@@ -29,9 +30,6 @@
 namespace Nemu
 {
 
-std::mutex WebApplication::sm_applicationsMutex;
-std::set<WebApplication*> WebApplication::sm_applications;
-
 WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
 {
     m_observers.add(observer);
@@ -39,14 +37,12 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
         configuration.port(), observer, error));
 
-    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
-    sm_applications.insert(this);
+    Applications::set(this);
 }
 
 WebApplication::~WebApplication()
 {
-    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
-    sm_applications.erase(this);
+    Applications::unset(this);
 }
 
 void WebApplication::start()
@@ -78,15 +74,6 @@ void WebApplication::stop()
 #ifdef _WIN32
     m_controlHandlerRegistration.reset();
 #endif
-}
-
-void WebApplication::StopAllApplications()
-{
-    std::lock_guard<std::mutex> guard(sm_applicationsMutex);
-    for (WebApplication* app : WebApplication::sm_applications)
-    {
-        app->stop();
-    }
 }
 
 WebApplication::Observers& WebApplication::observers()

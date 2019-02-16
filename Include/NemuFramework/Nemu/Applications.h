@@ -23,4 +23,26 @@
 #ifndef _NEMUFRAMEWORK_NEMU_APPLICATIONS_H_
 #define _NEMUFRAMEWORK_NEMU_APPLICATIONS_H_
 
+#include "Application.h"
+#include <set>
+#include <mutex>
+
+namespace Nemu
+{
+
+class Applications
+{
+public:
+    static void StopAllApplications();
+
+    static void set(Application* application);
+    static void unset(Application* application);
+
+private:
+    static std::mutex sm_applicationsMutex;
+    static std::set<Application*> sm_applications;
+};
+
+}
+
 #endif
