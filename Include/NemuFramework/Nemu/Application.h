@@ -23,11 +23,37 @@
 #ifndef _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 #define _NEMUFRAMEWORK_NEMU_APPLICATION_H_
 
+#include "Servers.h"
+
 namespace Nemu
 {
 
 class Application
 {
+public:
+    class Observer : public Server::Observer
+    {
+    public:
+        virtual void onApplicationStarting(const Application& source);
+        virtual void onApplicationStarted(const Application& source);
+        virtual void onApplicationStopping(const Application& source);
+        virtual void onApplicationStopped(const Application& source);
+    };
+
+    class Observers final
+    {
+    public:
+        void add(std::shared_ptr<Observer> observer);
+        void remove(std::shared_ptr<Observer> observer);
+
+        void notify(void (Observer::*fct)(const Application& source), const Application& source);
+
+    private:
+        void removeDeletedObservers();
+
+    private:
+        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
+    };
 };
 
 }
