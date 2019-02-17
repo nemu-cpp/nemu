@@ -1,0 +1,16 @@
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/NemuMultipleServers.sln;
+vs2015.solutionfile = ../VC14/NemuMultipleServers.sln;
+vs2013.solutionfile = ../VC12/NemuMultipleServers.sln;
+
+program NemuMultipleServers
+{
+    archs = x86 x86_64;
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
