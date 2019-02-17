@@ -45,7 +45,7 @@ void BeastServer::start()
         t = std::thread([this]{ m_ioContext.run(); });
     }
 
-    observers().notifyServerStarted(*this);
+    observers().notify(&Observer::onServerStarted, *this);
 }
 
 void BeastServer::stop()
@@ -60,7 +60,7 @@ void BeastServer::join()
         t.join();
     }
 
-    observers().notifyServerStopped(*this);
+    observers().notify(&Observer::onServerStopped, *this);
 }
 
 bool BeastServer::isRunning() const

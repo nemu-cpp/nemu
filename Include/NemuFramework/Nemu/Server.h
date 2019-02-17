@@ -46,9 +46,7 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
-        void notifyServerStarted(const Server& source);
-        void notifyServerStopped(const Server& source);
-        void notifyConnection(const Server& source);
+        void notify(void (Observer::*fct)(const Server& source), const Server& source);
 
     private:
         void removeDeletedObservers();

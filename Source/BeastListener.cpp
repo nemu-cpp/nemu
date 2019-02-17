@@ -78,7 +78,7 @@ void BeastListener::onAccept(boost::system::error_code ec)
 {
     if (!ec)
     {
-        m_server.observers().notifyConnection(m_server);
+        m_server.observers().notify(&Server::Observer::onConnection, m_server);
         std::shared_ptr<BeastSession> session = std::make_shared<BeastSession>(std::move(m_socket));
         session->run();
     }

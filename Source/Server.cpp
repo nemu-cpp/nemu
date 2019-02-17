@@ -74,46 +74,14 @@ void Server::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Server::Observers::notifyServerStarted(const Server& source)
+void Server::Observers::notify(void (Observer::*fct)(const Server& source), const Server& source)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
         std::shared_ptr<Observer> observer = o.first.lock();
         if (observer)
         {
-            observer->onServerStarted(source);
-        }
-        else
-        {
-            removeDeletedObservers();
-        }
-    }
-}
-
-void Server::Observers::notifyServerStopped(const Server& source)
-{
-    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
-    {
-        std::shared_ptr<Observer> observer = o.first.lock();
-        if (observer)
-        {
-            observer->onServerStopped(source);
-        }
-        else
-        {
-            removeDeletedObservers();
-        }
-    }
-}
-
-void Server::Observers::notifyConnection(const Server& source)
-{
-    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
-    {
-        std::shared_ptr<Observer> observer = o.first.lock();
-        if (observer)
-        {
-            observer->onConnection(source);
+            ((*observer).*fct)(source);
         }
         else
         {
