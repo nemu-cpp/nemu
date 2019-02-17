@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_SERVER_H_
 
 #include <vector>
+#include <string>
 #include <memory>
 
 namespace Nemu
@@ -37,7 +38,7 @@ public:
     public:
         virtual void onServerStarted(const Server& source);
         virtual void onServerStopped(const Server& source);
-        virtual void onConnection(const Server& source);
+        virtual void onConnection(const Server& source, const std::string& sourceAddress);
     };
 
     class Observers final
@@ -47,6 +48,8 @@ public:
         void remove(std::shared_ptr<Observer> observer);
 
         void notify(void (Observer::*fct)(const Server& source), const Server& source);
+        void notify(void (Observer::*fct)(const Server& source, const std::string& sourceAddress),
+            const Server& source, const std::string& sourceAddress);
 
     private:
         void removeDeletedObservers();

@@ -34,7 +34,7 @@ void Server::Observer::onServerStopped(const Server& source)
 {
 }
 
-void Server::Observer::onConnection(const Server& source)
+void Server::Observer::onConnection(const Server& source, const std::string& sourceAddress)
 {
 }
 
@@ -82,6 +82,23 @@ void Server::Observers::notify(void (Observer::*fct)(const Server& source), cons
         if (observer)
         {
             ((*observer).*fct)(source);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Server::Observers::notify(void (Observer::*fct)(const Server& source, const std::string& sourceAddress),
+    const Server& source, const std::string& sourceAddress)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            ((*observer).*fct)(source, sourceAddress);
         }
         else
         {

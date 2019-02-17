@@ -78,7 +78,8 @@ void BeastListener::onAccept(boost::system::error_code ec)
 {
     if (!ec)
     {
-        m_server.observers().notify(&Server::Observer::onConnection, m_server);
+        const std::string& sourceAddress = m_socket.remote_endpoint().address().to_string();
+        m_server.observers().notify(&Server::Observer::onConnection, m_server, sourceAddress);
         std::shared_ptr<BeastSession> session = std::make_shared<BeastSession>(std::move(m_socket));
         session->run();
     }
