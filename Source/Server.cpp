@@ -34,7 +34,11 @@ void Server::Observer::onServerStopped(const Server& source)
 {
 }
 
-void Server::Observer::onConnection(const Server& source, const std::string& sourceAddress)
+void Server::Observer::onConnectionOpened(const Server& source, const std::string& sourceAddress)
+{
+}
+
+void Server::Observer::onConnectionClosed(const Server& source, const std::string& sourceAddress)
 {
 }
 

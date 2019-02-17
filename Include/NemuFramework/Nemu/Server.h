@@ -38,7 +38,8 @@ public:
     public:
         virtual void onServerStarted(const Server& source);
         virtual void onServerStopped(const Server& source);
-        virtual void onConnection(const Server& source, const std::string& sourceAddress);
+        virtual void onConnectionOpened(const Server& source, const std::string& sourceAddress);
+        virtual void onConnectionClosed(const Server& source, const std::string& sourceAddress);
     };
 
     class Observers final

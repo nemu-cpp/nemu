@@ -23,20 +23,38 @@
 #ifndef _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
 #define _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
 
+#include <boost/beast/core.hpp>
+#include <boost/beast/http.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/strand.hpp>
 #include <memory>
 
 namespace Nemu
 {
 
+class BeastServer;
+
 class BeastSession : public std::enable_shared_from_this<BeastSession>
 {
 public:
-    BeastSession(boost::asio::ip::tcp::socket&& socket);
+    BeastSession(BeastServer& server, boost::asio::ip::tcp::socket&& socket);
     void run();
 
 private:
+    void handleRequest(boost::beast::http::request<boost::beast::http::string_body>&& request);
+
+    void read();
+    void onRead(boost::system::error_code ec, size_t bytesTransferred);
+    void onWrite(boost::system::error_code ec, size_t bytesTransferred, bool closed);
+    void close();
+
+private:
+    BeastServer& m_server;
     boost::asio::ip::tcp::socket m_socket;
+    boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
+    boost::beast::flat_buffer m_buffer;
+    boost::beast::http::request<boost::beast::http::string_body> m_request;
+    boost::beast::http::response<boost::beast::http::string_body> m_response;
 };
 
 }
