@@ -37,6 +37,7 @@ public:
     public:
         virtual void onServerStarted(const Server& source);
         virtual void onServerStopped(const Server& source);
+        virtual void onConnection(const Server& source);
     };
 
     class Observers final
@@ -47,6 +48,7 @@ public:
 
         void notifyServerStarted(const Server& source);
         void notifyServerStopped(const Server& source);
+        void notifyConnection(const Server& source);
 
     private:
         void removeDeletedObservers();

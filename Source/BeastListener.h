@@ -30,10 +30,13 @@
 namespace Nemu
 {
 
+class BeastServer;
+
 class BeastListener
 {
 public:
-    BeastListener(boost::asio::io_context& ioContext, boost::asio::ip::tcp::endpoint endpoint, Ishiko::Error& error);
+    BeastListener(BeastServer& server, boost::asio::io_context& ioContext, boost::asio::ip::tcp::endpoint endpoint,
+        Ishiko::Error& error);
 
     void run();
 
@@ -42,6 +45,7 @@ private:
     void onAccept(boost::system::error_code ec);
 
 private:
+    BeastServer& m_server;
     boost::asio::ip::tcp::acceptor m_acceptor;
     boost::asio::ip::tcp::socket m_socket;
 };

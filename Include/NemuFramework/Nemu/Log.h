@@ -42,6 +42,7 @@ public:
     void onApplicationStopped(const Application& source) override;
     void onServerStarted(const Server& source) override;
     void onServerStopped(const Server& source) override;
+    void onConnection(const Server& source) override;
 
 private:
     static std::string FormatMessage(const g3::LogMessage& message);

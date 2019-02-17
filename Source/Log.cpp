@@ -65,6 +65,11 @@ void Log::onServerStopped(const Server& source)
     LOG(INFO) << "Server stopped";
 }
 
+void Log::onConnection(const Server& source)
+{
+    LOG(INFO) << "Connection";
+}
+
 std::string Log::FormatMessage(const g3::LogMessage& message)
 {
     std::string out;

@@ -30,7 +30,7 @@ namespace Nemu
 BeastServer::BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
     Routes& routes, std::shared_ptr<Observer> observer, Ishiko::Error& error)
     : Server(observer), m_routes(routes), m_ioContext((int)numberOfThreads),
-    m_listener(m_ioContext, ip::tcp::endpoint(ip::make_address(address), port), error)
+    m_listener(*this, m_ioContext, ip::tcp::endpoint(ip::make_address(address), port), error)
 {
     m_threads.resize(numberOfThreads);
 }

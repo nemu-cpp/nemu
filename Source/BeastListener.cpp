@@ -21,14 +21,15 @@
 */
 
 #include "BeastListener.h"
+#include "BeastServer.h"
 #include "BeastSession.h"
 
 namespace Nemu
 {
 
-BeastListener::BeastListener(boost::asio::io_context& ioContext, boost::asio::ip::tcp::endpoint endpoint,
-    Ishiko::Error& error)
-    : m_acceptor(ioContext), m_socket(ioContext)
+BeastListener::BeastListener(BeastServer& server, boost::asio::io_context& ioContext,
+    boost::asio::ip::tcp::endpoint endpoint, Ishiko::Error& error)
+    : m_server(server), m_acceptor(ioContext), m_socket(ioContext)
 {
     boost::system::error_code ec;
     m_acceptor.open(endpoint.protocol(), ec);
@@ -77,6 +78,7 @@ void BeastListener::onAccept(boost::system::error_code ec)
 {
     if (!ec)
     {
+        m_server.observers().notifyConnection(m_server);
         std::shared_ptr<BeastSession> session = std::make_shared<BeastSession>(std::move(m_socket));
         session->run();
     }
