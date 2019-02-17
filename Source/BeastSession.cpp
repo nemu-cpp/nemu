@@ -39,6 +39,8 @@ void BeastSession::run()
 
 void BeastSession::handleRequest(boost::beast::http::request<boost::beast::http::string_body>&& request)
 {
+    m_server.accessLog().log(m_socket, request);
+
     m_response = {};
     m_response.keep_alive(request.keep_alive());
     m_response.body().append("Hello World!");

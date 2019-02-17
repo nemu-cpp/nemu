@@ -23,4 +23,17 @@
 #ifndef _NEMUFRAMEWORK_NEMU_ACCESSLOG_H_
 #define _NEMUFRAMEWORK_NEMU_ACCESSLOG_H_
 
+#include <string>
+
+namespace Nemu
+{
+
+class AccessLog
+{
+public:
+    virtual void log(const std::string& address, const std::string& method);
+};
+
+}
+
 #endif

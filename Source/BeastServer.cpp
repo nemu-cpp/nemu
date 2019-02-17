@@ -68,4 +68,9 @@ bool BeastServer::isRunning() const
     return !m_ioContext.stopped();
 }
 
+BeastAccessLog& BeastServer::accessLog()
+{
+    return m_accessLog;
+}
+
 }
