@@ -158,6 +158,7 @@
     <ClCompile Include="..\..\Source\Servers.cpp" />
     <ClCompile Include="..\..\Source\Route.cpp" />
     <ClCompile Include="..\..\Source\Routes.cpp" />
+    <ClCompile Include="..\..\Source\AccessLog.cpp" />
     <ClCompile Include="..\..\Source\Log.cpp" />
     <ClCompile Include="..\..\Source\BeastServer.cpp" />
     <ClCompile Include="..\..\Source\BeastListener.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Route.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Routes.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\Log.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\AccessLog.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
     <ClInclude Include="..\..\Source\BeastServer.h" />
     <ClInclude Include="..\..\Source\BeastListener.h" />
