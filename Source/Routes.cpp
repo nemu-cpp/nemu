@@ -21,3 +21,30 @@
 */
 
 #include "Routes.h"
+
+namespace Nemu
+{
+
+Routes::Routes()
+    : m_defaultRoute("")
+{
+}
+
+void Routes::append(const Route& route)
+{
+    m_routes.push_back(route);
+}
+
+const Route& Routes::match(const std::string& path) const
+{
+    for (const Route& route : m_routes)
+    {
+        if (route.path() == path)
+        {
+            return route;
+        }
+    }
+    return m_defaultRoute;
+}
+
+}

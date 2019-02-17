@@ -38,6 +38,8 @@ class WebApplication : public Application
 public:
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
+    Routes& routes();
+
 private:
     Routes m_routes;
 };

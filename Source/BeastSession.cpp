@@ -39,6 +39,8 @@ void BeastSession::run()
 
 void BeastSession::handleRequest(boost::beast::http::request<boost::beast::http::string_body>&& request)
 {
+    const Route& route = m_server.routes().match(request.target().to_string());
+
     m_server.accessLog().log(m_socket, request);
 
     m_response = {};

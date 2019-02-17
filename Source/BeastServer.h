@@ -47,6 +47,7 @@ public:
 
     bool isRunning() const override;
 
+    const Routes& routes() const;
     BeastAccessLog& accessLog();
 
 private:

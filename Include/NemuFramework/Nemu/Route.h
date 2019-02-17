@@ -23,11 +23,20 @@
 #ifndef _NEMUFRAMEWORK_NEMU_ROUTE_H_
 #define _NEMUFRAMEWORK_NEMU_ROUTE_H_
 
+#include <string>
+
 namespace Nemu
 {
 
 class Route
 {
+public:
+    Route(const std::string& path);
+
+    const std::string& path() const;
+
+private:
+    std::string m_path;
 };
 
 }

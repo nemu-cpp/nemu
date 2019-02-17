@@ -68,6 +68,11 @@ bool BeastServer::isRunning() const
     return !m_ioContext.stopped();
 }
 
+const Routes& BeastServer::routes() const
+{
+    return m_routes;
+}
+
 BeastAccessLog& BeastServer::accessLog()
 {
     return m_accessLog;

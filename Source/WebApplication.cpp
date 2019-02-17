@@ -33,4 +33,9 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
         configuration.port(), m_routes, observer, error));
 }
 
+Routes& WebApplication::routes()
+{
+    return m_routes;
+}
+
 }

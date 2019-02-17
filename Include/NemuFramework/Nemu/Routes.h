@@ -25,14 +25,23 @@
 
 #include "Route.h"
 #include <vector>
+#include <string>
 
 namespace Nemu
 {
 
 class Routes
 {
+public:
+    Routes();
+
+    void append(const Route& route);
+
+    const Route& match(const std::string& path) const;
+
 private:
     std::vector<Route> m_routes;
+    Route m_defaultRoute;
 };
 
 }

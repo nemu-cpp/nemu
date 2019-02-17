@@ -21,3 +21,18 @@
 */
 
 #include "Route.h"
+
+namespace Nemu
+{
+
+Route::Route(const std::string& path)
+    : m_path(path)
+{
+}
+
+const std::string& Route::path() const
+{
+    return m_path;
+}
+
+}
