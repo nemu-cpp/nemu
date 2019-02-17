@@ -20,7 +20,25 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_HTTPSESSION_H_
-#define _NEMUFRAMEWORK_NEMU_HTTPSESSION_H_
+#ifndef _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
+#define _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
+
+#include <boost/asio/ip/tcp.hpp>
+#include <memory>
+
+namespace Nemu
+{
+
+class BeastSession : public std::enable_shared_from_this<BeastSession>
+{
+public:
+    BeastSession(boost::asio::ip::tcp::socket&& socket);
+    void run();
+
+private:
+    boost::asio::ip::tcp::socket m_socket;
+};
+
+}
 
 #endif

@@ -20,4 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#include "HTTPSession.h"
+#include "BeastSession.h"
+
+namespace Nemu
+{
+
+BeastSession::BeastSession(boost::asio::ip::tcp::socket&& socket)
+    : m_socket(std::move(socket))
+{
+}
+
+void BeastSession::run()
+{
+}
+
+}

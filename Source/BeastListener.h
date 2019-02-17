@@ -20,24 +20,31 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_HTTPLISTENER_H_
-#define _NEMUFRAMEWORK_NEMU_HTTPLISTENER_H_
+#ifndef _NEMUFRAMEWORK_NEMU_BEASTLISTENER_H_
+#define _NEMUFRAMEWORK_NEMU_BEASTLISTENER_H_
 
+#include "Ishiko/Errors/Error.h"
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/io_context.hpp>
+#include <memory>
 
 namespace Nemu
 {
 
-class HTTPListener
+class BeastListener : public std::enable_shared_from_this<BeastListener>
 {
 public:
-    HTTPListener(boost::asio::io_context& io_ctx, boost::asio::ip::tcp::endpoint endpoint);
+    BeastListener(boost::asio::io_context& ioContext, boost::asio::ip::tcp::endpoint endpoint, Ishiko::Error& error);
 
     void run();
 
 private:
+    void accept();
+    void onAccept(boost::system::error_code ec);
+
+private:
     boost::asio::ip::tcp::acceptor m_acceptor;
+    boost::asio::ip::tcp::socket m_socket;
 };
 
 }
