@@ -165,6 +165,8 @@
     <ClCompile Include="..\..\Source\BeastServer.cpp" />
     <ClCompile Include="..\..\Source\BeastListener.cpp" />
     <ClCompile Include="..\..\Source\BeastSession.cpp" />
+    <ClCompile Include="..\..\Source\BeastRequest.cpp" />
+    <ClCompile Include="..\..\Source\BeastResponse.cpp" />
     <ClCompile Include="..\..\Source\BeastAccessLog.cpp" />
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
@@ -185,6 +187,8 @@
     <ClInclude Include="..\..\Source\BeastServer.h" />
     <ClInclude Include="..\..\Source\BeastListener.h" />
     <ClInclude Include="..\..\Source\BeastSession.h" />
+    <ClInclude Include="..\..\Source\BeastRequest.h" />
+    <ClInclude Include="..\..\Source\BeastResponse.h" />
     <ClInclude Include="..\..\Source\BeastAccessLog.h" />
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />
   </ItemGroup>

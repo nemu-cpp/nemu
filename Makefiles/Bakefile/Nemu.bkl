@@ -51,6 +51,8 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/BeastServer.h
         ../../Source/BeastListener.h
         ../../Source/BeastSession.h
+        ../../Source/BeastRequest.h
+        ../../Source/BeastResponse.h
         ../../Source/BeastAccessLog.h
         ../../Source/ControlHandlerRegistration.h
     }
@@ -73,6 +75,8 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/BeastServer.cpp
         ../../Source/BeastListener.cpp
         ../../Source/BeastSession.cpp
+        ../../Source/BeastRequest.cpp
+        ../../Source/BeastResponse.cpp
         ../../Source/BeastAccessLog.cpp
         ../../Source/ControlHandlerRegistration.cpp
     }
