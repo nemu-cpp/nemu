@@ -20,30 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_ROUTE_H_
-#define _NEMUFRAMEWORK_NEMU_ROUTE_H_
-
-#include <string>
-
-namespace Nemu
-{
-
-class Route
-{
-public:
-    typedef void (*RequestHandler)();
-    Route(const std::string& path, RequestHandler handler);
-
-    const std::string& path() const;
-    RequestHandler handler() const;
-
-private:
-    std::string m_path;
-    RequestHandler m_handler;
-};
-
-}
-
-#include "linkoptions.h"
+#ifndef _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
+#define _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
 
 #endif

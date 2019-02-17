@@ -25,14 +25,19 @@
 namespace Nemu
 {
 
-Route::Route(const std::string& path)
-    : m_path(path)
+Route::Route(const std::string& path, RequestHandler handler)
+    : m_path(path), m_handler(handler)
 {
 }
 
 const std::string& Route::path() const
 {
     return m_path;
+}
+
+Route::RequestHandler Route::handler() const
+{
+    return m_handler;
 }
 
 }
