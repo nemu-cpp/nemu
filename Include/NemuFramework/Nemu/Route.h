@@ -32,4 +32,6 @@ class Route
 
 }
 
+#include "linkoptions.h"
+
 #endif
