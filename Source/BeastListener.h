@@ -26,12 +26,11 @@
 #include "Ishiko/Errors/Error.h"
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/io_context.hpp>
-#include <memory>
 
 namespace Nemu
 {
 
-class BeastListener : public std::enable_shared_from_this<BeastListener>
+class BeastListener
 {
 public:
     BeastListener(boost::asio::io_context& ioContext, boost::asio::ip::tcp::endpoint endpoint, Ishiko::Error& error);

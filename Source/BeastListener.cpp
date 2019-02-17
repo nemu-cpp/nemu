@@ -70,7 +70,7 @@ void BeastListener::run()
 
 void BeastListener::accept()
 {
-    m_acceptor.async_accept(m_socket, std::bind(&BeastListener::onAccept, shared_from_this(), std::placeholders::_1));
+    m_acceptor.async_accept(m_socket, std::bind(&BeastListener::onAccept, this, std::placeholders::_1));
 }
 
 void BeastListener::onAccept(boost::system::error_code ec)

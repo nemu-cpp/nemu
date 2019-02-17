@@ -49,7 +49,7 @@ public:
 private:
     Routes& m_routes;
     boost::asio::io_context m_ioContext;
-    std::shared_ptr<BeastListener> m_listener;
+    BeastListener m_listener;
     std::vector<std::thread> m_threads;
 };
 

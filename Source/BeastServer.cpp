@@ -29,16 +29,15 @@ namespace Nemu
 
 BeastServer::BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
     Routes& routes, std::shared_ptr<Observer> observer, Ishiko::Error& error)
-    : Server(observer), m_routes(routes), m_ioContext((int)numberOfThreads)
+    : Server(observer), m_routes(routes), m_ioContext((int)numberOfThreads),
+    m_listener(m_ioContext, ip::tcp::endpoint(ip::make_address(address), port), error)
 {
-    ip::tcp::endpoint endpoint = ip::tcp::endpoint(ip::make_address(address), port);
-    m_listener = std::make_shared<BeastListener>(m_ioContext, endpoint, error);
     m_threads.resize(numberOfThreads);
 }
 
 void BeastServer::start()
 {
-    m_listener->run();
+    m_listener.run();
 
     // Run the I/O service on the requested number of threads
     for (std::thread& t : m_threads)
