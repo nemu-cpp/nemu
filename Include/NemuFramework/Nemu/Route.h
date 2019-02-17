@@ -23,6 +23,8 @@
 #ifndef _NEMUFRAMEWORK_NEMU_ROUTE_H_
 #define _NEMUFRAMEWORK_NEMU_ROUTE_H_
 
+#include "WebRequest.h"
+#include "WebResponse.h"
 #include <string>
 
 namespace Nemu
@@ -31,7 +33,8 @@ namespace Nemu
 class Route
 {
 public:
-    typedef void (*RequestHandler)();
+    typedef void (*RequestHandler)(const WebRequest& request, WebResponse& response);
+
     Route(const std::string& path, RequestHandler handler);
 
     const std::string& path() const;

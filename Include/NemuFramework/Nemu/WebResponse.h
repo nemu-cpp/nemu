@@ -23,4 +23,13 @@
 #ifndef _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
 #define _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
 
+namespace Nemu
+{
+
+class WebResponse
+{
+};
+
+}
+
 #endif

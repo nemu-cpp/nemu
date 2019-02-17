@@ -23,4 +23,13 @@
 #ifndef _NEMUFRAMEWORK_NEMU_WEBREQUEST_H_
 #define _NEMUFRAMEWORK_NEMU_WEBREQUEST_H_
 
+namespace Nemu
+{
+
+class WebRequest
+{
+};
+
+}
+
 #endif

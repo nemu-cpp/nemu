@@ -26,7 +26,7 @@ namespace Nemu
 {
 
 Routes::Routes()
-    : m_defaultRoute("", []{})
+    : m_defaultRoute("", [](const WebRequest& request, WebResponse& response){})
 {
 }
 
