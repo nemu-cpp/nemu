@@ -23,11 +23,15 @@
 #ifndef _NEMUFRAMEWORK_NEMU_WEBREQUEST_H_
 #define _NEMUFRAMEWORK_NEMU_WEBREQUEST_H_
 
+#include <string>
+
 namespace Nemu
 {
 
 class WebRequest
 {
+public:
+    virtual std::string URI() const = 0;
 };
 
 }

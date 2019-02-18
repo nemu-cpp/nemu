@@ -34,6 +34,11 @@ BeastRequest::BeastRequest(boost::beast::http::request<boost::beast::http::strin
 {
 }
 
+std::string BeastRequest::URI() const
+{
+    return m_request.target().to_string();
+}
+
 const boost::beast::http::request<boost::beast::http::string_body>& BeastRequest::request() const
 {
     return m_request;

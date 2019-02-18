@@ -35,6 +35,8 @@ public:
     BeastRequest();
     BeastRequest(boost::beast::http::request<boost::beast::http::string_body>&& request);
 
+    std::string URI() const override;
+
     const boost::beast::http::request<boost::beast::http::string_body>& request() const;
     boost::beast::http::request<boost::beast::http::string_body>& request();
 
