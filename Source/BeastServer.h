@@ -26,7 +26,7 @@
 #include "Server.h"
 #include "Routes.h"
 #include "BeastListener.h"
-#include "BeastAccessLog.h"
+#include "AccessLog.h"
 #include "Ishiko/Errors/Error.h"
 #include <boost/asio/io_context.hpp>
 #include <thread>
@@ -48,14 +48,14 @@ public:
     bool isRunning() const override;
 
     const Routes& routes() const;
-    BeastAccessLog& accessLog();
+    AccessLog& accessLog();
 
 private:
     Routes& m_routes;
     boost::asio::io_context m_ioContext;
     BeastListener m_listener;
     std::vector<std::thread> m_threads;
-    BeastAccessLog m_accessLog;
+    AccessLog m_accessLog;
 };
 
 }

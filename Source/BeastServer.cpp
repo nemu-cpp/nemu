@@ -73,7 +73,7 @@ const Routes& BeastServer::routes() const
     return m_routes;
 }
 
-BeastAccessLog& BeastServer::accessLog()
+AccessLog& BeastServer::accessLog()
 {
     return m_accessLog;
 }
