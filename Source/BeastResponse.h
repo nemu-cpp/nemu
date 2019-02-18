@@ -24,12 +24,21 @@
 #define _NEMUFRAMEWORK_NEMU_BEASTRESPONSE_H_
 
 #include "WebResponse.h"
+#include <boost/beast/http.hpp>
 
 namespace Nemu
 {
 
 class BeastResponse : public WebResponse
 {
+public:
+    BeastResponse();
+    BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request);
+
+    boost::beast::http::response<boost::beast::http::string_body>& response();
+
+private:
+    boost::beast::http::response<boost::beast::http::string_body> m_response;
 };
 
 }

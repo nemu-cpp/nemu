@@ -24,12 +24,21 @@
 #define _NEMUFRAMEWORK_NEMU_BEASTREQUEST_H_
 
 #include "WebRequest.h"
+#include <boost/beast/http.hpp>
 
 namespace Nemu
 {
 
 class BeastRequest : public WebRequest
 {
+public:
+    BeastRequest();
+    BeastRequest(boost::beast::http::request<boost::beast::http::string_body>&& request);
+
+    boost::beast::http::request<boost::beast::http::string_body>& request();
+
+private:
+    boost::beast::http::request<boost::beast::http::string_body> m_request;
 };
 
 }

@@ -21,3 +21,24 @@
 */
 
 #include "BeastResponse.h"
+
+namespace Nemu
+{
+
+BeastResponse::BeastResponse()
+{
+}
+
+BeastResponse::BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request)
+{
+    m_response.keep_alive(request.keep_alive());
+    m_response.body().append("Hello World!");
+    m_response.prepare_payload();
+}
+
+boost::beast::http::response<boost::beast::http::string_body>& BeastResponse::response()
+{
+    return m_response;
+}
+
+}

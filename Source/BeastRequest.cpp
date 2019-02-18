@@ -21,3 +21,22 @@
 */
 
 #include "BeastRequest.h"
+
+namespace Nemu
+{
+
+BeastRequest::BeastRequest()
+{
+}
+
+BeastRequest::BeastRequest(boost::beast::http::request<boost::beast::http::string_body>&& request)
+    : m_request(request)
+{
+}
+
+boost::beast::http::request<boost::beast::http::string_body>& BeastRequest::request()
+{
+    return m_request;
+}
+
+}
