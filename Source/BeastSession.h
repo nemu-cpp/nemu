@@ -23,6 +23,8 @@
 #ifndef _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
 #define _NEMUFRAMEWORK_NEMU_BEASTSESSION_H_
 
+#include "BeastRequest.h"
+#include "BeastResponse.h"
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -41,7 +43,7 @@ public:
     void run();
 
 private:
-    void handleRequest(boost::beast::http::request<boost::beast::http::string_body>&& request);
+    void handleRequest(BeastRequest&& request);
 
     void read();
     void onRead(boost::system::error_code ec, size_t bytesTransferred);
@@ -53,8 +55,8 @@ private:
     boost::asio::ip::tcp::socket m_socket;
     boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
     boost::beast::flat_buffer m_buffer;
-    boost::beast::http::request<boost::beast::http::string_body> m_request;
-    boost::beast::http::response<boost::beast::http::string_body> m_response;
+    BeastRequest m_request;
+    BeastResponse m_response;
 };
 
 }

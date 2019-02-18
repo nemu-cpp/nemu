@@ -37,30 +37,28 @@ void BeastSession::run()
     read();
 }
 
-void BeastSession::handleRequest(boost::beast::http::request<boost::beast::http::string_body>&& request)
+void BeastSession::handleRequest(BeastRequest&& request)
 {
-    const Route& route = m_server.routes().match(request.target().to_string());
+    const Route& route = m_server.routes().match(request.request().target().to_string());
+    route.handler()(m_request, m_response);
 
-    m_server.accessLog().log(m_socket, request);
+    m_server.accessLog().log(m_socket, request.request());
 
-    m_response = {};
-    m_response.keep_alive(request.keep_alive());
-    m_response.body().append("Hello World!");
-    m_response.prepare_payload();
+    m_response = BeastResponse(request.request());
 
     auto handler = boost::asio::bind_executor(m_strand,
         std::bind(&BeastSession::onWrite, shared_from_this(), std::placeholders::_1, std::placeholders::_2,
-            m_response.need_eof()));
-    boost::beast::http::async_write(m_socket, m_response, handler);
+            m_response.response().need_eof()));
+    boost::beast::http::async_write(m_socket, m_response.response(), handler);
 }
 
 void BeastSession::read()
 {
-    m_request = {};
+    m_request = BeastRequest();
 
     auto handler = boost::asio::bind_executor(m_strand,
         std::bind(&BeastSession::onRead, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
-    boost::beast::http::async_read(m_socket, m_buffer, m_request, handler);
+    boost::beast::http::async_read(m_socket, m_buffer, m_request.request(), handler);
 }
 
 void BeastSession::onRead(boost::system::error_code ec, size_t bytesTransferred)
@@ -82,7 +80,7 @@ void BeastSession::onWrite(boost::system::error_code ec, size_t bytesTransferred
         close();
     }
 
-    m_response = {};
+    m_response = BeastResponse();
 
     read();
 }
