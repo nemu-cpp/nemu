@@ -167,7 +167,6 @@
     <ClCompile Include="..\..\Source\BeastSession.cpp" />
     <ClCompile Include="..\..\Source\BeastRequest.cpp" />
     <ClCompile Include="..\..\Source\BeastResponse.cpp" />
-    <ClCompile Include="..\..\Source\BeastAccessLog.cpp" />
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +188,6 @@
     <ClInclude Include="..\..\Source\BeastSession.h" />
     <ClInclude Include="..\..\Source\BeastRequest.h" />
     <ClInclude Include="..\..\Source\BeastResponse.h" />
-    <ClInclude Include="..\..\Source\BeastAccessLog.h" />
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
