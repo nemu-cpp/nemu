@@ -24,7 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_BEASTACCESSLOG_H_
 
 #include "AccessLog.h"
-#include <boost/beast/http.hpp>
+#include "BeastRequest.h"
 #include <boost/asio/ip/tcp.hpp>
 
 namespace Nemu
@@ -33,8 +33,7 @@ namespace Nemu
 class BeastAccessLog : public AccessLog
 {
 public:
-    void log(const boost::asio::ip::tcp::socket& socket,
-        const boost::beast::http::request<boost::beast::http::string_body>& request);
+    void log(const boost::asio::ip::tcp::socket& socket, const BeastRequest& request);
 };
 
 }

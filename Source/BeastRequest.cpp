@@ -34,6 +34,11 @@ BeastRequest::BeastRequest(boost::beast::http::request<boost::beast::http::strin
 {
 }
 
+const boost::beast::http::request<boost::beast::http::string_body>& BeastRequest::request() const
+{
+    return m_request;
+}
+
 boost::beast::http::request<boost::beast::http::string_body>& BeastRequest::request()
 {
     return m_request;

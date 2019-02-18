@@ -42,7 +42,7 @@ void BeastSession::handleRequest(BeastRequest&& request)
     const Route& route = m_server.routes().match(request.request().target().to_string());
     route.handler()(m_request, m_response);
 
-    m_server.accessLog().log(m_socket, request.request());
+    m_server.accessLog().log(m_socket, request);
 
     m_response = BeastResponse(request.request());
 

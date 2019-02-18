@@ -25,10 +25,9 @@
 namespace Nemu
 {
 
-void BeastAccessLog::log(const boost::asio::ip::tcp::socket& socket,
-    const boost::beast::http::request<boost::beast::http::string_body>& request)
+void BeastAccessLog::log(const boost::asio::ip::tcp::socket& socket, const BeastRequest& request)
 {
-    AccessLog::log(socket.remote_endpoint().address().to_string(), request.method_string().to_string());
+    AccessLog::log(socket.remote_endpoint().address().to_string(), request.request().method_string().to_string());
 }
 
 }
