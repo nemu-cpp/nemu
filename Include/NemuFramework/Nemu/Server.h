@@ -45,7 +45,7 @@ public:
         /// Called when a new connection has been established.
         /**
             @param source The server the event originated from.
-            @param sourceAddress The address of the remote server.
+            @param sourceAddress The address of the remote server that initiated the connection.
         */
         virtual void onConnectionOpened(const Server& source, const std::string& sourceAddress);
         /// Called when a connection has been closed.
