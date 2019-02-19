@@ -25,10 +25,10 @@
 namespace Nemu
 {
 
-Log::Log(const std::string& filename_prefix)
+Log::Log(const std::string& filenamePrefix)
 {
     m_worker = g3::LogWorker::createLogWorker();
-    m_handle = m_worker->addDefaultLogger(filename_prefix, ".");
+    m_handle = m_worker->addDefaultLogger(filenamePrefix, ".");
     g3::initializeLogging(m_worker.get());
     m_handle->call(&g3::FileSink::overrideLogDetails, &FormatMessage);
 }

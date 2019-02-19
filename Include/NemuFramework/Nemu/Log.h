@@ -31,10 +31,18 @@
 namespace Nemu
 {
 
+/// A log.
+/**
+    This is a wrapper around G3log (https://github.com/KjellKod/g3log).
+*/
 class Log : public Application::Observer
 {
 public:
-    Log(const std::string& filename_prefix);
+    /// Constructor.
+    /**
+        @param filenamePrefix The prefix of the log file name. For instance this can be the name of the application.
+    */
+    Log(const std::string& filenamePrefix);
 
     void onApplicationStarting(const Application& source) override;
     void onApplicationStarted(const Application& source) override;

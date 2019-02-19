@@ -30,25 +30,69 @@
 namespace Nemu
 {
 
+/// Base class for the servers that are part of an Application.
 class Server
 {
 public:
+    /// The interface that needs to be implemented by the observers of the Server class.
     class Observer
     {
     public:
+        /// Called when a server has been started.
         virtual void onServerStarted(const Server& source);
+        /// Called when a server has stopped.
         virtual void onServerStopped(const Server& source);
+        /// Called when a new connection has been established.
+        /**
+            @param source The server the event originated from.
+            @param sourceAddress The address of the remote server.
+        */
         virtual void onConnectionOpened(const Server& source, const std::string& sourceAddress);
+        /// Called when a connection has been closed.
+        /**
+            @param source The server the event originated from.
+            @param sourceAddress The address of the remote server.
+        */
         virtual void onConnectionClosed(const Server& source, const std::string& sourceAddress);
     };
 
+    /// A list of observers.
+    /**
+        A std::weak_ptr is used to refer to the observers. A count is also used so that adding and removing the same
+        observer multiple times behaves correctly.
+    */
     class Observers final
     {
     public:
+        /// Adds an observer to the list.
+        /**
+            A std::weak_ptr to the argument will be added to the list of observers if the observer was not already
+            present.
+            @param observer The observer to add.
+        */
         void add(std::shared_ptr<Observer> observer);
+        /// Removes an observer from the list.
+        /**
+            If the observer was added multiple times it will only be removed when remove has been called as many times
+            as the observer was added.
+            @param observer The observer to remove.
+        */
         void remove(std::shared_ptr<Observer> observer);
 
+        /// Notifies all the observers of an event.
+        /**
+            If an observer was added multiple times, it will only be notified once.
+            @param fct The member function to call on each observer.
+            @param source The server the event originated from.
+        */
         void notify(void (Observer::*fct)(const Server& source), const Server& source);
+        /// Notifies all the observers of an event.
+        /**
+            If an observer was added multiple times, it will only be notified once.
+            @param fct The member function to call on each observer.
+            @param source The server the event originated from.
+            @param sourceAddress The address of the remote server.
+        */
         void notify(void (Observer::*fct)(const Server& source, const std::string& sourceAddress),
             const Server& source, const std::string& sourceAddress);
 

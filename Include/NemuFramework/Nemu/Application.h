@@ -48,9 +48,9 @@ public:
         virtual void onApplicationStarting(const Application& source);
         /// Called when an application has been started.
         virtual void onApplicationStarted(const Application& source);
-        /// Called when the application is about to be stopped.
+        /// Called when an application is about to be stopped.
         virtual void onApplicationStopping(const Application& source);
-        /// Called when the application has stopped.
+        /// Called when an application has stopped.
         virtual void onApplicationStopped(const Application& source);
     };
 
