@@ -23,11 +23,16 @@
 #ifndef _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
 #define _NEMUFRAMEWORK_NEMU_WEBRESPONSE_H_
 
+#include <string>
+
 namespace Nemu
 {
 
 class WebResponse
 {
+public:
+    virtual void setStatus(unsigned int status) = 0;
+    virtual std::string& body() = 0;
 };
 
 }

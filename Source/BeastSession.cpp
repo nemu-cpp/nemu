@@ -39,13 +39,14 @@ void BeastSession::run()
 
 void BeastSession::handleRequest(BeastRequest&& request)
 {
+    m_response = BeastResponse(request.request());
+
     const Route& route = m_server.routes().match(request.URI());
-    route.handler()(m_request, m_response);
+    route.handler()(request, m_response);
+    m_response.response().prepare_payload();
 
     m_server.accessLog().log(m_socket.remote_endpoint().address().to_string(),
         request.request().method_string().to_string());
-
-    m_response = BeastResponse(request.request());
 
     auto handler = boost::asio::bind_executor(m_strand,
         std::bind(&BeastSession::onWrite, shared_from_this(), std::placeholders::_1, std::placeholders::_2,

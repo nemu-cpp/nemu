@@ -35,6 +35,9 @@ public:
     BeastResponse();
     BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request);
 
+    void setStatus(unsigned int status) override;
+    std::string& body() override;
+
     boost::beast::http::response<boost::beast::http::string_body>& response();
 
 private:

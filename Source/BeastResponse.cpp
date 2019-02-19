@@ -32,8 +32,16 @@ BeastResponse::BeastResponse()
 BeastResponse::BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request)
 {
     m_response.keep_alive(request.keep_alive());
-    m_response.body().append("Hello World!");
-    m_response.prepare_payload();
+}
+
+void BeastResponse::setStatus(unsigned int status)
+{
+    m_response.result(status);
+}
+
+std::string& BeastResponse::body()
+{
+    return m_response.body();
 }
 
 boost::beast::http::response<boost::beast::http::string_body>& BeastResponse::response()

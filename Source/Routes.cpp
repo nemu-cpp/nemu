@@ -26,7 +26,11 @@ namespace Nemu
 {
 
 Routes::Routes()
-    : m_defaultRoute("", [](const WebRequest& request, WebResponse& response){})
+    : m_defaultRoute("",
+        [](const WebRequest& request, WebResponse& response)
+        {
+            response.setStatus(404);
+        })
 {
 }
 
