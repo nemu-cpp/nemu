@@ -9,3 +9,5 @@
 Debug/
 Release/
 Lib/
+Documentation/Doxygen/html
+Documentation/Doxygen/latex
