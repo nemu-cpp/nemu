@@ -33,11 +33,19 @@
 namespace Nemu
 {
 
+/// An application that serves requests over the HTTP or HTTPS protocol.
 class WebApplication : public Application
 {
 public:
+    /// Constructor.
+    /**
+        @param configuration The configuration for the application.
+        @param observer The observer to add.
+        @param error The result of the constructor.
+    */
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
+    /// Returns the routes.
     Routes& routes();
 
 private:

@@ -36,12 +36,21 @@ class ControlHandlerRegistration;
 class Application
 {
 public:
+    /// The interface that needs to be implemented by the observers of the Application class.
+    /**
+        Application observers also implement the Server::Observer interface to observe the servers that are part of the
+        application.
+    */
     class Observer : public Server::Observer
     {
     public:
+        /// Called before an application is about to start.
         virtual void onApplicationStarting(const Application& source);
+        /// Called when an application has been started.
         virtual void onApplicationStarted(const Application& source);
+        /// Called when the application is about to be stopped.
         virtual void onApplicationStopping(const Application& source);
+        /// Called when the application has stopped.
         virtual void onApplicationStopped(const Application& source);
     };
 
