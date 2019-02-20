@@ -33,6 +33,14 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      ISHIKO_ERRORS_ROOT       Path to the Ishiko Errors installation
+#      G3LOG_ROOT               Path to the G3log installation
+#      BOOST_ROOT               Path to the Boost installation
+#      NEMUFRAMEWORK_NEMU_ROOT  Path to the Nemu installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -48,13 +56,29 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Ishiko Errors installation
+ISHIKO_ERRORS_ROOT ?= $(ISHIKO)/Errors
+# Path to the G3log installation
+G3LOG_ROOT ?= $(G3LOG)
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+# Path to the Nemu installation
+NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
+
+# ------------
+
 all: $(_builddir)NemuHelloWorldServer
 
 $(_builddir)NemuHelloWorldServer: $(_builddir)NemuHelloWorldServer_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuHelloWorldServer_main.o -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuHelloWorldServer_main.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/stage/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -lg3logger -pthread
 
 $(_builddir)NemuHelloWorldServer_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include ../../Source/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
