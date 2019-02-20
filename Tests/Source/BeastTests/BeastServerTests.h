@@ -29,6 +29,9 @@ class BeastServerTests
 {
 public:
     static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
 };
 
 #endif
