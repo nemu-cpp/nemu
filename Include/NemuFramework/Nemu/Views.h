@@ -23,4 +23,17 @@
 #ifndef _NEMUFRAMEWORK_NEMU_VIEWS_H_
 #define _NEMUFRAMEWORK_NEMU_VIEWS_H_
 
+#include "TemplatingEngine.h"
+
+namespace Nemu
+{
+
+class Views
+{
+private:
+    TemplatingEngine m_engine;
+};
+
+}
+
 #endif

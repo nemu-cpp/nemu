@@ -23,4 +23,13 @@
 #ifndef _NEMUFRAMEWORK_NEMU_TEMPLATINGENGINE_H_
 #define _NEMUFRAMEWORK_NEMU_TEMPLATINGENGINE_H_
 
+namespace Nemu
+{
+
+class TemplatingEngine
+{
+};
+
+}
+
 #endif

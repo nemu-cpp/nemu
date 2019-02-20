@@ -26,6 +26,7 @@
 #include "Application.h"
 #include "Configuration.h"
 #include "Routes.h"
+#include "Views.h"
 #include "Ishiko/Errors/Error.h"
 #include <vector>
 #include <memory>
@@ -50,6 +51,7 @@ public:
 
 private:
     Routes m_routes;
+    Views m_views;
 };
 
 }
