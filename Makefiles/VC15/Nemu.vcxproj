@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\Source\WebRequest.cpp" />
     <ClCompile Include="..\..\Source\WebResponse.cpp" />
     <ClCompile Include="..\..\Source\AccessLog.cpp" />
+    <ClCompile Include="..\..\Source\TemplatingEngine.cpp" />
     <ClCompile Include="..\..\Source\BeastServer.cpp" />
     <ClCompile Include="..\..\Source\BeastListener.cpp" />
     <ClCompile Include="..\..\Source\BeastSession.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebRequest.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\WebResponse.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\AccessLog.h" />
+    <ClInclude Include="..\..\Include\NemuFramework\Nemu\TemplatingEngine.h" />
     <ClInclude Include="..\..\Include\NemuFramework\Nemu\linkoptions.h" />
     <ClInclude Include="..\..\Source\BeastServer.h" />
     <ClInclude Include="..\..\Source\BeastListener.h" />

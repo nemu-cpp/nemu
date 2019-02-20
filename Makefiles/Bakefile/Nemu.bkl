@@ -46,6 +46,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Include/NemuFramework/Nemu/WebRequest.h
         ../../Include/NemuFramework/Nemu/WebResponse.h
         ../../Include/NemuFramework/Nemu/AccessLog.h
+        ../../Include/NemuFramework/Nemu/TemplatingEngine.h
         ../../Include/NemuFramework/Nemu/linkoptions.h
 
         ../../Source/BeastServer.h
@@ -70,6 +71,7 @@ library Nemu : IshikoErrors, G3log, Boost
         ../../Source/WebRequest.cpp
         ../../Source/WebResponse.cpp
         ../../Source/AccessLog.cpp
+        ../../Source/TemplatingEngine.cpp
 
         ../../Source/BeastServer.cpp
         ../../Source/BeastListener.cpp
