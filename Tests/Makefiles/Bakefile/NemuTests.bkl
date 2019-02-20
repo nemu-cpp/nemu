@@ -14,6 +14,8 @@ program NemuTests : Nemu, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    includedirs += ../../../Include/NemuFramework/Nemu ../../../Source;
+
     headers
     {
         ../../Source/ConfigurationTests.h

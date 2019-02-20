@@ -21,10 +21,19 @@
 */
 
 #include "BeastResponseTests.h"
+#include "BeastResponse.h"
 
 using namespace Ishiko::TestFramework;
 
 void BeastResponseTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* beastResponseTestSequence = new TestSequence("BeastResponse tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *beastResponseTestSequence);
+}
+
+TestResult::EOutcome BeastResponseTests::CreationTest1()
+{
+    Nemu::BeastResponse response;
+    return TestResult::ePassed;
 }
