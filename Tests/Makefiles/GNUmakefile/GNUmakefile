@@ -37,8 +37,10 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      NEMUFRAMEWORK_NEMU_ROOT    Path to the Nemu installation
+#      ISHIKO_ERRORS_ROOT         Path to the Ishiko Errors installation
+#      G3LOG_ROOT                 Path to the G3log installation
 #      BOOST_ROOT                 Path to the Boost installation
+#      NEMUFRAMEWORK_NEMU_ROOT    Path to the Nemu installation
 #      ISHIKO_PROCESS_ROOT        Path to the Ishiko Process installation
 #      ISHIKO_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
 
@@ -61,10 +63,14 @@ endif
 # Configurable settings:
 # 
 
-# Path to the Nemu installation
-NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
+# Path to the Ishiko Errors installation
+ISHIKO_ERRORS_ROOT ?= $(ISHIKO)/Errors
+# Path to the G3log installation
+G3LOG_ROOT ?= $(G3LOG)
 # Path to the Boost installation
 BOOST_ROOT ?= $(BOOST)
+# Path to the Nemu installation
+NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
 # Path to the Ishiko Process installation
 ISHIKO_PROCESS_ROOT ?= $(ISHIKO)/Process
 # Path to the Ishiko TestFramework installation
@@ -74,14 +80,20 @@ ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
 
 all: $(_builddir)NemuTests
 
-$(_builddir)NemuTests: $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -pthread
+$(_builddir)NemuTests: $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o $(_builddir)NemuTests_BeastTestSequence.o $(_builddir)NemuTests_BeastResponseTests.o
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuTests_main.o $(_builddir)NemuTests_ConfigurationTests.o $(_builddir)NemuTests_BeastTestSequence.o $(_builddir)NemuTests_BeastResponseTests.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/stage/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lg3logger -pthread
 
 $(_builddir)NemuTests_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/main.cpp
 
 $(_builddir)NemuTests_ConfigurationTests.o: ../../Source/ConfigurationTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/ConfigurationTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/ConfigurationTests.cpp
+
+$(_builddir)NemuTests_BeastTestSequence.o: ../../Source/BeastTests/BeastTestSequence.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/BeastTests/BeastTestSequence.cpp
+
+$(_builddir)NemuTests_BeastResponseTests.o: ../../Source/BeastTests/BeastResponseTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include ../../Source/BeastTests/BeastResponseTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o

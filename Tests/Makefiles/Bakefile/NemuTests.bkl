@@ -17,11 +17,15 @@ program NemuTests : Nemu, IshikoTestFrameworkCore
     headers
     {
         ../../Source/ConfigurationTests.h
+        ../../Source/BeastTests/BeastTestSequence.h
+        ../../Source/BeastTests/BeastResponseTests.h
     }
 
     sources
     {
         ../../Source/main.cpp
         ../../Source/ConfigurationTests.cpp
+        ../../Source/BeastTests/BeastTestSequence.cpp
+        ../../Source/BeastTests/BeastResponseTests.cpp
     }
 }

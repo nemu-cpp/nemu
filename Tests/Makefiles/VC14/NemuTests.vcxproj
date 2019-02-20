@@ -86,13 +86,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(BOOST);$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ISHIKO)/Errors\Lib\$(Platform);$(G3LOG)\build\Debug;$(BOOST)\stage\lib;$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>g3logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,13 +103,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(BOOST);$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ISHIKO)/Errors\Lib\$(Platform);$(G3LOG)\build\Debug;$(BOOST)\stage\lib;$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>g3logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,7 +122,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(BOOST);$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -128,7 +130,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ISHIKO)/Errors\Lib\$(Platform);$(G3LOG)\build\Debug;$(BOOST)\stage\lib;$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>g3logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,7 +143,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(BOOST);$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);$(NEMU)/Nemu\Include;$(ISHIKO)/Process\Include;$(ISHIKO)/TestFramework\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -148,15 +151,20 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ISHIKO)/Errors\Lib\$(Platform);$(G3LOG)\build\Debug;$(BOOST)\stage\lib;$(NEMU)/Nemu\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);$(ISHIKO)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>g3logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\ConfigurationTests.cpp" />
+    <ClCompile Include="..\..\Source\BeastTests\BeastTestSequence.cpp" />
+    <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ConfigurationTests.h" />
+    <ClInclude Include="..\..\Source\BeastTests\BeastTestSequence.h" />
+    <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
