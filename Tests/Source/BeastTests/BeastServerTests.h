@@ -20,16 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "BeastTestSequence.h"
-#include "BeastResponseTests.h"
-#include "BeastServerTests.h"
+#ifndef _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTSERVERTESTS_H_
+#define _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTSERVERTESTS_H_
 
-using namespace Ishiko::TestFramework;
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void BeastTestSequence::AddTests(TestHarness& theTestHarness)
+class BeastServerTests
 {
-    TestSequence& beastTestSequence = theTestHarness.appendTestSequence("boost::beast implemenation tests");
+public:
+    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+};
 
-    BeastResponseTests::AddTests(beastTestSequence);
-    BeastServerTests::AddTests(beastTestSequence);
-}
+#endif

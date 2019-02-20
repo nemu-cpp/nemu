@@ -160,11 +160,13 @@
     <ClCompile Include="..\..\Source\ConfigurationTests.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastTestSequence.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp" />
+    <ClCompile Include="..\..\Source\BeastTests\BeastServerTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ConfigurationTests.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastTestSequence.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h" />
+    <ClInclude Include="..\..\Source\BeastTests\BeastServerTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

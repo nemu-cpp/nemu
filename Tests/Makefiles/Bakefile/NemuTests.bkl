@@ -21,6 +21,7 @@ program NemuTests : Nemu, IshikoTestFrameworkCore
         ../../Source/ConfigurationTests.h
         ../../Source/BeastTests/BeastTestSequence.h
         ../../Source/BeastTests/BeastResponseTests.h
+        ../../Source/BeastTests/BeastServerTests.h
     }
 
     sources
@@ -29,5 +30,6 @@ program NemuTests : Nemu, IshikoTestFrameworkCore
         ../../Source/ConfigurationTests.cpp
         ../../Source/BeastTests/BeastTestSequence.cpp
         ../../Source/BeastTests/BeastResponseTests.cpp
+        ../../Source/BeastTests/BeastServerTests.cpp
     }
 }

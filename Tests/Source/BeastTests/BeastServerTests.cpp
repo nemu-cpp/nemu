@@ -20,16 +20,11 @@
     IN THE SOFTWARE.
 */
 
-#include "BeastTestSequence.h"
-#include "BeastResponseTests.h"
 #include "BeastServerTests.h"
 
 using namespace Ishiko::TestFramework;
 
-void BeastTestSequence::AddTests(TestHarness& theTestHarness)
+void BeastServerTests::AddTests(TestSequence& testSequence)
 {
-    TestSequence& beastTestSequence = theTestHarness.appendTestSequence("boost::beast implemenation tests");
-
-    BeastResponseTests::AddTests(beastTestSequence);
-    BeastServerTests::AddTests(beastTestSequence);
+    TestSequence* beastServerTestSequence = new TestSequence("BeastServer tests", testSequence);
 }
