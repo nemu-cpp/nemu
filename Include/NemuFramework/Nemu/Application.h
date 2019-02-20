@@ -93,7 +93,8 @@ public:
     };
 
     /// Constructor.
-    /** This constructor creates a new instance of the Application class and adds the observer passed in to the list of
+    /**
+        This constructor creates a new instance of the Application class and adds the observer passed in to the list of
         observers.
         @param observer An observer.
     */

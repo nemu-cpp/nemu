@@ -103,15 +103,31 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
+    /// Constructor.
+    /**
+        This constructor creates a new instance of the Server class and adds the observer passed in to the list of
+        observers.
+        @param observer An observer.
+    */
     Server(std::shared_ptr<Observer> observer);
+    /// Destructor.
     virtual ~Server() = default;
 
+    /// Starts the server.
+    /**
+        Unlike the Application::start function, this function doesn't block and returns immediately. Use the
+        Server::join function to wait for server stop.
+    */
     virtual void start() = 0;
+    /// Stop the server.
     virtual void stop() = 0;
+    /// Wait until the server has stopped.
     virtual void join() = 0;
 
+    /// Checks whether the server has been started.
     virtual bool isRunning() const = 0;
 
+    /// Returns the list of observers.
     Observers& observers();
 
 private:
