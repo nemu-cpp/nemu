@@ -77,8 +77,8 @@ BOOST_ROOT ?= $(BOOST)
 
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a
 
-../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Applications.o $(_builddir)Nemu_Server.o $(_builddir)Nemu_Servers.o $(_builddir)Nemu_Log.o $(_builddir)Nemu_WebApplication.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_Routes.o $(_builddir)Nemu_WebRequest.o $(_builddir)Nemu_WebResponse.o $(_builddir)Nemu_AccessLog.o $(_builddir)Nemu_TemplatingEngine.o $(_builddir)Nemu_BeastServer.o $(_builddir)Nemu_BeastListener.o $(_builddir)Nemu_BeastSession.o $(_builddir)Nemu_BeastRequest.o $(_builddir)Nemu_BeastResponse.o $(_builddir)Nemu_ControlHandlerRegistration.o
-	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Applications.o $(_builddir)Nemu_Server.o $(_builddir)Nemu_Servers.o $(_builddir)Nemu_Log.o $(_builddir)Nemu_WebApplication.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_Routes.o $(_builddir)Nemu_WebRequest.o $(_builddir)Nemu_WebResponse.o $(_builddir)Nemu_AccessLog.o $(_builddir)Nemu_TemplatingEngine.o $(_builddir)Nemu_BeastServer.o $(_builddir)Nemu_BeastListener.o $(_builddir)Nemu_BeastSession.o $(_builddir)Nemu_BeastRequest.o $(_builddir)Nemu_BeastResponse.o $(_builddir)Nemu_ControlHandlerRegistration.o
+../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),Nemu-d,Nemu).a: $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Applications.o $(_builddir)Nemu_Server.o $(_builddir)Nemu_Servers.o $(_builddir)Nemu_Log.o $(_builddir)Nemu_WebApplication.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_Routes.o $(_builddir)Nemu_WebRequest.o $(_builddir)Nemu_WebResponse.o $(_builddir)Nemu_AccessLog.o $(_builddir)Nemu_Views.o $(_builddir)Nemu_TemplatingEngine.o $(_builddir)Nemu_BeastServer.o $(_builddir)Nemu_BeastListener.o $(_builddir)Nemu_BeastSession.o $(_builddir)Nemu_BeastRequest.o $(_builddir)Nemu_BeastResponse.o $(_builddir)Nemu_ControlHandlerRegistration.o
+	$(AR) rc $@ $(_builddir)Nemu_Configuration.o $(_builddir)Nemu_Application.o $(_builddir)Nemu_Applications.o $(_builddir)Nemu_Server.o $(_builddir)Nemu_Servers.o $(_builddir)Nemu_Log.o $(_builddir)Nemu_WebApplication.o $(_builddir)Nemu_Route.o $(_builddir)Nemu_Routes.o $(_builddir)Nemu_WebRequest.o $(_builddir)Nemu_WebResponse.o $(_builddir)Nemu_AccessLog.o $(_builddir)Nemu_Views.o $(_builddir)Nemu_TemplatingEngine.o $(_builddir)Nemu_BeastServer.o $(_builddir)Nemu_BeastListener.o $(_builddir)Nemu_BeastSession.o $(_builddir)Nemu_BeastRequest.o $(_builddir)Nemu_BeastResponse.o $(_builddir)Nemu_ControlHandlerRegistration.o
 	$(RANLIB) $@
 
 $(_builddir)Nemu_Configuration.o: ../../Source/Configuration.cpp
@@ -116,6 +116,9 @@ $(_builddir)Nemu_WebResponse.o: ../../Source/WebResponse.cpp
 
 $(_builddir)Nemu_AccessLog.o: ../../Source/AccessLog.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/AccessLog.cpp
+
+$(_builddir)Nemu_Views.o: ../../Source/Views.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/Views.cpp
 
 $(_builddir)Nemu_TemplatingEngine.o: ../../Source/TemplatingEngine.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../Include/NemuFramework/Nemu -std=c++11 ../../Source/TemplatingEngine.cpp
