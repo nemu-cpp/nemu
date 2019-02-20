@@ -21,10 +21,19 @@
 */
 
 #include "RoutesTests.h"
+#include "NemuFramework/Nemu/Routes.h"
 
 using namespace Ishiko::TestFramework;
 
 void RoutesTests::AddTests(TestHarness& theTestHarness)
 {
     TestSequence& routesTestSequence = theTestHarness.appendTestSequence("Routes tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, routesTestSequence);
+}
+
+TestResult::EOutcome RoutesTests::CreationTest1()
+{
+    Nemu::Routes routes;
+    return TestResult::ePassed;
 }

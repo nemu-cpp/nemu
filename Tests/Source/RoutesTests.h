@@ -29,6 +29,9 @@ class RoutesTests
 {
 public:
     static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
 };
 
 #endif
