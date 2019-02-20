@@ -20,18 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "ConfigurationTests.h"
-#include "RoutesTests.h"
-#include "BeastTests/BeastTestSequence.h"
+#ifndef _NEMUFRAMEWORK_NEMU_TESTS_ROUTESTESTS_H_
+#define _NEMUFRAMEWORK_NEMU_TESTS_ROUTESTESTS_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-int main(int argc, char* argv[])
+class RoutesTests
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("Nemu");
+public:
+    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+};
 
-    ConfigurationTests::AddTests(theTestHarness);
-    RoutesTests::AddTests(theTestHarness);
-    BeastTestSequence::AddTests(theTestHarness);
-
-    return theTestHarness.run();
-}
+#endif
