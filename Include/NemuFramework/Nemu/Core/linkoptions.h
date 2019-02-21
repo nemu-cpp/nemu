@@ -24,9 +24,9 @@
 #define _NEMUFRAMEWORK_NEMU_CORE_LINKOPTIONS_H_
 
 #ifdef _DEBUG
-#pragma comment(lib, "Nemu-d.lib")
+#pragma comment(lib, "NemuCore-d.lib")
 #else
-#pragma comment(lib, "Nemu.lib")
+#pragma comment(lib, "NemuCore.lib")
 #endif
 
 #endif
