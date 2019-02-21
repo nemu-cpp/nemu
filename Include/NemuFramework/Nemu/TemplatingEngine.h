@@ -26,6 +26,12 @@
 namespace Nemu
 {
 
+/// Base class for classes that implement templating engines.
+/**
+    Templating engines are used by web applications to serve pages generated from templates. In Nemu such engines are
+    registered with the Views instance stored in a WebApplication instance. They are invoked from the WebResponse::view
+    function.
+*/
 class TemplatingEngine
 {
 };

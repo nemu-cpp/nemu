@@ -28,6 +28,7 @@
 namespace Nemu
 {
 
+/// A list of templating engines and their associated settings.
 class Views
 {
 private:
