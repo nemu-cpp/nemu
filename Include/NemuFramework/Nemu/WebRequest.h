@@ -28,9 +28,11 @@
 namespace Nemu
 {
 
+/// An interface to the request that was received from the client.
 class WebRequest
 {
 public:
+    /// Returns the URI part of the request.
     virtual std::string URI() const = 0;
 };
 

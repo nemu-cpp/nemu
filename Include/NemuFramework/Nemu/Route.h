@@ -30,14 +30,27 @@
 namespace Nemu
 {
 
+/// A request routing specification for a web application.
 class Route
 {
 public:
+    /// The type definition for the request handlers.
+    /**
+        @param request The request that was received from the client.
+        @param response This argument is used to build the response that will be returned to the client.
+    */
     typedef void (*RequestHandler)(const WebRequest& request, WebResponse& response);
 
+    /// Constructor.
+    /**
+        @param path The handler handles requests that match this path.
+        @param handler The request handler.
+    */
     Route(const std::string& path, RequestHandler handler);
 
+    /// Returns the path.
     const std::string& path() const;
+    /// Returns the handler.
     RequestHandler handler() const;
 
 private:
