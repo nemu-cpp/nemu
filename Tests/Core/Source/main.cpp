@@ -27,7 +27,7 @@
 
 int main(int argc, char* argv[])
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("Nemu");
+    Ishiko::TestFramework::TestHarness theTestHarness("NemuCore");
 
     ConfigurationTests::AddTests(theTestHarness);
     RoutesTests::AddTests(theTestHarness);

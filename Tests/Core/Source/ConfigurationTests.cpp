@@ -21,7 +21,7 @@
 */
 
 #include "ConfigurationTests.h"
-#include "NemuFramework/Nemu/Configuration.h"
+#include "NemuFramework/Nemu/Core/Configuration.h"
 
 using namespace Ishiko::TestFramework;
 

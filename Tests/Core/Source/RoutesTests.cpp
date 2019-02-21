@@ -21,7 +21,7 @@
 */
 
 #include "RoutesTests.h"
-#include "NemuFramework/Nemu/Routes.h"
+#include "NemuFramework/Nemu/Core/Routes.h"
 
 using namespace Ishiko::TestFramework;
 
