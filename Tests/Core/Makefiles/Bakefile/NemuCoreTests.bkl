@@ -1,20 +1,20 @@
 nemupath = envvar("NEMU");
-import $(nemupath)/Nemu/Include/NemuFramework/Nemu.bkl;
+import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/NemuTests.sln;
-vs2015.solutionfile = ../VC14/NemuTests.sln;
-vs2013.solutionfile = ../VC12/NemuTests.sln;
+vs2017.solutionfile = ../VC15/NemuCoreTests.sln;
+vs2015.solutionfile = ../VC14/NemuCoreTests.sln;
+vs2013.solutionfile = ../VC12/NemuCoreTests.sln;
 
-program NemuTests : Nemu, IshikoTestFrameworkCore
+program NemuCoreTests : Nemu, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
-    includedirs += ../../../Include/NemuFramework/Nemu ../../../Source;
+    includedirs += ../../../../Include/NemuFramework/Nemu/Core ../../../../Core/Source;
 
     headers
     {
