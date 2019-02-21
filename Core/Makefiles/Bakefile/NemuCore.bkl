@@ -14,17 +14,17 @@ library NemuCore : IshikoErrors, G3log, Boost
 {
     archs = x86 x86_64;
    
-    includedirs += ../../Include/NemuFramework/Nemu/Core;
+    includedirs += ../../../Include/NemuFramework/Nemu/Core;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../Lib;
+        outputdir = ../../../Lib;
     }
 
     if ($(toolset) != gnu)
     {
-        outputdir = ../../Lib/$(arch);
+        outputdir = ../../../Lib/$(arch);
     }
 
     if ($(config) == Debug)
@@ -34,21 +34,21 @@ library NemuCore : IshikoErrors, G3log, Boost
 
     headers
     {
-        ../../Include/NemuFramework/Nemu/Core/Configuration.h
-        ../../Include/NemuFramework/Nemu/Core/Application.h
-        ../../Include/NemuFramework/Nemu/Core/Applications.h
-        ../../Include/NemuFramework/Nemu/Core/Server.h
-        ../../Include/NemuFramework/Nemu/Core/Servers.h
-        ../../Include/NemuFramework/Nemu/Core/Log.h
-        ../../Include/NemuFramework/Nemu/Core/WebApplication.h
-        ../../Include/NemuFramework/Nemu/Core/Route.h
-        ../../Include/NemuFramework/Nemu/Core/Routes.h
-        ../../Include/NemuFramework/Nemu/Core/WebRequest.h
-        ../../Include/NemuFramework/Nemu/Core/WebResponse.h
-        ../../Include/NemuFramework/Nemu/Core/AccessLog.h
-        ../../Include/NemuFramework/Nemu/Core/Views.h
-        ../../Include/NemuFramework/Nemu/Core/TemplatingEngine.h
-        ../../Include/NemuFramework/Nemu/Core/linkoptions.h
+        ../../../Include/NemuFramework/Nemu/Core/Configuration.h
+        ../../../Include/NemuFramework/Nemu/Core/Application.h
+        ../../../Include/NemuFramework/Nemu/Core/Applications.h
+        ../../../Include/NemuFramework/Nemu/Core/Server.h
+        ../../../Include/NemuFramework/Nemu/Core/Servers.h
+        ../../../Include/NemuFramework/Nemu/Core/Log.h
+        ../../../Include/NemuFramework/Nemu/Core/WebApplication.h
+        ../../../Include/NemuFramework/Nemu/Core/Route.h
+        ../../../Include/NemuFramework/Nemu/Core/Routes.h
+        ../../../Include/NemuFramework/Nemu/Core/WebRequest.h
+        ../../../Include/NemuFramework/Nemu/Core/WebResponse.h
+        ../../../Include/NemuFramework/Nemu/Core/AccessLog.h
+        ../../../Include/NemuFramework/Nemu/Core/Views.h
+        ../../../Include/NemuFramework/Nemu/Core/TemplatingEngine.h
+        ../../../Include/NemuFramework/Nemu/Core/linkoptions.h
 
         ../../Source/BeastServer.h
         ../../Source/BeastListener.h

@@ -69,17 +69,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>NemuCore-d</TargetName>
-    <OutDir>..\Bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>NemuCore-d</TargetName>
-    <OutDir>..\Bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\Bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\Bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(G3LOG)\src;$(G3LOG)\build\include;$(BOOST);..\..\..\Include\NemuFramework\Nemu\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -172,21 +172,21 @@
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Configuration.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Application.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Applications.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Server.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Servers.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Log.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\WebApplication.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Route.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Routes.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\WebRequest.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\WebResponse.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\AccessLog.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\Views.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\TemplatingEngine.h" />
-    <ClInclude Include="..\..\Include\NemuFramework\Nemu\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Configuration.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Application.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Applications.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Server.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Servers.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Log.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebApplication.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Route.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Routes.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebRequest.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponse.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\AccessLog.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Views.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\TemplatingEngine.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\linkoptions.h" />
     <ClInclude Include="..\..\Source\BeastServer.h" />
     <ClInclude Include="..\..\Source\BeastListener.h" />
     <ClInclude Include="..\..\Source\BeastSession.h" />
