@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_SERVER_H_
-#define _NEMUFRAMEWORK_NEMU_SERVER_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_SERVER_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_SERVER_H_
 
 #include <vector>
 #include <string>

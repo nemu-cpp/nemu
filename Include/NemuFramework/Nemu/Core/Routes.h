@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_ROUTES_H_
-#define _NEMUFRAMEWORK_NEMU_ROUTES_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_ROUTES_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_ROUTES_H_
 
 #include "Route.h"
 #include <vector>

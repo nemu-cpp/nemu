@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_LOG_H_
-#define _NEMUFRAMEWORK_NEMU_LOG_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_LOG_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_LOG_H_
 
 #include "Application.h"
 #include <g3log/g3log.hpp>

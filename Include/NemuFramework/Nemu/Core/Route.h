@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_ROUTE_H_
-#define _NEMUFRAMEWORK_NEMU_ROUTE_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_ROUTE_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_ROUTE_H_
 
 #include "WebRequest.h"
 #include "WebResponse.h"

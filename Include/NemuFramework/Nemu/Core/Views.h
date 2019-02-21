@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_VIEWS_H_
-#define _NEMUFRAMEWORK_NEMU_VIEWS_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_VIEWS_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_VIEWS_H_
 
 #include "TemplatingEngine.h"
 #include <memory>
