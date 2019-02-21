@@ -9,7 +9,7 @@ setting NEMUFRAMEWORK_NEMU_ROOT
     default = '$(NEMU)/Nemu';
 }
 
-template Nemu : IshikoErrors, G3log, Boost
+template NemuCore : IshikoErrors, G3log, Boost
 {
     includedirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Include;
 

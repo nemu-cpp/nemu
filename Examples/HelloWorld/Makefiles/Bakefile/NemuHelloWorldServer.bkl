@@ -1,5 +1,5 @@
 nemupath = envvar("NEMU");
-import $(nemupath)/Nemu/Include/NemuFramework/Nemu.bkl;
+import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -8,7 +8,7 @@ vs2017.solutionfile = ../VC15/NemuHelloWorldServer.sln;
 vs2015.solutionfile = ../VC14/NemuHelloWorldServer.sln;
 vs2013.solutionfile = ../VC12/NemuHelloWorldServer.sln;
 
-program NemuHelloWorldServer : Nemu
+program NemuHelloWorldServer : NemuCore
 {
     archs = x86 x86_64;
 
