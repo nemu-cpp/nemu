@@ -1,0 +1,19 @@
+nemupath = envvar("NEMU");
+import $(nemupath)/Nemu/Include/NemuFramework/Nemu.bkl;
+
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/NemuMustacheTemplatesServer.sln;
+vs2015.solutionfile = ../VC14/NemuMustacheTemplatesServer.sln;
+vs2013.solutionfile = ../VC12/NemuMustacheTemplatesServer.sln;
+
+program NemuMustacheTemplatesServer : Nemu
+{
+    archs = x86 x86_64;
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
