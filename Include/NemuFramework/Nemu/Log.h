@@ -38,11 +38,18 @@ namespace Nemu
 class Log : public Application::Observer
 {
 public:
+    enum ELogDestination
+    {
+        eConsole = 0x01,
+        eFile = 0x02
+    };
+
     /// Constructor.
     /**
         @param filenamePrefix The prefix of the log file name. For instance this can be the name of the application.
     */
     Log(const std::string& filenamePrefix);
+    Log(const std::string& filenamePrefix, ELogDestination destination);
 
     void onApplicationStarting(const Application& source) override;
     void onApplicationStarted(const Application& source) override;

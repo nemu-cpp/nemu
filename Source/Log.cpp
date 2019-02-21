@@ -33,6 +33,14 @@ Log::Log(const std::string& filenamePrefix)
     m_handle->call(&g3::FileSink::overrideLogDetails, &FormatMessage);
 }
 
+Log::Log(const std::string& filenamePrefix, ELogDestination destination)
+{
+    m_worker = g3::LogWorker::createLogWorker();
+    m_handle = m_worker->addDefaultLogger(filenamePrefix, ".");
+    g3::initializeLogging(m_worker.get());
+    m_handle->call(&g3::FileSink::overrideLogDetails, &FormatMessage);
+}
+
 void Log::onApplicationStarting(const Application& source)
 {
     LOG(INFO) << "Application starting";

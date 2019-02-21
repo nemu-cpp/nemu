@@ -21,3 +21,17 @@
 */
 
 #include "Views.h"
+
+namespace Nemu
+{
+
+Views::Views()
+{
+}
+
+Views::Views(std::shared_ptr<TemplatingEngine> engine)
+    : m_engine(engine)
+{
+}
+
+}

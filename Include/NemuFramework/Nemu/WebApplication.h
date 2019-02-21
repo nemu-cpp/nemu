@@ -49,6 +49,8 @@ public:
     /// Returns the routes.
     Routes& routes();
 
+    Views& views();
+
 private:
     Routes m_routes;
     Views m_views;

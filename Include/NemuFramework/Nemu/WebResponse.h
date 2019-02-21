@@ -28,11 +28,19 @@
 namespace Nemu
 {
 
+/// An interface to create the response that will be sent back to the client.
 class WebResponse
 {
 public:
     virtual void setStatus(unsigned int status) = 0;
     virtual std::string& body() = 0;
+
+    /// Renders a page using the default templating engine.
+    void view();
+
+    void redirect();
+
+    void state();
 };
 
 }

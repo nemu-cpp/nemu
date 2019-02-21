@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_VIEWS_H_
 
 #include "TemplatingEngine.h"
+#include <memory>
 
 namespace Nemu
 {
@@ -31,8 +32,12 @@ namespace Nemu
 /// A list of templating engines and their associated settings.
 class Views
 {
+public:
+    Views();
+    Views(std::shared_ptr<TemplatingEngine> engine);
+
 private:
-    TemplatingEngine m_engine;
+    std::shared_ptr<TemplatingEngine> m_engine;
 };
 
 }

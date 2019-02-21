@@ -21,3 +21,20 @@
 */
 
 #include "WebResponse.h"
+
+namespace Nemu
+{
+
+void WebResponse::view()
+{
+}
+
+void WebResponse::redirect()
+{
+}
+
+void WebResponse::state()
+{
+}
+
+}

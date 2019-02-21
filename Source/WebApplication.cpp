@@ -38,4 +38,9 @@ Routes& WebApplication::routes()
     return m_routes;
 }
 
+Views& WebApplication::views()
+{
+    return m_views;
+}
+
 }
