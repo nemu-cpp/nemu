@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_BEASTLISTENER_H_
-#define _NEMUFRAMEWORK_NEMU_BEASTLISTENER_H_
+#ifndef _NEMUFRAMEWORK_NEMU_BEAST_BEASTLISTENER_H_
+#define _NEMUFRAMEWORK_NEMU_BEAST_BEASTLISTENER_H_
 
 #include "Ishiko/Errors/Error.h"
 #include <boost/asio/ip/tcp.hpp>
