@@ -33,6 +33,14 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      ISHIKO_ERRORS_ROOT       Path to the Ishiko Errors installation
+#      G3LOG_ROOT               Path to the G3log installation
+#      BOOST_ROOT               Path to the Boost installation
+#      NEMUFRAMEWORK_NEMU_ROOT  Path to the Nemu installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +62,22 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Ishiko Errors installation
+ISHIKO_ERRORS_ROOT ?= $(ISHIKO)/Errors
+# Path to the G3log installation
+G3LOG_ROOT ?= $(G3LOG)
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+# Path to the Nemu installation
+NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
+
+# ------------
+
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),NemuMustache-d,NemuMustache).a
 
 ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),NemuMustache-d,NemuMustache).a: $(_builddir)NemuMustache_MustacheTemplatingEngine.o
@@ -61,7 +85,7 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),NemuMustach
 	$(RANLIB) $@
 
 $(_builddir)NemuMustache_MustacheTemplatingEngine.o: ../../Source/MustacheTemplatingEngine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/NemuFramework/Nemu/Mustache -std=c++11 ../../Source/MustacheTemplatingEngine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I../../../Include/NemuFramework/Nemu/Mustache -std=c++11 ../../Source/MustacheTemplatingEngine.cpp
 
 clean:
 	rm -f $(_builddir)*.o

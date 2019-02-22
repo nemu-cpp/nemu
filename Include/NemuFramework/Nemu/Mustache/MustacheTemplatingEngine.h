@@ -23,4 +23,15 @@
 #ifndef _NEMUFRAMEWORK_NEMU_MUSTACHE_MUSTACHETEMPLATINGENGINE_H_
 #define _NEMUFRAMEWORK_NEMU_MUSTACHE_MUSTACHETEMPLATINGENGINE_H_
 
+#include "NemuFramework/Nemu/Core/TemplatingEngine.h"
+
+namespace Nemu
+{
+
+class MustacheTemplatingEngine : public TemplatingEngine
+{
+};
+
+}
+
 #endif
