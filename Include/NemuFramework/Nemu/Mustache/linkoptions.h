@@ -20,13 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "MustacheTemplatingEngine.h"
+#ifndef _NEMUFRAMEWORK_NEMU_MUSTACHE_LINKOPTIONS_H_
+#define _NEMUFRAMEWORK_NEMU_MUSTACHE_LINKOPTIONS_H_
 
-namespace Nemu
-{
+#ifdef _DEBUG
+#pragma comment(lib, "NemuMustache-d.lib")
+#else
+#pragma comment(lib, "NemuMustache.lib")
+#endif
 
-MustacheTemplatingEngine::MustacheTemplatingEngine()
-{
-}
-
-}
+#endif

@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Mustache\MustacheTemplatingEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Mustache\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\MustacheTemplatingEngine.cpp">

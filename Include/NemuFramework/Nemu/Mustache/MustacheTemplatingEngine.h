@@ -30,8 +30,12 @@ namespace Nemu
 
 class MustacheTemplatingEngine : public TemplatingEngine
 {
+public:
+    MustacheTemplatingEngine();
 };
 
 }
+
+#include "linkoptions.h"
 
 #endif

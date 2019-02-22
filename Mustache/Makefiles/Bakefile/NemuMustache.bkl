@@ -35,6 +35,7 @@ library NemuMustache : NemuCore, mstch
     headers
     {
         ../../../Include/NemuFramework/Nemu/Mustache/MustacheTemplatingEngine.h
+        ../../../Include/NemuFramework/Nemu/Mustache/linkoptions.h
     }
 
     sources
