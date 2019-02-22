@@ -50,11 +50,11 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../../Include/NemuFramework/Nemu/Core/TemplatingEngine.h
         ../../../Include/NemuFramework/Nemu/Core/linkoptions.h
 
-        ../../Source/BeastServer.h
-        ../../Source/BeastListener.h
-        ../../Source/BeastSession.h
-        ../../Source/BeastRequest.h
-        ../../Source/BeastResponse.h
+        ../../Source/Beast/BeastServer.h
+        ../../Source/Beast/BeastListener.h
+        ../../Source/Beast/BeastSession.h
+        ../../Source/Beast/BeastRequest.h
+        ../../Source/Beast/BeastResponse.h
         ../../Source/ControlHandlerRegistration.h
     }
 
@@ -75,11 +75,11 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../Source/Views.cpp
         ../../Source/TemplatingEngine.cpp
 
-        ../../Source/BeastServer.cpp
-        ../../Source/BeastListener.cpp
-        ../../Source/BeastSession.cpp
-        ../../Source/BeastRequest.cpp
-        ../../Source/BeastResponse.cpp
+        ../../Source/Beast/BeastServer.cpp
+        ../../Source/Beast/BeastListener.cpp
+        ../../Source/Beast/BeastSession.cpp
+        ../../Source/Beast/BeastRequest.cpp
+        ../../Source/Beast/BeastResponse.cpp
         ../../Source/ControlHandlerRegistration.cpp
     }
 }

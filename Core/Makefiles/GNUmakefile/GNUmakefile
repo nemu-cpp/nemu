@@ -123,20 +123,20 @@ $(_builddir)NemuCore_Views.o: ../../Source/Views.cpp
 $(_builddir)NemuCore_TemplatingEngine.o: ../../Source/TemplatingEngine.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/TemplatingEngine.cpp
 
-$(_builddir)NemuCore_BeastServer.o: ../../Source/BeastServer.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/BeastServer.cpp
+$(_builddir)NemuCore_BeastServer.o: ../../Source/Beast/BeastServer.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/Beast/BeastServer.cpp
 
-$(_builddir)NemuCore_BeastListener.o: ../../Source/BeastListener.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/BeastListener.cpp
+$(_builddir)NemuCore_BeastListener.o: ../../Source/Beast/BeastListener.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/Beast/BeastListener.cpp
 
-$(_builddir)NemuCore_BeastSession.o: ../../Source/BeastSession.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/BeastSession.cpp
+$(_builddir)NemuCore_BeastSession.o: ../../Source/Beast/BeastSession.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/Beast/BeastSession.cpp
 
-$(_builddir)NemuCore_BeastRequest.o: ../../Source/BeastRequest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/BeastRequest.cpp
+$(_builddir)NemuCore_BeastRequest.o: ../../Source/Beast/BeastRequest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/Beast/BeastRequest.cpp
 
-$(_builddir)NemuCore_BeastResponse.o: ../../Source/BeastResponse.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/BeastResponse.cpp
+$(_builddir)NemuCore_BeastResponse.o: ../../Source/Beast/BeastResponse.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/Beast/BeastResponse.cpp
 
 $(_builddir)NemuCore_ControlHandlerRegistration.o: ../../Source/ControlHandlerRegistration.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I../../../Include/NemuFramework/Nemu/Core -std=c++11 ../../Source/ControlHandlerRegistration.cpp

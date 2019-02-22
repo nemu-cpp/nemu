@@ -62,19 +62,19 @@
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastServer.h">
+    <ClInclude Include="..\..\Source\Beast\BeastServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastListener.h">
+    <ClInclude Include="..\..\Source\Beast\BeastListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastSession.h">
+    <ClInclude Include="..\..\Source\Beast\BeastSession.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastRequest.h">
+    <ClInclude Include="..\..\Source\Beast\BeastRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastResponse.h">
+    <ClInclude Include="..\..\Source\Beast\BeastResponse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h">
@@ -124,19 +124,19 @@
     <ClCompile Include="..\..\Source\TemplatingEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastServer.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastListener.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastSession.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastSession.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastRequest.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastResponse.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastResponse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp">
