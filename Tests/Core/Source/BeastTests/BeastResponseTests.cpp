@@ -21,7 +21,7 @@
 */
 
 #include "BeastResponseTests.h"
-#include "BeastResponse.h"
+#include "Beast/BeastResponse.h"
 
 using namespace Ishiko::TestFramework;
 
