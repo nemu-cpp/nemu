@@ -1,5 +1,7 @@
 nemupath = envvar("NEMU");
 import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/mstch.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -8,7 +10,7 @@ vs2017.solutionfile = ../VC15/NemuMustache.sln;
 vs2015.solutionfile = ../VC14/NemuMustache.sln;
 vs2013.solutionfile = ../VC12/NemuMustache.sln;
 
-library NemuMustache : NemuCore
+library NemuMustache : NemuCore, mstch
 {
     archs = x86 x86_64;
    

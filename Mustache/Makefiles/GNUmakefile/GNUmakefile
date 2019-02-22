@@ -41,6 +41,7 @@ endif
 #      G3LOG_ROOT               Path to the G3log installation
 #      BOOST_ROOT               Path to the Boost installation
 #      NEMUFRAMEWORK_NEMU_ROOT  Path to the Nemu installation
+#      MSTCH_ROOT               Path to the mstch installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -75,6 +76,8 @@ G3LOG_ROOT ?= $(G3LOG)
 BOOST_ROOT ?= $(BOOST)
 # Path to the Nemu installation
 NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
+# Path to the mstch installation
+MSTCH_ROOT ?= $(MSTCH)
 
 # ------------
 
@@ -85,7 +88,7 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),NemuMustach
 	$(RANLIB) $@
 
 $(_builddir)NemuMustache_MustacheTemplatingEngine.o: ../../Source/MustacheTemplatingEngine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I../../../Include/NemuFramework/Nemu/Mustache -std=c++11 ../../Source/MustacheTemplatingEngine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(MSTCH_ROOT)/include -I../../../Include/NemuFramework/Nemu/Mustache -std=c++11 ../../Source/MustacheTemplatingEngine.cpp
 
 clean:
 	rm -f $(_builddir)*.o
