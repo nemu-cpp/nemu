@@ -21,7 +21,7 @@
 */
 
 #include "BeastServerTests.h"
-#include "BeastServer.h"
+#include "Beast/BeastServer.h"
 
 using namespace Ishiko::TestFramework;
 
@@ -30,6 +30,8 @@ void BeastServerTests::AddTests(TestSequence& testSequence)
     TestSequence* beastServerTestSequence = new TestSequence("BeastServer tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *beastServerTestSequence);
+
+    new HeapAllocationErrorsTest("start test 1", StartTest1, *beastServerTestSequence);
 }
 
 TestResult::EOutcome BeastServerTests::CreationTest1()
@@ -46,4 +48,23 @@ TestResult::EOutcome BeastServerTests::CreationTest1()
     {
         return TestResult::eFailed;
     }
+}
+
+TestResult::EOutcome BeastServerTests::StartTest1()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    Nemu::Routes routes;
+    std::shared_ptr<Nemu::Server::Observer> observer;
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(1, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+        server.stop();
+        server.join();
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }
