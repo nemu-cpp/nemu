@@ -1,6 +1,7 @@
 nemupath = envvar("NEMU");
 import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
 ishikopath = envvar("ISHIKO");
+import $(ishikopath)/HTTP/Include/Ishiko/HTTP.bkl;
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
@@ -10,7 +11,7 @@ vs2017.solutionfile = ../VC15/NemuCoreTests.sln;
 vs2015.solutionfile = ../VC14/NemuCoreTests.sln;
 vs2013.solutionfile = ../VC12/NemuCoreTests.sln;
 
-program NemuCoreTests : Nemu, IshikoTestFrameworkCore
+program NemuCoreTests : NemuCore, IshikoHTTP, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
