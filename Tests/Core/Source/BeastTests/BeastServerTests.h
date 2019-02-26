@@ -33,6 +33,7 @@ public:
 private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
     static Ishiko::TestFramework::TestResult::EOutcome StartTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome RequestTest1(Ishiko::TestFramework::FileComparisonTest& test);
 };
 
 #endif
