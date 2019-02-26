@@ -30,10 +30,26 @@ void RoutesTests::AddTests(TestHarness& theTestHarness)
     TestSequence& routesTestSequence = theTestHarness.appendTestSequence("Routes tests");
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, routesTestSequence);
+
+    new HeapAllocationErrorsTest("match test 1", MatchTest1, routesTestSequence);
 }
 
 TestResult::EOutcome RoutesTests::CreationTest1()
 {
     Nemu::Routes routes;
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome RoutesTests::MatchTest1()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    Nemu::Routes routes;
+    const Nemu::Route& matchedRoute = routes.match("/");
+    if (&matchedRoute == &routes.defaultRoute())
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }

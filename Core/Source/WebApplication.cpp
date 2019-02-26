@@ -21,7 +21,7 @@
 */
 
 #include "WebApplication.h"
-#include "BeastServer.h"
+#include "Beast/BeastServer.h"
 
 namespace Nemu
 {

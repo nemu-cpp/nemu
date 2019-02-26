@@ -51,4 +51,9 @@ const Route& Routes::match(const std::string& path) const
     return m_defaultRoute;
 }
 
+const Route& Routes::defaultRoute() const
+{
+    return m_defaultRoute;
+}
+
 }
