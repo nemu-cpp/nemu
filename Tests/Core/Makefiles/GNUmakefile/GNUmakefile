@@ -83,8 +83,8 @@ ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
 
 all: $(_builddir)NemuCoreTests
 
-$(_builddir)NemuCoreTests: $(_builddir)NemuCoreTests_main.o $(_builddir)NemuCoreTests_ConfigurationTests.o $(_builddir)NemuCoreTests_RoutesTests.o $(_builddir)NemuCoreTests_BeastTestSequence.o $(_builddir)NemuCoreTests_BeastResponseTests.o $(_builddir)NemuCoreTests_BeastServerTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuCoreTests_main.o $(_builddir)NemuCoreTests_ConfigurationTests.o $(_builddir)NemuCoreTests_RoutesTests.o $(_builddir)NemuCoreTests_BeastTestSequence.o $(_builddir)NemuCoreTests_BeastResponseTests.o $(_builddir)NemuCoreTests_BeastServerTests.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(ISHIKO_HTTP_ROOT)/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lg3logger -pthread
+$(_builddir)NemuCoreTests: $(_builddir)NemuCoreTests_main.o $(_builddir)NemuCoreTests_ConfigurationTests.o $(_builddir)NemuCoreTests_RoutesTests.o $(_builddir)NemuCoreTests_BeastTestSequence.o $(_builddir)NemuCoreTests_BeastResponseTests.o $(_builddir)NemuCoreTests_BeastServerTests.o $(_builddir)NemuCoreTests_TestServerObserver.o
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuCoreTests_main.o $(_builddir)NemuCoreTests_ConfigurationTests.o $(_builddir)NemuCoreTests_RoutesTests.o $(_builddir)NemuCoreTests_BeastTestSequence.o $(_builddir)NemuCoreTests_BeastResponseTests.o $(_builddir)NemuCoreTests_BeastServerTests.o $(_builddir)NemuCoreTests_TestServerObserver.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(ISHIKO_HTTP_ROOT)/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lg3logger -pthread
 
 $(_builddir)NemuCoreTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT)/include -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_HTTP_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I../../../../Include/NemuFramework/Nemu/Core -I../../../../Core/Source ../../Source/main.cpp
@@ -103,6 +103,9 @@ $(_builddir)NemuCoreTests_BeastResponseTests.o: ../../Source/BeastTests/BeastRes
 
 $(_builddir)NemuCoreTests_BeastServerTests.o: ../../Source/BeastTests/BeastServerTests.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT)/include -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_HTTP_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I../../../../Include/NemuFramework/Nemu/Core -I../../../../Core/Source ../../Source/BeastTests/BeastServerTests.cpp
+
+$(_builddir)NemuCoreTests_TestServerObserver.o: ../../Source/Helpers/TestServerObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT)/include -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(ISHIKO_HTTP_ROOT)/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I../../../../Include/NemuFramework/Nemu/Core -I../../../../Core/Source ../../Source/Helpers/TestServerObserver.cpp
 
 clean:
 	rm -f $(_builddir)*.o
