@@ -21,6 +21,7 @@
 */
 
 #include "ConfigurationTests.h"
+#include "RouteTests.h"
 #include "RoutesTests.h"
 #include "BeastTests/BeastTestSequence.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
@@ -35,6 +36,7 @@ int main(int argc, char* argv[])
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
     ConfigurationTests::AddTests(theTestHarness);
+    RouteTests::AddTests(theTestHarness);
     RoutesTests::AddTests(theTestHarness);
     BeastTestSequence::AddTests(theTestHarness);
 

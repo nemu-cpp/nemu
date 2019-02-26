@@ -23,4 +23,15 @@
 #ifndef _NEMUFRAMEWORK_NEMU_TESTS_ROUTETESTS_H_
 #define _NEMUFRAMEWORK_NEMU_TESTS_ROUTETESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+class RouteTests
+{
+public:
+    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
+};
+
 #endif

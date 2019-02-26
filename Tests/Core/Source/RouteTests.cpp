@@ -21,3 +21,22 @@
 */
 
 #include "RouteTests.h"
+#include "NemuFramework/Nemu/Core/Route.h"
+
+using namespace Ishiko::TestFramework;
+
+void RouteTests::AddTests(TestHarness& theTestHarness)
+{
+    TestSequence& routeTestSequence = theTestHarness.appendTestSequence("Route tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, routeTestSequence);
+}
+
+TestResult::EOutcome RouteTests::CreationTest1()
+{
+    Nemu::Route route("/",
+        [](const Nemu::WebRequest& request, Nemu::WebResponse& response, void* handlerData)
+        {
+        });
+    return TestResult::ePassed;
+}
