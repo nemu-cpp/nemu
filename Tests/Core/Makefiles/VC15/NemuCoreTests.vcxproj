@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\ConfigurationTests.cpp" />
+    <ClCompile Include="..\..\Source\RouteTests.cpp" />
     <ClCompile Include="..\..\Source\RoutesTests.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastTestSequence.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ConfigurationTests.h" />
+    <ClInclude Include="..\..\Source\RouteTests.h" />
     <ClInclude Include="..\..\Source\RoutesTests.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastTestSequence.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h" />

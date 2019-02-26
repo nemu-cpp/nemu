@@ -20,6 +20,7 @@ program NemuCoreTests : NemuCore, IshikoHTTP, IshikoTestFrameworkCore
     headers
     {
         ../../Source/ConfigurationTests.h
+        ../../Source/RouteTests.h
         ../../Source/RoutesTests.h
 
         ../../Source/BeastTests/BeastTestSequence.h
@@ -34,6 +35,7 @@ program NemuCoreTests : NemuCore, IshikoHTTP, IshikoTestFrameworkCore
     {
         ../../Source/main.cpp
         ../../Source/ConfigurationTests.cpp
+        ../../Source/RouteTests.cpp
         ../../Source/RoutesTests.cpp
 
         ../../Source/BeastTests/BeastTestSequence.cpp
