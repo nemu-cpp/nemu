@@ -23,4 +23,19 @@
 #ifndef _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTSERVEROBSERVER_H_
 #define _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTSERVEROBSERVER_H_
 
+#include "NemuFramework/Nemu/Core/Server.h"
+#include <vector>
+#include <tuple>
+
+class TestServerObserver : public Nemu::Server::Observer
+{
+public:
+    const std::vector<std::pair<const Nemu::Server*, std::string>>& connectionOpenedEvents() const;
+
+    void onConnectionOpened(const Nemu::Server& source, const std::string& sourceAddress) override;
+
+private:
+    std::vector<std::pair<const Nemu::Server*, std::string>> m_connectionOpenedEvents;
+};
+
 #endif

@@ -21,3 +21,13 @@
 */
 
 #include "TestServerObserver.h"
+
+const std::vector<std::pair<const Nemu::Server*, std::string>>& TestServerObserver::connectionOpenedEvents() const
+{
+    return m_connectionOpenedEvents;
+}
+
+void TestServerObserver::onConnectionOpened(const Nemu::Server& source, const std::string& sourceAddress)
+{
+    m_connectionOpenedEvents.emplace_back(&source, sourceAddress);
+}
