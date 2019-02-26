@@ -22,12 +22,18 @@
 
 #include "TestServerObserver.h"
 
-const std::vector<std::pair<const Nemu::Server*, std::string>>& TestServerObserver::connectionOpenedEvents() const
+const std::vector<std::tuple<TestServerObserver::EEventType, const Nemu::Server*, std::string>>&
+TestServerObserver::connectionEvents() const
 {
-    return m_connectionOpenedEvents;
+    return m_connectionEvents;
 }
 
 void TestServerObserver::onConnectionOpened(const Nemu::Server& source, const std::string& sourceAddress)
 {
-    m_connectionOpenedEvents.emplace_back(&source, sourceAddress);
+    m_connectionEvents.emplace_back(eConnectionOpened, &source, sourceAddress);
+}
+
+void TestServerObserver::onConnectionClosed(const Nemu::Server& source, const std::string& sourceAddress)
+{
+    m_connectionEvents.emplace_back(eConnectionClosed, &source, sourceAddress);
 }
