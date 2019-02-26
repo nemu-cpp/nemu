@@ -56,4 +56,9 @@ const Route& Routes::defaultRoute() const
     return m_defaultRoute;
 }
 
+void Routes::setDefaultRoute(const Route& route)
+{
+    m_defaultRoute = route;
+}
+
 }

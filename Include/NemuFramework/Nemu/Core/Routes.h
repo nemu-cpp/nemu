@@ -58,6 +58,7 @@ public:
     const Route& match(const std::string& path) const;
 
     const Route& defaultRoute() const;
+    void setDefaultRoute(const Route& route);
 
 private:
     std::vector<Route> m_routes;
