@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTROUTES_H_
 
 #include "NemuFramework/Nemu/Core/Routes.h"
+#include <mutex>
 #include <vector>
 #include <string>
 #include <memory>
@@ -36,6 +37,7 @@ public:
     const std::vector<std::string>& visitedRoutes() const;
 
 private:
+    std::mutex m_visitedRoutesMutex;
     std::shared_ptr<std::vector<std::string>> m_visitedRoutes;
 };
 

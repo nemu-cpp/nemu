@@ -30,10 +30,11 @@ TestRoutes::TestRoutes()
         {
             response.setStatus(404);
 
-            std::vector<std::string>* visitedRoutes = reinterpret_cast<std::vector<std::string>*>(handlerData);
-            visitedRoutes->push_back(request.URI());
+            TestRoutes* routes = reinterpret_cast<TestRoutes*>(handlerData);
+            std::lock_guard<std::mutex> guard(routes->m_visitedRoutesMutex);
+            routes->m_visitedRoutes->push_back(request.URI());
         },
-        m_visitedRoutes));
+        std::shared_ptr<TestRoutes>(this, [](TestRoutes*) {})));
 }
 
 const std::vector<std::string>& TestRoutes::visitedRoutes() const

@@ -30,10 +30,12 @@ TestServerObserver::connectionEvents() const
 
 void TestServerObserver::onConnectionOpened(const Nemu::Server& source, const std::string& sourceAddress)
 {
+    std::lock_guard<std::mutex> guard(m_connectionEventsMutex);
     m_connectionEvents.emplace_back(eConnectionOpened, &source, sourceAddress);
 }
 
 void TestServerObserver::onConnectionClosed(const Nemu::Server& source, const std::string& sourceAddress)
 {
+    std::lock_guard<std::mutex> guard(m_connectionEventsMutex);
     m_connectionEvents.emplace_back(eConnectionClosed, &source, sourceAddress);
 }

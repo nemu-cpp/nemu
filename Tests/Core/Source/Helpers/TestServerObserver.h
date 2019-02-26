@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTSERVEROBSERVER_H_
 
 #include "NemuFramework/Nemu/Core/Server.h"
+#include <mutex>
 #include <vector>
 #include <tuple>
 
@@ -42,6 +43,7 @@ public:
     void onConnectionClosed(const Nemu::Server& source, const std::string& sourceAddress) override;
 
 private:
+    std::mutex m_connectionEventsMutex;
     std::vector<std::tuple<EEventType, const Nemu::Server*, std::string>> m_connectionEvents;
 };
 
