@@ -35,6 +35,9 @@
     <ClInclude Include="..\..\Source\Helpers\TestServerObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Helpers\TestRoutes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -56,6 +59,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Helpers\TestServerObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Helpers\TestRoutes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

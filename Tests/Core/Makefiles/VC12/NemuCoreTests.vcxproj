@@ -163,6 +163,7 @@
     <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastServerTests.cpp" />
     <ClCompile Include="..\..\Source\Helpers\TestServerObserver.cpp" />
+    <ClCompile Include="..\..\Source\Helpers\TestRoutes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ConfigurationTests.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastServerTests.h" />
     <ClInclude Include="..\..\Source\Helpers\TestServerObserver.h" />
+    <ClInclude Include="..\..\Source\Helpers\TestRoutes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,6 +27,7 @@ program NemuCoreTests : NemuCore, IshikoHTTP, IshikoTestFrameworkCore
         ../../Source/BeastTests/BeastServerTests.h
 
         ../../Source/Helpers/TestServerObserver.h
+        ../../Source/Helpers/TestRoutes.h
     }
 
     sources
@@ -40,5 +41,6 @@ program NemuCoreTests : NemuCore, IshikoHTTP, IshikoTestFrameworkCore
         ../../Source/BeastTests/BeastServerTests.cpp
 
         ../../Source/Helpers/TestServerObserver.cpp
+        ../../Source/Helpers/TestRoutes.cpp
     }
 }
