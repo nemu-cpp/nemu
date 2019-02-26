@@ -38,6 +38,7 @@ void BeastServerTests::AddTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("start test 1", StartTest1, *beastServerTestSequence);
 
     new FileComparisonTest("Request test 1", RequestTest1, *beastServerTestSequence);
+    new FileComparisonTest("Request test 2", RequestTest2, *beastServerTestSequence);
 }
 
 TestResult::EOutcome BeastServerTests::CreationTest1()
@@ -113,6 +114,63 @@ TestResult::EOutcome BeastServerTests::RequestTest1(FileComparisonTest& test)
                 (std::get<1>(events[1]) == &server) && (std::get<2>(events[0]) == std::get<2>(events[1])))
             {
                 if ((routes.visitedRoutes().size() == 1) && (routes.visitedRoutes()[0] == "/"))
+                {
+                    result = TestResult::ePassed;
+                }
+            }
+        }
+    }
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::RequestTest2(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "BeastTests/BeastServerTests_RequestTest2.txt");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BeastTests/BeastServerTests_RequestTest2.txt");
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(1, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+
+        std::ofstream responseFile(outputPath.string());
+
+        Ishiko::HTTP::HTTPClient client1;
+        client1.get("127.0.0.1", 8088, "/", responseFile, error);
+
+        Ishiko::HTTP::HTTPClient client2;
+        client2.get("127.0.0.1", 8088, "/", responseFile, error);
+
+        responseFile.close();
+
+        server.stop();
+        server.join();
+
+        if (!error)
+        {
+            const std::vector<std::tuple<TestServerObserver::EEventType, const Nemu::Server*, std::string>>& events =
+                observer->connectionEvents();
+            if ((events.size() == 4) && (std::get<0>(events[0]) == TestServerObserver::eConnectionOpened) &&
+                (std::get<1>(events[0]) == &server) && (std::get<2>(events[0]).substr(0, 10) == "127.0.0.1:") &&
+                (std::get<0>(events[1]) == TestServerObserver::eConnectionClosed) &&
+                (std::get<1>(events[1]) == &server) && (std::get<2>(events[0]) == std::get<2>(events[1])) &&
+                (std::get<0>(events[2]) == TestServerObserver::eConnectionOpened) &&
+                (std::get<1>(events[2]) == &server) && (std::get<2>(events[2]).substr(0, 10) == "127.0.0.1:") &&
+                (std::get<0>(events[3]) == TestServerObserver::eConnectionClosed) &&
+                (std::get<1>(events[3]) == &server) && (std::get<2>(events[2]) == std::get<2>(events[3])))
+            {
+                if ((routes.visitedRoutes().size() == 2) && (routes.visitedRoutes()[0] == "/") &&
+                    (routes.visitedRoutes()[1] == "/"))
                 {
                     result = TestResult::ePassed;
                 }
