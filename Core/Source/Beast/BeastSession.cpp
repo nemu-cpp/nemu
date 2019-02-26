@@ -42,7 +42,7 @@ void BeastSession::handleRequest(BeastRequest&& request)
     m_response = BeastResponse(request.request());
 
     const Route& route = m_server.routes().match(request.URI());
-    route.handler()(request, m_response);
+    route.runHandler(request, m_response);
     m_response.response().prepare_payload();
 
     m_server.accessLog().log(m_socket.remote_endpoint().address().to_string(),

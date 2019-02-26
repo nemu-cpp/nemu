@@ -30,6 +30,11 @@ Route::Route(const std::string& path, RequestHandler handler)
 {
 }
 
+Route::Route(const std::string& path, RequestHandler handler, std::shared_ptr<void> handlerData)
+    : m_path(path), m_handler(handler), m_handlerData(handlerData)
+{
+}
+
 const std::string& Route::path() const
 {
     return m_path;
@@ -38,6 +43,16 @@ const std::string& Route::path() const
 Route::RequestHandler Route::handler() const
 {
     return m_handler;
+}
+
+void* Route::handlerData() const
+{
+    return m_handlerData.get();
+}
+
+void Route::runHandler(const WebRequest& request, WebResponse& response) const
+{
+    m_handler(request, response, m_handlerData.get());
 }
 
 }

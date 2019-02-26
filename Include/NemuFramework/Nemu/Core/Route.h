@@ -26,6 +26,7 @@
 #include "WebRequest.h"
 #include "WebResponse.h"
 #include <string>
+#include <memory>
 
 namespace Nemu
 {
@@ -38,8 +39,10 @@ public:
     /**
         @param request The request that was received from the client.
         @param response This argument is used to build the response that will be returned to the client.
+        @param handlerData Additional data required by the handler. This data can be stored in the route at construction
+        time and retrieved with the Route::handlerData() accessor.
     */
-    typedef void (*RequestHandler)(const WebRequest& request, WebResponse& response);
+    typedef void (*RequestHandler)(const WebRequest& request, WebResponse& response, void* handlerData);
 
     /// Constructor.
     /**
@@ -47,15 +50,20 @@ public:
         @param handler The request handler.
     */
     Route(const std::string& path, RequestHandler handler);
+    Route(const std::string& path, RequestHandler handler, std::shared_ptr<void> handlerData);
 
     /// Returns the path.
     const std::string& path() const;
     /// Returns the handler.
     RequestHandler handler() const;
+    void* handlerData() const;
+
+    void runHandler(const WebRequest& request, WebResponse& response) const;
 
 private:
     std::string m_path;
     RequestHandler m_handler;
+    std::shared_ptr<void> m_handlerData;
 };
 
 }
