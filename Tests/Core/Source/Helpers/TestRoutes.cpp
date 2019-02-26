@@ -21,3 +21,22 @@
 */
 
 #include "TestRoutes.h"
+
+TestRoutes::TestRoutes()
+    : m_visitedRoutes(std::make_shared<std::vector<std::string>>())
+{
+    setDefaultRoute(Nemu::Route("",
+        [](const Nemu::WebRequest& request, Nemu::WebResponse& response, void* handlerData)
+        {
+            response.setStatus(404);
+
+            std::vector<std::string>* visitedRoutes = reinterpret_cast<std::vector<std::string>*>(handlerData);
+            visitedRoutes->push_back(request.URI());
+        },
+        m_visitedRoutes));
+}
+
+const std::vector<std::string>& TestRoutes::visitedRoutes() const
+{
+    return *m_visitedRoutes;
+}

@@ -23,4 +23,20 @@
 #ifndef _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTROUTES_H_
 #define _NEMUFRAMEWORK_NEMU_TESTS_HELPERS_TESTROUTES_H_
 
+#include "NemuFramework/Nemu/Core/Routes.h"
+#include <vector>
+#include <string>
+#include <memory>
+
+class TestRoutes : public Nemu::Routes
+{
+public:
+    TestRoutes();
+
+    const std::vector<std::string>& visitedRoutes() const;
+
+private:
+    std::shared_ptr<std::vector<std::string>> m_visitedRoutes;
+};
+
 #endif
