@@ -27,15 +27,23 @@ namespace Nemu
 {
 
 WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error)
-    : Application(observer)
+    : Application(observer), m_routes(std::make_shared<Routes>())
 {
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port(), m_routes, observer, error));
+        configuration.port(), *m_routes, observer, error));
+}
+
+WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Routes> routes,
+    std::shared_ptr<Observer> observer, Ishiko::Error& error)
+    : Application(observer), m_routes(routes)
+{
+    servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
+        configuration.port(), *m_routes, observer, error));
 }
 
 Routes& WebApplication::routes()
 {
-    return m_routes;
+    return *m_routes;
 }
 
 Views& WebApplication::views()

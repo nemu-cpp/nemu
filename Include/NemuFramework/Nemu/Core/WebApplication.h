@@ -45,6 +45,8 @@ public:
         @param error The result of the constructor.
     */
     WebApplication(const Configuration& configuration, std::shared_ptr<Observer> observer, Ishiko::Error& error);
+    WebApplication(const Configuration& configuration, std::shared_ptr<Routes> routes,
+        std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
     /// Returns the routes.
     Routes& routes();
@@ -52,7 +54,7 @@ public:
     Views& views();
 
 private:
-    Routes m_routes;
+    std::shared_ptr<Routes> m_routes;
     Views m_views;
 };
 
