@@ -32,8 +32,9 @@ namespace Nemu
 class BeastResponse : public WebResponse
 {
 public:
-    BeastResponse();
-    BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request);
+    BeastResponse(const Views& views);
+    void initialize(const boost::beast::http::request<boost::beast::http::string_body>& request);
+    void reset();
 
     void setStatus(unsigned int status) override;
     std::string& body() override;

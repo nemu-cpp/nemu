@@ -25,13 +25,20 @@
 namespace Nemu
 {
 
-BeastResponse::BeastResponse()
+BeastResponse::BeastResponse(const Views& views)
+    : WebResponse(views)
 {
 }
 
-BeastResponse::BeastResponse(const boost::beast::http::request<boost::beast::http::string_body>& request)
+void BeastResponse::initialize(const boost::beast::http::request<boost::beast::http::string_body>& request)
 {
+    m_response = boost::beast::http::response<boost::beast::http::string_body>();
     m_response.keep_alive(request.keep_alive());
+}
+
+void BeastResponse::reset()
+{
+    m_response = boost::beast::http::response<boost::beast::http::string_body>();
 }
 
 void BeastResponse::setStatus(unsigned int status)
