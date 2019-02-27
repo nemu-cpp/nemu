@@ -26,6 +26,7 @@
 #include "Beast/BeastServer.h"
 #include "Ishiko/HTTP/HTTPClient.h"
 #include <boost/filesystem/operations.hpp>
+#include <thread>
 
 using namespace Ishiko::TestFramework;
 
@@ -42,6 +43,8 @@ void BeastServerTests::AddTests(TestSequence& testSequence)
     new FileComparisonTest("Request test 1", RequestTest1, *beastServerTestSequence);
     new FileComparisonTest("Request test 2", RequestTest2, *beastServerTestSequence);
     new HeapAllocationErrorsTest("Request test 3", RequestTest3, *beastServerTestSequence);
+    new HeapAllocationErrorsTest("Request test 4", RequestTest4, *beastServerTestSequence);
+    new HeapAllocationErrorsTest("Request test 5", RequestTest5, *beastServerTestSequence);
 }
 
 TestResult::EOutcome BeastServerTests::CreationTest1()
@@ -145,9 +148,8 @@ TestResult::EOutcome BeastServerTests::RequestTest1(FileComparisonTest& test)
     {
         server.start();
 
-        Ishiko::HTTP::HTTPClient client;
         std::ofstream responseFile(outputPath.string());
-        client.get("127.0.0.1", 8088, "/", responseFile, error);
+        Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", responseFile, error);
         responseFile.close();
 
         server.stop();
@@ -193,13 +195,8 @@ TestResult::EOutcome BeastServerTests::RequestTest2(FileComparisonTest& test)
         server.start();
 
         std::ofstream responseFile(outputPath.string());
-
-        Ishiko::HTTP::HTTPClient client1;
-        client1.get("127.0.0.1", 8088, "/", responseFile, error);
-
-        Ishiko::HTTP::HTTPClient client2;
-        client2.get("127.0.0.1", 8088, "/", responseFile, error);
-
+        Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", responseFile, error);
+        Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", responseFile, error);
         responseFile.close();
 
         server.stop();
@@ -245,11 +242,112 @@ TestResult::EOutcome BeastServerTests::RequestTest3()
     {
         server.start();
 
-        Ishiko::HTTP::HTTPClient client;
         for (size_t i = 0; i < 100; ++i)
         {
             std::stringstream response;
-            client.get("127.0.0.1", 8088, "/", response, error);
+            Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", response, error);
+        }
+
+        server.stop();
+        server.join();
+
+        if (!error)
+        {
+            const std::vector<std::tuple<TestServerObserver::EEventType, const Nemu::Server*, std::string>>& events =
+                observer->connectionEvents();
+            if (events.size() == 200)
+            {
+                if (routes.visitedRoutes().size() == 100)
+                {
+                    result = TestResult::ePassed;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::RequestTest4()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(1, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+
+        std::vector<std::thread> threads;
+        for (size_t i = 0; i < 4; ++i)
+        {
+            threads.push_back(std::thread(
+                []()
+                {
+                    for (size_t i = 0; i < 25; ++i)
+                    {
+                        Ishiko::Error error(0);
+                        std::stringstream response;
+                        Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", response, error);
+                    }
+                }));
+        }
+        for (std::thread& t : threads)
+        {
+            t.join();
+        }
+
+        server.stop();
+        server.join();
+
+        if (!error)
+        {
+            const std::vector<std::tuple<TestServerObserver::EEventType, const Nemu::Server*, std::string>>& events =
+                observer->connectionEvents();
+            if (events.size() == 200)
+            {
+                if (routes.visitedRoutes().size() == 100)
+                {
+                    result = TestResult::ePassed;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::RequestTest5()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(16, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+
+        std::vector<std::thread> threads;
+        for (size_t i = 0; i < 4; ++i)
+        {
+            threads.push_back(std::thread(
+                []()
+            {
+                for (size_t i = 0; i < 25; ++i)
+                {
+                    Ishiko::Error error(0);
+                    std::stringstream response;
+                    Ishiko::HTTP::HTTPClient::get("127.0.0.1", 8088, "/", response, error);
+                }
+            }));
+        }
+        for (std::thread& t : threads)
+        {
+            t.join();
         }
 
         server.stop();

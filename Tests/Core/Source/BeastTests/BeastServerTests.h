@@ -38,6 +38,8 @@ private:
     static Ishiko::TestFramework::TestResult::EOutcome RequestTest1(Ishiko::TestFramework::FileComparisonTest& test);
     static Ishiko::TestFramework::TestResult::EOutcome RequestTest2(Ishiko::TestFramework::FileComparisonTest& test);
     static Ishiko::TestFramework::TestResult::EOutcome RequestTest3();
+    static Ishiko::TestFramework::TestResult::EOutcome RequestTest4();
+    static Ishiko::TestFramework::TestResult::EOutcome RequestTest5();
 };
 
 #endif
