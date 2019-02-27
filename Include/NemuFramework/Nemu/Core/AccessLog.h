@@ -31,7 +31,7 @@ namespace Nemu
 class AccessLog
 {
 public:
-    virtual void log(const std::string& address, const std::string& method);
+    virtual void log(const std::string& address, const std::string& requestLine, unsigned int statusCode, size_t size);
 };
 
 }
