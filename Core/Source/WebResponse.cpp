@@ -25,8 +25,14 @@
 namespace Nemu
 {
 
+WebResponse::WebResponse(const Views& views)
+    : m_views(views)
+{
+}
+
 void WebResponse::view()
 {
+    body() = m_views.engine().render();
 }
 
 void WebResponse::redirect()

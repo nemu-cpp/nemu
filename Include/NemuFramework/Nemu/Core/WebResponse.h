@@ -23,6 +23,7 @@
 #ifndef _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSE_H_
 #define _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSE_H_
 
+#include "Views.h"
 #include <string>
 
 namespace Nemu
@@ -32,6 +33,8 @@ namespace Nemu
 class WebResponse
 {
 public:
+    WebResponse(const Views& views);
+
     virtual void setStatus(unsigned int status) = 0;
     virtual std::string& body() = 0;
 
@@ -41,6 +44,9 @@ public:
     void redirect();
 
     void state();
+
+private:
+    const Views& m_views;
 };
 
 }
