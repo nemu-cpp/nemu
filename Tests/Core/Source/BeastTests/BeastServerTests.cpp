@@ -36,9 +36,12 @@ void BeastServerTests::AddTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *beastServerTestSequence);
 
     new HeapAllocationErrorsTest("start test 1", StartTest1, *beastServerTestSequence);
+    new HeapAllocationErrorsTest("start test 2", StartTest2, *beastServerTestSequence);
+    new HeapAllocationErrorsTest("start test 3", StartTest3, *beastServerTestSequence);
 
     new FileComparisonTest("Request test 1", RequestTest1, *beastServerTestSequence);
     new FileComparisonTest("Request test 2", RequestTest2, *beastServerTestSequence);
+    new HeapAllocationErrorsTest("Request test 3", RequestTest3, *beastServerTestSequence);
 }
 
 TestResult::EOutcome BeastServerTests::CreationTest1()
@@ -65,6 +68,52 @@ TestResult::EOutcome BeastServerTests::StartTest1()
     std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
     Ishiko::Error error(0);
     Nemu::BeastServer server(1, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+        server.stop();
+        server.join();
+
+        if ((routes.visitedRoutes().size() == 0) && (observer->connectionEvents().size() == 0))
+        {
+            result = TestResult::ePassed;
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::StartTest2()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(16, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+        server.stop();
+        server.join();
+
+        if ((routes.visitedRoutes().size() == 0) && (observer->connectionEvents().size() == 0))
+        {
+            result = TestResult::ePassed;
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::StartTest3()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(128, "127.0.0.1", 8088, routes, observer, error);
     if (!error)
     {
         server.start();
@@ -180,6 +229,45 @@ TestResult::EOutcome BeastServerTests::RequestTest2(FileComparisonTest& test)
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome BeastServerTests::RequestTest3()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    TestRoutes routes;
+    std::shared_ptr<TestServerObserver> observer = std::make_shared<TestServerObserver>();
+    Ishiko::Error error(0);
+    Nemu::BeastServer server(1, "127.0.0.1", 8088, routes, observer, error);
+    if (!error)
+    {
+        server.start();
+
+        Ishiko::HTTP::HTTPClient client;
+        for (size_t i = 0; i < 100; ++i)
+        {
+            std::stringstream response;
+            client.get("127.0.0.1", 8088, "/", response, error);
+        }
+
+        server.stop();
+        server.join();
+
+        if (!error)
+        {
+            const std::vector<std::tuple<TestServerObserver::EEventType, const Nemu::Server*, std::string>>& events =
+                observer->connectionEvents();
+            if (events.size() == 200)
+            {
+                if (routes.visitedRoutes().size() == 100)
+                {
+                    result = TestResult::ePassed;
+                }
+            }
+        }
+    }
 
     return result;
 }
