@@ -1,0 +1,19 @@
+nemupath = envvar("NEMU");
+import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/mstch.bkl;
+
+template NemuMustache : NemuCore, mstch
+{
+    includedirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(NEMUFRAMEWORK_NEMU_ROOT)/Lib/$(arch);
+    }
+}

@@ -34,6 +34,8 @@ namespace Nemu
 */
 class TemplatingEngine
 {
+public:
+    virtual void render() = 0;
 };
 
 }

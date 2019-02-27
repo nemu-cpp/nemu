@@ -41,6 +41,7 @@ endif
 #      G3LOG_ROOT               Path to the G3log installation
 #      BOOST_ROOT               Path to the Boost installation
 #      NEMUFRAMEWORK_NEMU_ROOT  Path to the Nemu installation
+#      MSTCH_ROOT               Path to the mstch installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -69,16 +70,18 @@ G3LOG_ROOT ?= $(G3LOG)
 BOOST_ROOT ?= $(BOOST)
 # Path to the Nemu installation
 NEMUFRAMEWORK_NEMU_ROOT ?= $(NEMU)/Nemu
+# Path to the mstch installation
+MSTCH_ROOT ?= $(MSTCH)
 
 # ------------
 
 all: $(_builddir)NemuMustacheTemplatesServer
 
 $(_builddir)NemuMustacheTemplatesServer: $(_builddir)NemuMustacheTemplatesServer_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuMustacheTemplatesServer_main.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/stage/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -lg3logger -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuMustacheTemplatesServer_main.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(MSTCH_ROOT)/src/$(config) -lg3logger -lmstch -pthread
 
 $(_builddir)NemuMustacheTemplatesServer_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT) -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_ERRORS_ROOT)/Include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(BOOST_ROOT)/include -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include -I$(MSTCH_ROOT)/include -I$(NEMUFRAMEWORK_NEMU_ROOT)/Include ../../Source/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
