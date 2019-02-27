@@ -34,6 +34,7 @@ void BeastResponseTests::AddTests(TestSequence& testSequence)
 
 TestResult::EOutcome BeastResponseTests::CreationTest1()
 {
-    Nemu::BeastResponse response;
+    Nemu::Views views;
+    Nemu::BeastResponse response(views);
     return TestResult::ePassed;
 }
