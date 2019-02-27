@@ -25,6 +25,7 @@
 
 #include "Server.h"
 #include "Routes.h"
+#include "Views.h"
 #include "BeastListener.h"
 #include "AccessLog.h"
 #include "Ishiko/Errors/Error.h"
@@ -38,8 +39,8 @@ namespace Nemu
 class BeastServer : public Server
 {
 public:
-    BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port,
-        Routes& routes, std::shared_ptr<Observer> observer, Ishiko::Error& error);
+    BeastServer(size_t numberOfThreads, const std::string& address, unsigned int port, Routes& routes, Views& views,
+        std::shared_ptr<Observer> observer, Ishiko::Error& error);
 
     void start() override;
     void stop() override;
@@ -48,10 +49,12 @@ public:
     bool isRunning() const override;
 
     const Routes& routes() const;
+    const Views& views() const;
     AccessLog& accessLog();
 
 private:
     Routes& m_routes;
+    Views& m_views;
     boost::asio::io_context m_ioContext;
     BeastListener m_listener;
     std::vector<std::thread> m_threads;

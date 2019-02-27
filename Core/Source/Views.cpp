@@ -34,4 +34,9 @@ Views::Views(std::shared_ptr<TemplatingEngine> engine)
 {
 }
 
+const TemplatingEngine& Views::engine() const
+{
+    return *m_engine;
+}
+
 }

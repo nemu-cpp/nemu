@@ -30,7 +30,7 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
     : Application(observer), m_routes(std::make_shared<Routes>())
 {
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port(), *m_routes, observer, error));
+        configuration.port(), *m_routes, m_views, observer, error));
 }
 
 WebApplication::WebApplication(const Configuration& configuration, std::shared_ptr<Routes> routes,
@@ -38,7 +38,7 @@ WebApplication::WebApplication(const Configuration& configuration, std::shared_p
     : Application(observer), m_routes(routes)
 {
     servers().append(std::make_shared<BeastServer>(configuration.numberOfThreads(), configuration.address(),
-        configuration.port(), *m_routes, observer, error));
+        configuration.port(), *m_routes, m_views, observer, error));
 }
 
 Routes& WebApplication::routes()

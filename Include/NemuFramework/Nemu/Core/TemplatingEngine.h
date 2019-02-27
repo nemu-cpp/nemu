@@ -23,6 +23,8 @@
 #ifndef _NEMUFRAMEWORK_NEMU_CORE_TEMPLATINGENGINE_H_
 #define _NEMUFRAMEWORK_NEMU_CORE_TEMPLATINGENGINE_H_
 
+#include <string>
+
 namespace Nemu
 {
 
@@ -35,7 +37,7 @@ namespace Nemu
 class TemplatingEngine
 {
 public:
-    virtual void render() = 0;
+    virtual std::string render() const = 0;
 };
 
 }

@@ -36,6 +36,8 @@ public:
     Views();
     Views(std::shared_ptr<TemplatingEngine> engine);
 
+    const TemplatingEngine& engine() const;
+
 private:
     std::shared_ptr<TemplatingEngine> m_engine;
 };
