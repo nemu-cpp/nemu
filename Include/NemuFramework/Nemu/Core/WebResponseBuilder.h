@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSE_H_
-#define _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSE_H_
+#ifndef _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSEBUILDER_H_
+#define _NEMUFRAMEWORK_NEMU_CORE_WEBRESPONSEBUILDER_H_
 
 #include "Views.h"
 #include <string>
@@ -30,10 +30,10 @@ namespace Nemu
 {
 
 /// An interface to create the response that will be sent back to the client.
-class WebResponse
+class WebResponseBuilder
 {
 public:
-    WebResponse(const Views& views);
+    WebResponseBuilder(const Views& views);
 
     virtual void setStatus(unsigned int status) = 0;
     virtual std::string& body() = 0;

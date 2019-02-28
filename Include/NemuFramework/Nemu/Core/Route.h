@@ -24,7 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_CORE_ROUTE_H_
 
 #include "WebRequest.h"
-#include "WebResponse.h"
+#include "WebResponseBuilder.h"
 #include <string>
 #include <memory>
 
@@ -42,7 +42,7 @@ public:
         @param handlerData Additional data required by the handler. This data can be stored in the route at construction
         time and retrieved with the Route::handlerData() accessor.
     */
-    typedef void (*RequestHandler)(const WebRequest& request, WebResponse& response, void* handlerData);
+    typedef void (*RequestHandler)(const WebRequest& request, WebResponseBuilder& response, void* handlerData);
 
     /// Constructor.
     /**
@@ -58,7 +58,7 @@ public:
     RequestHandler handler() const;
     void* handlerData() const;
 
-    void runHandler(const WebRequest& request, WebResponse& response) const;
+    void runHandler(const WebRequest& request, WebResponseBuilder& response) const;
 
 private:
     std::string m_path;

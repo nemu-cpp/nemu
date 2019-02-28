@@ -50,7 +50,7 @@ void* Route::handlerData() const
     return m_handlerData.get();
 }
 
-void Route::runHandler(const WebRequest& request, WebResponse& response) const
+void Route::runHandler(const WebRequest& request, WebResponseBuilder& response) const
 {
     m_handler(request, response, m_handlerData.get());
 }

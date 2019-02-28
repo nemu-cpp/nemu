@@ -20,38 +20,38 @@
     IN THE SOFTWARE.
 */
 
-#include "BeastResponse.h"
+#include "BeastResponseBuilder.h"
 
 namespace Nemu
 {
 
-BeastResponse::BeastResponse(const Views& views)
-    : WebResponse(views)
+BeastResponseBuilder::BeastResponseBuilder(const Views& views)
+    : WebResponseBuilder(views)
 {
 }
 
-void BeastResponse::initialize(const boost::beast::http::request<boost::beast::http::string_body>& request)
+void BeastResponseBuilder::initialize(const boost::beast::http::request<boost::beast::http::string_body>& request)
 {
     m_response = boost::beast::http::response<boost::beast::http::string_body>();
     m_response.keep_alive(request.keep_alive());
 }
 
-void BeastResponse::reset()
+void BeastResponseBuilder::reset()
 {
     m_response = boost::beast::http::response<boost::beast::http::string_body>();
 }
 
-void BeastResponse::setStatus(unsigned int status)
+void BeastResponseBuilder::setStatus(unsigned int status)
 {
     m_response.result(status);
 }
 
-std::string& BeastResponse::body()
+std::string& BeastResponseBuilder::body()
 {
     return m_response.body();
 }
 
-boost::beast::http::response<boost::beast::http::string_body>& BeastResponse::response()
+boost::beast::http::response<boost::beast::http::string_body>& BeastResponseBuilder::response()
 {
     return m_response;
 }

@@ -24,7 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_BEAST_BEASTSESSION_H_
 
 #include "BeastRequest.h"
-#include "BeastResponse.h"
+#include "BeastResponseBuilder.h"
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -56,7 +56,7 @@ private:
     boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
     boost::beast::flat_buffer m_buffer;
     BeastRequest m_request;
-    BeastResponse m_response;
+    BeastResponseBuilder m_response;
 };
 
 }

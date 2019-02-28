@@ -20,19 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_BEAST_BEASTRESPONSE_H_
-#define _NEMUFRAMEWORK_NEMU_BEAST_BEASTRESPONSE_H_
+#ifndef _NEMUFRAMEWORK_NEMU_BEAST_BEASTRESPONSEBUILDER_H_
+#define _NEMUFRAMEWORK_NEMU_BEAST_BEASTRESPONSEBUILDER_H_
 
-#include "WebResponse.h"
+#include "WebResponseBuilder.h"
 #include <boost/beast/http.hpp>
 
 namespace Nemu
 {
 
-class BeastResponse : public WebResponse
+class BeastResponseBuilder : public WebResponseBuilder
 {
 public:
-    BeastResponse(const Views& views);
+    BeastResponseBuilder(const Views& views);
     void initialize(const boost::beast::http::request<boost::beast::http::string_body>& request);
     void reset();
 

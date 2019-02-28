@@ -20,26 +20,26 @@
     IN THE SOFTWARE.
 */
 
-#include "WebResponse.h"
+#include "WebResponseBuilder.h"
 
 namespace Nemu
 {
 
-WebResponse::WebResponse(const Views& views)
+WebResponseBuilder::WebResponseBuilder(const Views& views)
     : m_views(views)
 {
 }
 
-void WebResponse::view()
+void WebResponseBuilder::view()
 {
     body() = m_views.engine().render();
 }
 
-void WebResponse::redirect()
+void WebResponseBuilder::redirect()
 {
 }
 
-void WebResponse::state()
+void WebResponseBuilder::state()
 {
 }
 
