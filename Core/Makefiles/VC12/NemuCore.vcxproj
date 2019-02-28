@@ -160,7 +160,7 @@
     <ClCompile Include="..\..\Source\Route.cpp" />
     <ClCompile Include="..\..\Source\Routes.cpp" />
     <ClCompile Include="..\..\Source\WebRequest.cpp" />
-    <ClCompile Include="..\..\Source\WebResponse.cpp" />
+    <ClCompile Include="..\..\Source\WebResponseBuilder.cpp" />
     <ClCompile Include="..\..\Source\AccessLog.cpp" />
     <ClCompile Include="..\..\Source\Views.cpp" />
     <ClCompile Include="..\..\Source\TemplatingEngine.cpp" />
@@ -168,7 +168,7 @@
     <ClCompile Include="..\..\Source\Beast\BeastListener.cpp" />
     <ClCompile Include="..\..\Source\Beast\BeastSession.cpp" />
     <ClCompile Include="..\..\Source\Beast\BeastRequest.cpp" />
-    <ClCompile Include="..\..\Source\Beast\BeastResponse.cpp" />
+    <ClCompile Include="..\..\Source\Beast\BeastResponseBuilder.cpp" />
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +182,7 @@
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Route.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Routes.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebRequest.h" />
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponse.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponseBuilder.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\AccessLog.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Views.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\TemplatingEngine.h" />
@@ -191,7 +191,7 @@
     <ClInclude Include="..\..\Source\Beast\BeastListener.h" />
     <ClInclude Include="..\..\Source\Beast\BeastSession.h" />
     <ClInclude Include="..\..\Source\Beast\BeastRequest.h" />
-    <ClInclude Include="..\..\Source\Beast\BeastResponse.h" />
+    <ClInclude Include="..\..\Source\Beast\BeastResponseBuilder.h" />
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

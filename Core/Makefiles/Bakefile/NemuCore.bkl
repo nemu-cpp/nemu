@@ -44,7 +44,7 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../../Include/NemuFramework/Nemu/Core/Route.h
         ../../../Include/NemuFramework/Nemu/Core/Routes.h
         ../../../Include/NemuFramework/Nemu/Core/WebRequest.h
-        ../../../Include/NemuFramework/Nemu/Core/WebResponse.h
+        ../../../Include/NemuFramework/Nemu/Core/WebResponseBuilder.h
         ../../../Include/NemuFramework/Nemu/Core/AccessLog.h
         ../../../Include/NemuFramework/Nemu/Core/Views.h
         ../../../Include/NemuFramework/Nemu/Core/TemplatingEngine.h
@@ -54,7 +54,7 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../Source/Beast/BeastListener.h
         ../../Source/Beast/BeastSession.h
         ../../Source/Beast/BeastRequest.h
-        ../../Source/Beast/BeastResponse.h
+        ../../Source/Beast/BeastResponseBuilder.h
         ../../Source/ControlHandlerRegistration.h
     }
 
@@ -70,7 +70,7 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../Source/Route.cpp
         ../../Source/Routes.cpp
         ../../Source/WebRequest.cpp
-        ../../Source/WebResponse.cpp
+        ../../Source/WebResponseBuilder.cpp
         ../../Source/AccessLog.cpp
         ../../Source/Views.cpp
         ../../Source/TemplatingEngine.cpp
@@ -79,7 +79,7 @@ library NemuCore : IshikoErrors, G3log, Boost
         ../../Source/Beast/BeastListener.cpp
         ../../Source/Beast/BeastSession.cpp
         ../../Source/Beast/BeastRequest.cpp
-        ../../Source/Beast/BeastResponse.cpp
+        ../../Source/Beast/BeastResponseBuilder.cpp
         ../../Source/ControlHandlerRegistration.cpp
     }
 }

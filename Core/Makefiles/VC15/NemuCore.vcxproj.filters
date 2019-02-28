@@ -47,7 +47,7 @@
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponse.h">
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponseBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\AccessLog.h">
@@ -74,7 +74,7 @@
     <ClInclude Include="..\..\Source\Beast\BeastRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Beast\BeastResponse.h">
+    <ClInclude Include="..\..\Source\Beast\BeastResponseBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ControlHandlerRegistration.h">
@@ -112,7 +112,7 @@
     <ClCompile Include="..\..\Source\WebRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\WebResponse.cpp">
+    <ClCompile Include="..\..\Source\WebResponseBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AccessLog.cpp">
@@ -136,7 +136,7 @@
     <ClCompile Include="..\..\Source\Beast\BeastRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Beast\BeastResponse.cpp">
+    <ClCompile Include="..\..\Source\Beast\BeastResponseBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ControlHandlerRegistration.cpp">
