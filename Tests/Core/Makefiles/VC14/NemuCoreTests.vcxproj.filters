@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\Source\BeastTests\BeastTestSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h">
+    <ClInclude Include="..\..\Source\BeastTests\BeastResponseBuilderTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\BeastTests\BeastServerTests.h">
@@ -58,7 +58,7 @@
     <ClCompile Include="..\..\Source\BeastTests\BeastTestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp">
+    <ClCompile Include="..\..\Source\BeastTests\BeastResponseBuilderTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BeastTests\BeastServerTests.cpp">

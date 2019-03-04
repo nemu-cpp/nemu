@@ -20,12 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTRESPONSETESTS_H_
-#define _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTRESPONSETESTS_H_
+#ifndef _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTRESPONSEBUILDERTESTS_H_
+#define _NEMUFRAMEWORK_NEMU_TESTS_BEASTTESTS_BEASTRESPONSEBUILDERTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class BeastResponseTests
+class BeastResponseBuilderTests
 {
 public:
     static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);

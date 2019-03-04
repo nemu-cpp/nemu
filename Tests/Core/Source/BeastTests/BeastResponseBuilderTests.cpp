@@ -20,19 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "BeastResponseTests.h"
+#include "BeastResponseBuilderTests.h"
 #include "Beast/BeastResponseBuilder.h"
 
 using namespace Ishiko::TestFramework;
 
-void BeastResponseTests::AddTests(TestSequence& parentTestSequence)
+void BeastResponseBuilderTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BeastResponse tests");
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BeastResponseBuilder tests");
 
     testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome BeastResponseTests::CreationTest1()
+TestResult::EOutcome BeastResponseBuilderTests::CreationTest1()
 {
     Nemu::Views views;
     Nemu::BeastResponseBuilder response(views);

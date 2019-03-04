@@ -21,7 +21,7 @@
 */
 
 #include "BeastTestSequence.h"
-#include "BeastResponseTests.h"
+#include "BeastResponseBuilderTests.h"
 #include "BeastServerTests.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -33,6 +33,6 @@ void BeastTestSequence::AddTests(TestHarness& theTestHarness)
 
     TestSequence& beastTestSequence = theTestHarness.appendTestSequence("boost::beast implemenation tests");
 
-    BeastResponseTests::AddTests(beastTestSequence);
+    BeastResponseBuilderTests::AddTests(beastTestSequence);
     BeastServerTests::AddTests(beastTestSequence);
 }

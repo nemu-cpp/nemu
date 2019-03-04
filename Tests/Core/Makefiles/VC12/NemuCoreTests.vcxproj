@@ -161,7 +161,7 @@
     <ClCompile Include="..\..\Source\RouteTests.cpp" />
     <ClCompile Include="..\..\Source\RoutesTests.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastTestSequence.cpp" />
-    <ClCompile Include="..\..\Source\BeastTests\BeastResponseTests.cpp" />
+    <ClCompile Include="..\..\Source\BeastTests\BeastResponseBuilderTests.cpp" />
     <ClCompile Include="..\..\Source\BeastTests\BeastServerTests.cpp" />
     <ClCompile Include="..\..\Source\Helpers\TestServerObserver.cpp" />
     <ClCompile Include="..\..\Source\Helpers\TestRoutes.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="..\..\Source\RouteTests.h" />
     <ClInclude Include="..\..\Source\RoutesTests.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastTestSequence.h" />
-    <ClInclude Include="..\..\Source\BeastTests\BeastResponseTests.h" />
+    <ClInclude Include="..\..\Source\BeastTests\BeastResponseBuilderTests.h" />
     <ClInclude Include="..\..\Source\BeastTests\BeastServerTests.h" />
     <ClInclude Include="..\..\Source\Helpers\TestServerObserver.h" />
     <ClInclude Include="..\..\Source\Helpers\TestRoutes.h" />
