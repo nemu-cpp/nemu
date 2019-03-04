@@ -8,6 +8,7 @@
 .vs
 Debug/
 Release/
+Bin/
 Lib/
 Documentation/Doxygen/html
 Documentation/Doxygen/latex

@@ -75,9 +75,9 @@ MSTCH_ROOT ?= $(MSTCH)
 
 # ------------
 
-all: $(_builddir)NemuMustacheTemplatesServer
+all: ../../Bin/NemuMustacheTemplatesServer
 
-$(_builddir)NemuMustacheTemplatesServer: $(_builddir)NemuMustacheTemplatesServer_main.o
+../../Bin/NemuMustacheTemplatesServer: $(_builddir)NemuMustacheTemplatesServer_main.o
 	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuMustacheTemplatesServer_main.o -L$(ISHIKO_ERRORS_ROOT)/Lib -L$(G3LOG_ROOT)/build/Debug -L$(BOOST_ROOT)/lib -L$(NEMUFRAMEWORK_NEMU_ROOT)/Lib -L$(MSTCH_ROOT)/src/$(config) -lg3logger -lmstch -pthread
 
 $(_builddir)NemuMustacheTemplatesServer_main.o: ../../Source/main.cpp
@@ -86,7 +86,7 @@ $(_builddir)NemuMustacheTemplatesServer_main.o: ../../Source/main.cpp
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f $(_builddir)NemuMustacheTemplatesServer
+	rm -f ../../Bin/NemuMustacheTemplatesServer
 
 .PHONY: all clean
 

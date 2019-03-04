@@ -13,6 +13,8 @@ program NemuMustacheTemplatesServer : NemuMustache, NemuCore
 {
     archs = x86 x86_64;
 
+    outputdir = ../../Bin;
+
     sources
     {
         ../../Source/main.cpp
