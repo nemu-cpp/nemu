@@ -21,20 +21,20 @@
 */
 
 #include "BeastResponseTests.h"
-#include "Beast/BeastResponse.h"
+#include "Beast/BeastResponseBuilder.h"
 
 using namespace Ishiko::TestFramework;
 
-void BeastResponseTests::AddTests(TestSequence& testSequence)
+void BeastResponseTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* beastResponseTestSequence = new TestSequence("BeastResponse tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BeastResponse tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *beastResponseTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
 TestResult::EOutcome BeastResponseTests::CreationTest1()
 {
     Nemu::Views views;
-    Nemu::BeastResponse response(views);
+    Nemu::BeastResponseBuilder response(views);
     return TestResult::ePassed;
 }

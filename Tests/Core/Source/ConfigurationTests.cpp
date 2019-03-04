@@ -27,11 +27,11 @@ using namespace Ishiko::TestFramework;
 
 void ConfigurationTests::AddTests(TestHarness& theTestHarness)
 {
-    TestSequence& configurationTestSequence = theTestHarness.appendTestSequence("Configuration tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("Configuration tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, configurationTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, configurationTestSequence);
-    new HeapAllocationErrorsTest("Creation test 3", CreationTest3, configurationTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
 }
 
 TestResult::EOutcome ConfigurationTests::CreationTest1()

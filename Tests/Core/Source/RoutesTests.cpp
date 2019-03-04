@@ -27,11 +27,10 @@ using namespace Ishiko::TestFramework;
 
 void RoutesTests::AddTests(TestHarness& theTestHarness)
 {
-    TestSequence& routesTestSequence = theTestHarness.appendTestSequence("Routes tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("Routes tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, routesTestSequence);
-
-    new HeapAllocationErrorsTest("match test 1", MatchTest1, routesTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("match test 1", MatchTest1);
 }
 
 TestResult::EOutcome RoutesTests::CreationTest1()

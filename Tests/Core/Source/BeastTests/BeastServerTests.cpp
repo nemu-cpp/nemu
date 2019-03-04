@@ -30,21 +30,19 @@
 
 using namespace Ishiko::TestFramework;
 
-void BeastServerTests::AddTests(TestSequence& testSequence)
+void BeastServerTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* beastServerTestSequence = new TestSequence("BeastServer tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BeastServer tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *beastServerTestSequence);
-
-    new HeapAllocationErrorsTest("start test 1", StartTest1, *beastServerTestSequence);
-    new HeapAllocationErrorsTest("start test 2", StartTest2, *beastServerTestSequence);
-    new HeapAllocationErrorsTest("start test 3", StartTest3, *beastServerTestSequence);
-
-    new FileComparisonTest("Request test 1", RequestTest1, *beastServerTestSequence);
-    new FileComparisonTest("Request test 2", RequestTest2, *beastServerTestSequence);
-    new HeapAllocationErrorsTest("Request test 3", RequestTest3, *beastServerTestSequence);
-    new HeapAllocationErrorsTest("Request test 4", RequestTest4, *beastServerTestSequence);
-    new HeapAllocationErrorsTest("Request test 5", RequestTest5, *beastServerTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
+    testSequence.append<HeapAllocationErrorsTest>("start test 2", StartTest2);
+    testSequence.append<HeapAllocationErrorsTest>("start test 3", StartTest3);
+    testSequence.append<FileComparisonTest>("Request test 1", RequestTest1);
+    testSequence.append<FileComparisonTest>("Request test 2", RequestTest2);
+    testSequence.append<HeapAllocationErrorsTest>("Request test 3", RequestTest3);
+    testSequence.append<HeapAllocationErrorsTest>("Request test 4", RequestTest4);
+    testSequence.append<HeapAllocationErrorsTest>("Request test 5", RequestTest5);
 }
 
 TestResult::EOutcome BeastServerTests::CreationTest1()

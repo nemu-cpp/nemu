@@ -27,15 +27,15 @@ using namespace Ishiko::TestFramework;
 
 void RouteTests::AddTests(TestHarness& theTestHarness)
 {
-    TestSequence& routeTestSequence = theTestHarness.appendTestSequence("Route tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("Route tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, routeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
 TestResult::EOutcome RouteTests::CreationTest1()
 {
     Nemu::Route route("/",
-        [](const Nemu::WebRequest& request, Nemu::WebResponse& response, void* handlerData)
+        [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData)
         {
         });
     return TestResult::ePassed;

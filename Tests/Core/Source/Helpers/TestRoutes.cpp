@@ -26,7 +26,7 @@ TestRoutes::TestRoutes()
     : m_visitedRoutes(std::make_shared<std::vector<std::string>>())
 {
     setDefaultRoute(Nemu::Route("",
-        [](const Nemu::WebRequest& request, Nemu::WebResponse& response, void* handlerData)
+        [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData)
         {
             response.setStatus(404);
 
