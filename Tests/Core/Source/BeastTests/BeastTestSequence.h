@@ -25,10 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class BeastTestSequence
+class BeastTestSequence : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    BeastTestSequence(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 };
 
 #endif

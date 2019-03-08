@@ -23,32 +23,26 @@
 #include "RoutesTests.h"
 #include "NemuFramework/Nemu/Core/Routes.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void RoutesTests::AddTests(TestHarness& theTestHarness)
+RoutesTests::RoutesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Routes tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("Routes tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("match test 1", MatchTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("match test 1", MatchTest1);
 }
 
-TestResult::EOutcome RoutesTests::CreationTest1()
+void RoutesTests::CreationTest1(Test& test)
 {
     Nemu::Routes routes;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome RoutesTests::MatchTest1()
+void RoutesTests::MatchTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     Nemu::Routes routes;
     const Nemu::Route& matchedRoute = routes.match("/");
-    if (&matchedRoute == &routes.defaultRoute())
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(&matchedRoute == &routes.defaultRoute());
+    ISHTF_PASS();
 }

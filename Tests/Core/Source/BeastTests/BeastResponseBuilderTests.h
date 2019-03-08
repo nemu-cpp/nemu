@@ -25,13 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class BeastResponseBuilderTests
+class BeastResponseBuilderTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    BeastResponseBuilderTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

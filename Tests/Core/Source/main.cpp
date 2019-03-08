@@ -27,18 +27,21 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
+using namespace Ishiko::Tests;
+
 int main(int argc, char* argv[])
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("NemuCore");
+    TestHarness theTestHarness("NemuCore");
 
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
     boost::filesystem::create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
-    ConfigurationTests::AddTests(theTestHarness);
-    RouteTests::AddTests(theTestHarness);
-    RoutesTests::AddTests(theTestHarness);
-    BeastTestSequence::AddTests(theTestHarness);
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<ConfigurationTests>();
+    theTests.append<RouteTests>();
+    theTests.append<RoutesTests>();
+    theTests.append<BeastTestSequence>();
 
     return theTestHarness.run();
 }

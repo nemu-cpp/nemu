@@ -25,14 +25,13 @@
 #include "BeastServerTests.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void BeastTestSequence::AddTests(TestHarness& theTestHarness)
+BeastTestSequence::BeastTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "boost::beast implemenation tests", environment)
 {
     boost::filesystem::create_directories("../../TestOutput/BeastTests");
 
-    TestSequence& beastTestSequence = theTestHarness.appendTestSequence("boost::beast implemenation tests");
-
-    BeastResponseBuilderTests::AddTests(beastTestSequence);
-    BeastServerTests::AddTests(beastTestSequence);
+    append<BeastResponseBuilderTests>();
+    append<BeastServerTests>();
 }

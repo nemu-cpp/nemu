@@ -23,18 +23,17 @@
 #include "BeastResponseBuilderTests.h"
 #include "Beast/BeastResponseBuilder.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void BeastResponseBuilderTests::AddTests(TestSequence& parentTestSequence)
+BeastResponseBuilderTests::BeastResponseBuilderTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "BeastResponseBuilder tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BeastResponseBuilder tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome BeastResponseBuilderTests::CreationTest1()
+void BeastResponseBuilderTests::CreationTest1(Test& test)
 {
     Nemu::Views views;
     Nemu::BeastResponseBuilder response(views);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

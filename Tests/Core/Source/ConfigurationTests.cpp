@@ -46,28 +46,20 @@ void ConfigurationTests::CreationTest1(Test& test)
 
 void ConfigurationTests::CreationTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     int argc = 1;
     char* argv[] = { "NemuTests" };
     Nemu::Configuration configuration(argc, argv, "127.0.0.1", 8080);
-    if ((configuration.address() == "127.0.0.1") && (configuration.port() == 8080))
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(configuration.address() == "127.0.0.1");
+    ISHTF_FAIL_UNLESS(configuration.port() == 8080);
+    ISHTF_PASS();
 }
 
 void ConfigurationTests::CreationTest3(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     Nemu::Configuration configuration("0.0.0.0", 80);
-    if ((configuration.address() == "0.0.0.0") && (configuration.port() == 80))
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(configuration.address() == "0.0.0.0");
+    ISHTF_FAIL_UNLESS(configuration.port() == 80);
+    ISHTF_PASS();
 }
