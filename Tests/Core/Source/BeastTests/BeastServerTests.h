@@ -25,21 +25,21 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class BeastServerTests
+class BeastServerTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    BeastServerTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest3();
-    static Ishiko::TestFramework::TestResult::EOutcome RequestTest1(Ishiko::TestFramework::FileComparisonTest& test);
-    static Ishiko::TestFramework::TestResult::EOutcome RequestTest2(Ishiko::TestFramework::FileComparisonTest& test);
-    static Ishiko::TestFramework::TestResult::EOutcome RequestTest3();
-    static Ishiko::TestFramework::TestResult::EOutcome RequestTest4();
-    static Ishiko::TestFramework::TestResult::EOutcome RequestTest5();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void StartTest1(Ishiko::Tests::Test& test);
+    static void StartTest2(Ishiko::Tests::Test& test);
+    static void StartTest3(Ishiko::Tests::Test& test);
+    static void RequestTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void RequestTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void RequestTest3(Ishiko::Tests::Test& test);
+    static void RequestTest4(Ishiko::Tests::Test& test);
+    static void RequestTest5(Ishiko::Tests::Test& test);
 };
 
 #endif

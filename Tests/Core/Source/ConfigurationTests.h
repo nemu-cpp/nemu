@@ -25,15 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class ConfigurationTests
+class ConfigurationTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    ConfigurationTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest3();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void CreationTest3(Ishiko::Tests::Test& test);
 };
 
 #endif

@@ -25,14 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class RoutesTests
+class RoutesTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    RoutesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome MatchTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void MatchTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

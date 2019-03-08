@@ -23,33 +23,28 @@
 #include "ConfigurationTests.h"
 #include "NemuFramework/Nemu/Core/Configuration.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void ConfigurationTests::AddTests(TestHarness& theTestHarness)
+ConfigurationTests::ConfigurationTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Configuration tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("Configuration tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
 }
 
-TestResult::EOutcome ConfigurationTests::CreationTest1()
+void ConfigurationTests::CreationTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     int argc = 1;
     char* argv[] = { "NemuTests" };
     Nemu::Configuration configuration(argc, argv);
-    if ((configuration.address() == "0.0.0.0") && (configuration.port() == 80))
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(configuration.address() == "0.0.0.0");
+    ISHTF_FAIL_UNLESS(configuration.port() == 80);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ConfigurationTests::CreationTest2()
+void ConfigurationTests::CreationTest2(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -64,7 +59,7 @@ TestResult::EOutcome ConfigurationTests::CreationTest2()
     return result;
 }
 
-TestResult::EOutcome ConfigurationTests::CreationTest3()
+void ConfigurationTests::CreationTest3(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
