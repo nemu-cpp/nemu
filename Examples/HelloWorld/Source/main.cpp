@@ -20,7 +20,26 @@
     IN THE SOFTWARE.
 */
 
+#include "NemuFramework/Nemu/Core/Configuration.h"
+#include "NemuFramework/Nemu/Core/Log.h"
+#include "NemuFramework/Nemu/Core/WebApplication.h"
+#include <iostream>
+
 int main(int argc, char* argv[])
 {
-    return 0;
+    Ishiko::Error error(0);
+
+    // Create the configuration based on the command line arguments.
+    Nemu::Configuration configuration(argc, argv);
+
+    // Create a log that sends its output to the console.
+    std::shared_ptr<Nemu::Log> log = std::make_shared<Nemu::Log>("NemuHelloWorldServer", Nemu::Log::eConsole);
+
+    Nemu::WebApplication app(configuration, log, error);
+    if (error)
+    {
+        std::cout << "Error: " << error.code() << std::endl;
+    }
+
+    return error.code();
 }

@@ -18,7 +18,7 @@ library NemuCore : IshikoErrors, G3log, Boost
 
     if ($(toolset) == gnu)
     {
-        cxx-compiler-options = "-std=c++11";
+        cxx-compiler-options = "-std=c++14";
         outputdir = ../../../Lib;
     }
 

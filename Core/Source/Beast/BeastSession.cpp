@@ -28,8 +28,9 @@ namespace Nemu
 {
 
 BeastSession::BeastSession(BeastServer& server, boost::asio::ip::tcp::socket&& socket)
-    : m_server(server), m_socket(std::move(socket)), m_strand(m_socket.get_executor()), m_response(server.views())
+    : m_server(server), m_socket(std::move(socket))/*, m_strand(m_socket.get_executor())*/, m_response(server.views())
 {
+    boost::asio::make_strand(m_socket.get_executor());
 }
 
 void BeastSession::run()

@@ -53,7 +53,7 @@ private:
 private:
     BeastServer& m_server;
     boost::asio::ip::tcp::socket m_socket;
-    boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
+    //boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
     boost::beast::flat_buffer m_buffer;
     BeastRequest m_request;
     BeastResponseBuilder m_response;
