@@ -39,7 +39,7 @@ endif
 #
 #      ISHIKO_CPP_ERRORS_ROOT  Path to the Ishiko Errors installation
 #      ISHIKO_CPP_BOOST_ROOT   Path to the Boost installation
-#      G3LOG_ROOT              Path to the G3log installation
+#      ISHIKO_CPP_G3LOG_ROOT   Path to the G3log installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -71,7 +71,7 @@ ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
 # Path to the Boost installation
 ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the G3log installation
-G3LOG_ROOT ?= $(G3LOG)
+ISHIKO_CPP_G3LOG_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_G3LOG)
 
 # ------------
 
@@ -82,64 +82,64 @@ all: ../bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),NemuCore-d,
 	$(RANLIB) $@
 
 $(_builddir)NemuCore_Configuration.o: ../../Source/Configuration.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Configuration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Configuration.cpp
 
 $(_builddir)NemuCore_Application.o: ../../Source/Application.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Application.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Application.cpp
 
 $(_builddir)NemuCore_Applications.o: ../../Source/Applications.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Applications.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Applications.cpp
 
 $(_builddir)NemuCore_Server.o: ../../Source/Server.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Server.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Server.cpp
 
 $(_builddir)NemuCore_Servers.o: ../../Source/Servers.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Servers.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Servers.cpp
 
 $(_builddir)NemuCore_Log.o: ../../Source/Log.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Log.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Log.cpp
 
 $(_builddir)NemuCore_WebApplication.o: ../../Source/WebApplication.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebApplication.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebApplication.cpp
 
 $(_builddir)NemuCore_Route.o: ../../Source/Route.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Route.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Route.cpp
 
 $(_builddir)NemuCore_Routes.o: ../../Source/Routes.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Routes.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Routes.cpp
 
 $(_builddir)NemuCore_WebRequest.o: ../../Source/WebRequest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebRequest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebRequest.cpp
 
 $(_builddir)NemuCore_WebResponseBuilder.o: ../../Source/WebResponseBuilder.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebResponseBuilder.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/WebResponseBuilder.cpp
 
 $(_builddir)NemuCore_AccessLog.o: ../../Source/AccessLog.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/AccessLog.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/AccessLog.cpp
 
 $(_builddir)NemuCore_Views.o: ../../Source/Views.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Views.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Views.cpp
 
 $(_builddir)NemuCore_TemplatingEngine.o: ../../Source/TemplatingEngine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/TemplatingEngine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/TemplatingEngine.cpp
 
 $(_builddir)NemuCore_BeastServer.o: ../../Source/Beast/BeastServer.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastServer.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastServer.cpp
 
 $(_builddir)NemuCore_BeastListener.o: ../../Source/Beast/BeastListener.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastListener.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastListener.cpp
 
 $(_builddir)NemuCore_BeastSession.o: ../../Source/Beast/BeastSession.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastSession.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastSession.cpp
 
 $(_builddir)NemuCore_BeastRequest.o: ../../Source/Beast/BeastRequest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastRequest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastRequest.cpp
 
 $(_builddir)NemuCore_BeastResponseBuilder.o: ../../Source/Beast/BeastResponseBuilder.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastResponseBuilder.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/Beast/BeastResponseBuilder.cpp
 
 $(_builddir)NemuCore_ControlHandlerRegistration.o: ../../Source/ControlHandlerRegistration.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(G3LOG_ROOT)/src -I$(G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/ControlHandlerRegistration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_G3LOG_ROOT)/src -I$(ISHIKO_CPP_G3LOG_ROOT)/build/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I../../../Include/NemuFramework/Nemu/Core -std=c++14 ../../Source/ControlHandlerRegistration.cpp
 
 clean:
 	rm -f $(_builddir)*.o
