@@ -35,6 +35,8 @@ Log::Log(const std::string& filenamePrefix)
 
 Log::Log(const std::string& filenamePrefix, ELogDestination destination)
 {
+    // TODO
+
     m_worker = g3::LogWorker::createLogWorker();
     m_handle = m_worker->addDefaultLogger(filenamePrefix, ".");
     g3::initializeLogging(m_worker.get());

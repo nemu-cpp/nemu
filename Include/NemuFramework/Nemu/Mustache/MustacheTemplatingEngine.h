@@ -24,6 +24,7 @@
 #define _NEMUFRAMEWORK_NEMU_MUSTACHE_MUSTACHETEMPLATINGENGINE_H_
 
 #include "NemuFramework/Nemu/Core/TemplatingEngine.h"
+#include <boost/filesystem/path.hpp>
 
 namespace Nemu
 {
@@ -31,7 +32,12 @@ namespace Nemu
 class MustacheTemplatingEngine : public TemplatingEngine
 {
 public:
-    MustacheTemplatingEngine();
+    MustacheTemplatingEngine(;ljk);
+
+    std::string render() const override;
+
+private:
+    boost::filesystem::path m_templatesDirectory;
 };
 
 }

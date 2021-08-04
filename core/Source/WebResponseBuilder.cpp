@@ -30,7 +30,7 @@ WebResponseBuilder::WebResponseBuilder(const Views& views)
 {
 }
 
-void WebResponseBuilder::view()
+void WebResponseBuilder::view(const std::string& viewName)
 {
     body() = m_views.engine().render();
 }
