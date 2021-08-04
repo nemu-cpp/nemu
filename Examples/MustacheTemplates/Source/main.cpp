@@ -20,9 +20,10 @@
     IN THE SOFTWARE.
 */
 
-#include "NemuFramework/Nemu/Configuration.h"
-#include "NemuFramework/Nemu/Log.h"
-#include "NemuFramework/Nemu/WebApplication.h"
+#include "NemuFramework/Nemu/Mustache/MustacheTemplatingEngine.h"
+#include "NemuFramework/Nemu/Core/Configuration.h"
+#include "NemuFramework/Nemu/Core/Log.h"
+#include "NemuFramework/Nemu/Core/WebApplication.h"
 #include <iostream>
 
 int main(int argc, char* argv[])
@@ -35,7 +36,22 @@ int main(int argc, char* argv[])
     // Create a log that sends its output to the console.
     std::shared_ptr<Nemu::Log> log = std::make_shared<Nemu::Log>("NemuWebsite", Nemu::Log::eConsole);
 
+    // Create the web application
     Nemu::WebApplication app(configuration, log, error);
+
+    // Set the mustache engine as the default templating engine
+    app.views() = Nemu::Views(std::make_shared<Nemu::MustacheTemplatingEngine>());
+
+    // Add a single route that only handled the "/" path
+    app.routes().append(Nemu::Route("/",
+        [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData)
+        {
+            response.view("index");
+        }
+    ));
+
+    app.start();
+
     if (error)
     {
         std::cout << "Error: " << error.code() << std::endl;
