@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\Source\Configuration.cpp" />
     <ClCompile Include="..\..\Source\Application.cpp" />
     <ClCompile Include="..\..\Source\Applications.cpp" />
+    <ClCompile Include="..\..\Source\ErrorCategory.cpp" />
     <ClCompile Include="..\..\Source\Server.cpp" />
     <ClCompile Include="..\..\Source\Servers.cpp" />
     <ClCompile Include="..\..\Source\Log.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Configuration.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Application.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Applications.h" />
+    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\ErrorCategory.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Server.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Servers.h" />
     <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Log.h" />
