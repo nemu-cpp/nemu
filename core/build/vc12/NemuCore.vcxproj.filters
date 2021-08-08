@@ -17,52 +17,52 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Configuration.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Application.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Applications.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Applications.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\ErrorCategory.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\ErrorCategory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Server.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Servers.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Servers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Log.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebApplication.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\WebApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Route.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Route.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Routes.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Routes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebRequest.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\WebRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\WebResponseBuilder.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\WebResponseBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\AccessLog.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\AccessLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\Views.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\Views.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\TemplatingEngine.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\TemplatingEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\NemuFramework\Nemu\Core\linkoptions.h">
+    <ClInclude Include="..\..\..\include\NemuFramework\Nemu\Core\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Beast\BeastServer.h">
