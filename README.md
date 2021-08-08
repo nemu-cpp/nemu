@@ -4,9 +4,9 @@ Nemu provides a framework to write web applications in C++.
 
 # Contents
 
-- Include - Directory containing the public headers for the project.
+- build: the makefiles for the project.
+- include: directory containing the public headers for the project.
 - [Examples](https://github.com/NemuFramework/Nemu/tree/master/Examples) - A series of examples showing how to use the framework.
-- Makefiles - The makefiles for the project.
 - Source - The source files for the project.
 - Tests - The test suite for the project.
 
@@ -24,7 +24,7 @@ None.
 
 # License
 
-Copyright (c) 2019 Xavier Leclercq
+Copyright (c) 2019-2021 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
