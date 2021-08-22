@@ -1,10 +1,7 @@
-setting NEMU_CPP_ROOT
-{
-    help = "Path to the Nemu installation";
-    default = '$(NEMU_CPP)/nemu';
-}
+nemupath = envvar("NEMU_CPP");
+import $(nemupath)/core/include/Nemu/Core.bkl;
 
-template Nemu
+template Nemu : NemuCore
 {
     includedirs += $(NEMU_CPP_ROOT)/include;
 }
