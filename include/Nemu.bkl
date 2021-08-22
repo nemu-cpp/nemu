@@ -1,0 +1,10 @@
+setting NEMU_CPP_ROOT
+{
+    help = "Path to the Nemu installation";
+    default = '$(NEMU_CPP)/nemu';
+}
+
+template Nemu
+{
+    includedirs += $(NEMU_CPP_ROOT)/include;
+}
