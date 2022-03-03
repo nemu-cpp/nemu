@@ -11,7 +11,7 @@ jobs:
           path: /projects/nemu-framework/nemu/cpp
       - run:
           name: Build
-          command: cd /projects/nemu/cpp/nemu/core/build/gnumake && make
+          command: cd /projects/nemu/cpp/nemu/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
