@@ -1,0 +1,35 @@
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/Nemu.sln;
+vs2017.solutionfile = ../vc15/Nemu.sln;
+vs2015.solutionfile = ../vc14/Nemu.sln;
+vs2013.solutionfile = ../vc12/Nemu.sln;
+
+library Nemu
+{
+    archs = x86 x86_64;
+   
+    includedirs += ../../include/Nemu;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        outputdir = ../../lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = Nemu-d;
+    }
+
+    headers
+    {
+        ../../include/Nemu.h
+    }
+}
