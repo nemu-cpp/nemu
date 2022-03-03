@@ -9,7 +9,6 @@
 Debug/
 Release/
 Bin/
-Lib/
 Documentation/Doxygen/html
 Documentation/Doxygen/latex
 Tests/Core/TestOutput
