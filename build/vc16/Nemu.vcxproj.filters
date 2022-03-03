@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\Nemu.h">
+    <ClInclude Include="..\..\include\Nemu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

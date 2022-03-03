@@ -30,6 +30,6 @@ library Nemu
 
     headers
     {
-        ../../include/Nemu.h
+        ../../include/Nemu.hpp
     }
 }
