@@ -2,13 +2,28 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishiko/gcc-ishiko-cpp:0.4.0
+      - image: ishiko/gcc-ishiko-cpp:0.6.0
     steps:
       - run: 
-          name: "Set NEMU_FRAMEWORK environment variable and create workspace directory"
-          command: mkdir -p /projects/nemu-framework && echo 'export NEMU_FRAMEWORK="/projects/nemu-framework"' >> $BASH_ENV
+          name: "Set NEMU_CPP environment variable and create workspace directory"
+          command: mkdir -p /projects/nemu/cpp && echo 'export NEMU_CPP="/projects/nemu/cpp"' >> $BASH_ENV
       - checkout:
-          path: /projects/nemu-framework/nemu
+          path: /projects/nemu-framework/nemu/cpp
       - run:
-          name: Build Nemu/Core
-          command: cd /projects/nemu-framework/nemu/core/build/gnumake && make
+          name: Build
+          command: cd /projects/nemu/cpp/nemu/core/build/gnumake && make
+workflows:
+  version: 2
+  continuous_build:
+    jobs:
+      - build
+  weekly_build:
+    jobs:
+      - build
+    triggers:
+      - schedule:
+          cron: "0 8 * * 0"
+          filters:
+            branches:
+              only:
+                 - main
