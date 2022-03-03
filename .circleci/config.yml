@@ -8,7 +8,7 @@ jobs:
           name: "Set NEMU_CPP environment variable and create workspace directory"
           command: mkdir -p /projects/nemu/cpp && echo 'export NEMU_CPP="/projects/nemu/cpp"' >> $BASH_ENV
       - checkout:
-          path: /projects/nemu-framework/nemu/cpp
+          path: /projects/nemu/cpp
       - run:
           name: Build
           command: cd /projects/nemu/cpp/nemu/build/gnumake && make
