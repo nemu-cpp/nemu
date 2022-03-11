@@ -1,19 +1,19 @@
-nemupath = envvar("NEMU");
-import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Mustache.bkl;
-import $(nemupath)/Nemu/Include/NemuFramework/Nemu/Core.bkl;
+nemupath = envvar("NEMU_CPP");
+import $(nemupath)/nemu/include/Nemu.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/NemuMustacheTemplatesServer.sln;
-vs2015.solutionfile = ../VC14/NemuMustacheTemplatesServer.sln;
-vs2013.solutionfile = ../VC12/NemuMustacheTemplatesServer.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/NemuMustacheTemplatesServer.sln;
+vs2017.solutionfile = ../vc15/NemuMustacheTemplatesServer.sln;
+vs2015.solutionfile = ../vc14/NemuMustacheTemplatesServer.sln;
+vs2013.solutionfile = ../vc12/NemuMustacheTemplatesServer.sln;
 
-program NemuMustacheTemplatesServer : NemuMustache, NemuCore
+program NemuMustacheTemplatesServer : Nemu
 {
     archs = x86 x86_64;
 
-    outputdir = ../../Bin;
+    outputdir = ../../bin;
 
     sources
     {

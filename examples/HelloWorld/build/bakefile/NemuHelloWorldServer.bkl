@@ -13,6 +13,8 @@ program NemuHelloWorldServer : Nemu
 {
     archs = x86 x86_64;
 
+    outputdir = ../../bin;
+
     sources
     {
         ../../src/main.cpp
