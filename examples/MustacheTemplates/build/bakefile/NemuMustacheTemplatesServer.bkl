@@ -17,6 +17,6 @@ program NemuMustacheTemplatesServer : Nemu
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }
