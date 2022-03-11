@@ -15,6 +15,6 @@ program NemuHelloWorldServer : Nemu
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }

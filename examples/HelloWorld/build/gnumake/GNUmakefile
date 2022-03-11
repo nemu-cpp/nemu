@@ -83,8 +83,8 @@ all: $(_builddir)NemuHelloWorldServer
 $(_builddir)NemuHelloWorldServer: $(_builddir)NemuHelloWorldServer_main.o
 	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuHelloWorldServer_main.o -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_LOGGING_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(NEMU_CPP_CORE_ROOT)/lib -pthread
 
-$(_builddir)NemuHelloWorldServer_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_LOGGING_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(NEMU_CPP_CORE_ROOT)/include -I$(NEMU_CPP_ROOT)/include ../../Source/main.cpp
+$(_builddir)NemuHelloWorldServer_main.o: ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_LOGGING_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(NEMU_CPP_CORE_ROOT)/include -I$(NEMU_CPP_ROOT)/include ../../src/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
