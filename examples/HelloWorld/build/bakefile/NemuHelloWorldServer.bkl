@@ -1,0 +1,22 @@
+nemupath = envvar("NEMU_CPP");
+import $(nemupath)/nemu/include/Nemu.bkl;
+
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/NemuHelloWorldServer.sln;
+vs2017.solutionfile = ../vc15/NemuHelloWorldServer.sln;
+vs2015.solutionfile = ../vc14/NemuHelloWorldServer.sln;
+vs2013.solutionfile = ../vc12/NemuHelloWorldServer.sln;
+
+program NemuHelloWorldServer : Nemu
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../bin;
+
+    sources
+    {
+        ../../src/main.cpp
+    }
+}
