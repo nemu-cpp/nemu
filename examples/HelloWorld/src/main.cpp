@@ -9,19 +9,20 @@
 
 int main(int argc, char* argv[])
 {
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     // Create the configuration based on the command line arguments.
     Nemu::Configuration configuration(argc, argv);
 
     // Create a log that sends its output to the console.
-    std::shared_ptr<Nemu::Log> log = std::make_shared<Nemu::Log>("NemuHelloWorldServer", Nemu::Log::eConsole);
+    Ishiko::StreamLoggingSink sink(std::cout);
+    Nemu::Logger log(sink);
 
     Nemu::WebApplication app(configuration, log, error);
     if (error)
     {
-        std::cout << "Error: " << error.code() << std::endl;
+        std::cout << "Error: " << error << std::endl;
     }
 
-    return error.code();
+    return error.condition().value();
 }
