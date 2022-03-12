@@ -37,12 +37,14 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      ISHIKO_CPP_ERRORS_ROOT   Path to the Ishiko Errors installation
-#      ISHIKO_CPP_FMT_ROOT      Path to the fmt installation
-#      ISHIKO_CPP_LOGGING_ROOT  Path to the Ishiko Logging installation
-#      ISHIKO_CPP_BOOST_ROOT    Path to the Boost installation
-#      NEMU_CPP_CORE_ROOT       Path to the Nemu installation
-#      NEMU_CPP_ROOT            Path to the Nemu installation
+#      ISHIKO_CPP_ERRORS_ROOT                  Path to the Ishiko Errors installation
+#      ISHIKO_CPP_FMT_ROOT                     Path to the fmt installation
+#      ISHIKO_CPP_LOGGING_ROOT                 Path to the Ishiko Logging installation
+#      ISHIKO_CPP_BOOST_ROOT                   Path to the Boost installation
+#      NEMU_CPP_CORE_ROOT                      Path to the Nemu installation
+#      MSTCH_ROOT                              Path to the mstch installation
+#      NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT  Path to the Nemu installation
+#      NEMU_CPP_ROOT                           Path to the Nemu installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -73,6 +75,10 @@ ISHIKO_CPP_LOGGING_ROOT ?= $(ISHIKO_CPP)/logging
 ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the Nemu installation
 NEMU_CPP_CORE_ROOT ?= $(NEMU_CPP)/core
+# Path to the mstch installation
+MSTCH_ROOT ?= $(MSTCH)
+# Path to the Nemu installation
+NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT ?= $(NEMU_CPP)/mustache-templating-engine
 # Path to the Nemu installation
 NEMU_CPP_ROOT ?= $(NEMU_CPP)/nemu
 
@@ -82,10 +88,10 @@ all: ../../bin/NemuHelloWorldServer
 
 ../../bin/NemuHelloWorldServer: $(_builddir)NemuHelloWorldServer_main.o
 	@mkdir -p $(dir $@)
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuHelloWorldServer_main.o -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_LOGGING_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(NEMU_CPP_CORE_ROOT)/lib -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)NemuHelloWorldServer_main.o -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_LOGGING_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(NEMU_CPP_CORE_ROOT)/lib -L$(MSTCH_ROOT)/src/$(config) -L$(NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT)/lib -pthread
 
 $(_builddir)NemuHelloWorldServer_main.o: ../../src/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_LOGGING_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(NEMU_CPP_CORE_ROOT)/include -I$(NEMU_CPP_ROOT)/include ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_LOGGING_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(NEMU_CPP_CORE_ROOT)/include -I$(MSTCH_ROOT)/include -I$(NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT)/include -I$(NEMU_CPP_ROOT)/include ../../src/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o

@@ -8,5 +8,6 @@
 #define _NEMU_CPP_NEMU_HPP_
 
 #include <Nemu/Core.hpp>
+#include <Nemu/MustacheTemplatingEngine.hpp>
 
 #endif
