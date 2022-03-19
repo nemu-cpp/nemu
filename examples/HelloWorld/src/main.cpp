@@ -40,5 +40,9 @@ int main(int argc, char* argv[])
 
     server.join();
 
+    server.start();
+
+    server.join();
+
     return error.condition().value();
 }
