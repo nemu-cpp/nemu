@@ -11,8 +11,11 @@ int main(int argc, char* argv[])
 {
     Ishiko::Error error;
 
+    Nemu::IshikoServer server(Ishiko::Networking::TCPServerSocket::AllInterfaces, Ishiko::Networking::Port::http, error);
+
     // Create the configuration based on the command line arguments.
-    Nemu::Configuration configuration(argc, argv);
+    Nemu::Configuration configuration(argc, argv, Ishiko::Networking::IPv4Address::Localhost(),
+        8082);
 
     // Create a log that sends its output to the console.
     Ishiko::StreamLoggingSink sink(std::cout);
@@ -23,6 +26,10 @@ int main(int argc, char* argv[])
     {
         std::cout << "Error: " << error << std::endl;
     }
+
+    server.start();
+
+    server.join();
 
     return error.condition().value();
 }
