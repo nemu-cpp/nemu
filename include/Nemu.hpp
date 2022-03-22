@@ -9,6 +9,6 @@
 
 #include <Nemu/Core.hpp>
 #include <Nemu/IshikoConnectionEngine.h>
-#include <Nemu/MustacheTemplatingEngine.hpp>
+#include <Nemu/MustacheTemplateEngine.hpp>
 
 #endif
