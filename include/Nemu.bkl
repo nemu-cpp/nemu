@@ -1,7 +1,7 @@
 nemupath = envvar("NEMU_CPP");
 import $(nemupath)/core/include/Nemu/Core.bkl;
 import $(nemupath)/ishiko-connection-engine/include/Nemu/IshikoConnectionEngine.bkl;
-import $(nemupath)/mustache-templating-engine/include/Nemu/MustacheTemplatingEngine.bkl;
+import $(nemupath)/mustache-template-engine/include/Nemu/MustacheTemplateEngine.bkl;
 
 setting NEMU_CPP_ROOT
 {
@@ -9,7 +9,7 @@ setting NEMU_CPP_ROOT
     default = '$(NEMU_CPP)/nemu';
 }
 
-template Nemu : NemuMustacheTemplatingEngine, NemuIshikoConnectionEngine, NemuCore
+template Nemu : NemuMustacheTemplateEngine, NemuIshikoConnectionEngine, NemuCore
 {
     includedirs += $(NEMU_CPP_ROOT)/include;
 }
