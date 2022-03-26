@@ -15,6 +15,12 @@ program NemuHelloWorldServer : Nemu
 
     outputdir = ../../bin;
 
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += NemuIshikoCore IshikoErrors;
+    }
+
     sources
     {
         ../../src/main.cpp
