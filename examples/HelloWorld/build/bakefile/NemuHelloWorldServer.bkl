@@ -16,7 +16,7 @@ program NemuHelloWorldServer : Nemu
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += NemuIshikoConnectionEngine NemuCore IshikoHTTP IshikoNetworking IshikoTime IshikoText IshikoLogging IshikoErrors fmt;
+        libs += NemuIshikoConnectionEngine NemuCore IshikoHTTP IshikoNetworking IshikoTime IshikoText IshikoTypes IshikoLogging IshikoErrors fmt;
     }
 
     outputdir = ../../bin;
