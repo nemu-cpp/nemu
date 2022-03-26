@@ -16,7 +16,7 @@ program NemuStaticFilesServer : Nemu
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoNetworking IshikoLogging IshikoErrors;
+        libs += NemuIshikoConnectionEngine IshikoNetworking IshikoText IshikoLogging IshikoErrors;
     }
 
     outputdir = ../../bin;
