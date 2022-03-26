@@ -11,11 +11,14 @@ int main(int argc, char* argv[])
 {
     Ishiko::Error error;
 
-    Nemu::IshikoServer server(Ishiko::TCPServerSocket::AllInterfaces, Ishiko::Port::http, error);
+    // TODO: use the async server
+    std::shared_ptr<Nemu::IshikoSingleConnectionServer> server =
+        std::make_shared<Nemu::IshikoSingleConnectionServer>(Ishiko::TCPServerSocket::AllInterfaces,
+            Ishiko::Port::http, error);
 
     // Create a log that sends its output to the console.
     Ishiko::StreamLoggingSink sink(std::cout);
-    Nemu::Logger log(sink);
+    Ishiko::Logger log(sink);
 
     Nemu::WebApplication app(log, error);
     if (error)
@@ -23,13 +26,9 @@ int main(int argc, char* argv[])
         std::cout << "Error: " << error << std::endl;
     }
     
-    app.routes().append(Nemu::Route("/",
-        [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData,
-            Nemu::Logger& logger)
-        {
-            response.body() = "Hello World!";
-        }
-    ));
+    app.routes().append(
+        Nemu::Route("/", 
+            std::make_shared<Nemu::HardcodedWebRequestHandler>(Ishiko::HTTPStatusCode::ok, "Hello World!")));
 
     app.start();
 
