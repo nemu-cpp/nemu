@@ -10,6 +10,9 @@ jobs:
       - run:
           name: "Install build dependency: Nemu/C++ Core"
           command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/core.git && cd core/build/gnumake && make
+      - run:
+          name: "Install build dependency: Nemu/C++ IshikoConnectionEngine"
+          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/ishiko-connection-engine.git && cd ishiko-connection-engine/build/gnumake && make
       - checkout:
           path: /projects/nemu/cpp/nemu
       - run:
