@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     Ishiko::StreamLoggingSink sink(std::cout);
     Ishiko::Logger log(sink);
 
-    Nemu::WebApplication app(log, error);
+    Nemu::WebApplication app(server, log, error);
     if (error)
     {
         std::cout << "Error: " << error << std::endl;
