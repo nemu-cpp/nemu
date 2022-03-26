@@ -19,15 +19,17 @@ int main(int argc, char* argv[])
     Ishiko::StreamLoggingSink sink(std::cout);
     Ishiko::Logger log(sink);
 
-    /*
-    Nemu::Route::ptr route = std::make_shared<Nemu::Route>(
-        "/",
-        std::make_shared<Nemu::FileSystemRequestHandler>("../../Source")
-        );
-    server.routes().appendRoute(route);
+    // TODO: use exceptions
+    Nemu::WebApplication app(server, log, error);
+    if (error)
+    {
+        std::cout << "Error: " << error << std::endl;
+    }
 
-    server.start();
-    */
+    // TODO: I should take this path relative to the executable location
+    app.routes().append(Nemu::Route("/", std::make_shared<Nemu::FileSystemWebRequestHandler>("../../data")));
 
-    return 0;
+    app.start();
+
+    return error.condition().value();
 }
