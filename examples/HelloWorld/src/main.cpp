@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
         Nemu::Route("/", 
             std::make_shared<Nemu::HardcodedWebRequestHandler>(Ishiko::HTTPStatusCode::ok, "Hello World!")));
 
-    app.start();
+    app.run();
 
     return error.condition().value();
 }
