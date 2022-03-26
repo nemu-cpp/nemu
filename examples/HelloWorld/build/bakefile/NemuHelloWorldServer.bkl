@@ -13,13 +13,13 @@ program NemuHelloWorldServer : Nemu
 {
     archs = x86 x86_64;
 
-    outputdir = ../../bin;
-
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += NemuIshikoCore IshikoErrors;
+        libs += NemuCore IshikoErrors;
     }
+
+    outputdir = ../../bin;
 
     sources
     {
