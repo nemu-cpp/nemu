@@ -5,7 +5,6 @@
 */
 
 #include <Nemu.hpp>
-#include <iostream>
 
 int main(int argc, char* argv[])
 {
@@ -26,10 +25,9 @@ int main(int argc, char* argv[])
     {
         std::cout << "Error: " << error << std::endl;
     }
-    
-    app.routes().append(
-        Nemu::Route("/", 
-            std::make_shared<Nemu::HardcodedWebRequestHandler>(Ishiko::HTTPStatusCode::ok, "Hello World!")));
+
+    // TODO: I should take this path relative to the executable location
+    app.routes().append(Nemu::Route("/", std::make_shared<Nemu::FileSystemWebRequestHandler>("../../data")));
 
     app.start();
 
