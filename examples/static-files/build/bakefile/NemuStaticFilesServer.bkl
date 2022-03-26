@@ -1,16 +1,27 @@
-toolsets = gnu vs2017 vs2015 vs2013;
+nemupath = envvar("NEMU_CPP");
+import $(nemupath)/nemu/include/Nemu.bkl;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/NemuStaticFilesServer.sln;
-vs2015.solutionfile = ../VC14/NemuStaticFilesServer.sln;
-vs2013.solutionfile = ../VC12/NemuStaticFilesServer.sln;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
-program NemuStaticFilesServer
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/NemuStaticFilesServer.sln;
+vs2017.solutionfile = ../vc15/NemuStaticFilesServer.sln;
+vs2015.solutionfile = ../vc14/NemuStaticFilesServer.sln;
+vs2013.solutionfile = ../vc12/NemuStaticFilesServer.sln;
+
+program NemuStaticFilesServer : Nemu
 {
     archs = x86 x86_64;
 
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+    }
+
+    outputdir = ../../bin;
+
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }
