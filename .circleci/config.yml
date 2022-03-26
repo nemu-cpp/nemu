@@ -2,16 +2,28 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishiko/gcc-ishiko-cpp:0.6.0
+      - image: ishiko/gcc-ishiko-cpp:0.19.0
     steps:
       - run: 
           name: "Set NEMU_CPP environment variable and create workspace directory"
           command: mkdir -p /projects/nemu/cpp && echo 'export NEMU_CPP="/projects/nemu/cpp"' >> $BASH_ENV
+      - run:
+          name: "Install build dependency: Nemu/C++ Core"
+          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/core.git && cd core/build/gnumake && make
+      - run:
+          name: "Install build dependency: Nemu/C++ IshikoConnectionEngine"
+          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/ishiko-connection-engine.git && cd ishiko-connection-engine/build/gnumake && make
+      - run:
+          name: "Install build dependency: Nemu/C++ MustacheTemplateEngine"
+          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/mustache-template-engine.git && cd mustache-template-engine/build/gnumake && make
       - checkout:
           path: /projects/nemu/cpp/nemu
       - run:
           name: Build
           command: cd /projects/nemu/cpp/nemu/build/gnumake && make
+      - run:
+          name: Build HelloWorld example
+          command: cd /projects/nemu/cpp/nemu/examples/HelloWorld/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
