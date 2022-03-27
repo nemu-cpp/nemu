@@ -11,34 +11,37 @@ int main(int argc, char* argv[])
 {
     Ishiko::Error error;
 
-    // Create the configuration based on the command line arguments.
-    Nemu::Configuration configuration(argc, argv);
+    // TODO: use the async server
+    std::shared_ptr<Nemu::IshikoSingleConnectionServer> server =
+        std::make_shared<Nemu::IshikoSingleConnectionServer>(Ishiko::TCPServerSocket::AllInterfaces,
+            Ishiko::Port::http, error);
 
     // Create a log that sends its output to the console.
     Ishiko::StreamLoggingSink sink(std::cout);
-    Nemu::Logger log(sink);
+    Ishiko::Logger log(sink);
 
-    // Create the web application
-    Nemu::WebApplication app(configuration, log, error);
-
-    // Set the mustache engine as the default templating engine
-    app.views() = Nemu::Views(std::make_shared<Nemu::MustacheTemplatingEngine>());
-
-    // Add a single route that only handled the "/" path
-    app.routes().append(Nemu::Route("/",
-        [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData,
-            Nemu::Logger& logger)
-        {
-            response.view("index");
-        }
-    ));
-
-    app.start();
-
+    // TODO: use exceptions
+    Nemu::WebApplication app(server, log, error);
     if (error)
     {
         std::cout << "Error: " << error << std::endl;
     }
+
+    // Set the mustache engine as the default template engine
+    app.views() = Nemu::Views(std::make_shared<Nemu::MustacheTemplateEngine>());
+
+    // TODO: I should take this path relative to the executable location
+    // Add a single route that only handled the "/" path
+    app.routes().append(
+        Nemu::Route("/",
+            std::make_shared<Nemu::FunctionWebRequestHandler>(
+                [](const Nemu::WebRequest& request, Nemu::WebResponseBuilder& response, void* handlerData,
+                    Ishiko::Logger& logger)
+                {
+                    response.view("index");
+                })));
+
+    app.run();
 
     return error.condition().value();
 }
