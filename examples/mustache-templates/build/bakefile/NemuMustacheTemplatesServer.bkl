@@ -13,6 +13,12 @@ program NemuMustacheTemplatesServer : Nemu
 {
     archs = x86 x86_64;
 
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += NemuCore IshikoErrors;
+    }
+
     outputdir = ../../bin;
 
     sources
