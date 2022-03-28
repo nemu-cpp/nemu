@@ -23,7 +23,7 @@ jobs:
           command: cd /projects/nemu/cpp/nemu/build/gnumake && make
       - run:
           name: Build HelloWorld example
-          command: cd /projects/nemu/cpp/nemu/examples/HelloWorld/build/gnumake && make
+          command: cd /projects/nemu/cpp/nemu/examples/hello-world/build/gnumake && make
       - run:
           name: Build StaticFiles example
           command: cd /projects/nemu/cpp/nemu/examples/static-files/build/gnumake && make
