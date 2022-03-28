@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
     // TODO: I should take this path relative to the executable location
     app.routes().append(Nemu::Route("/", std::make_shared<Nemu::FileSystemWebRequestHandler>("../../data")));
 
-    app.start();
+    app.run();
 
     return error.condition().value();
 }
