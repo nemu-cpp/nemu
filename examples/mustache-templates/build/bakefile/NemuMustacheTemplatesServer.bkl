@@ -16,7 +16,7 @@ program NemuMustacheTemplatesServer : Nemu
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += NemuCore IshikoNetworking IshikoLogging IshikoErrors;
+        libs += NemuMustacheTemplateEngine NemuCore IshikoNetworking IshikoText IshikoLogging IshikoErrors;
     }
 
     outputdir = ../../bin;
