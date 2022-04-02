@@ -11,8 +11,8 @@ jobs:
           name: "Install build dependency: Nemu/C++ Core"
           command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/core.git && cd core/build/gnumake && make
       - run:
-          name: "Install build dependency: Nemu/C++ IshikoConnectionEngine"
-          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/ishiko-connection-engine.git && cd ishiko-connection-engine/build/gnumake && make
+          name: "Install build dependency: Nemu/C++ WebFramework"
+          command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/web-framework.git && cd web-framework/build/gnumake && make
       - run:
           name: "Install build dependency: Nemu/C++ MustacheTemplateEngine"
           command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/mustache-template-engine.git && cd mustache-template-engine/build/gnumake && make
