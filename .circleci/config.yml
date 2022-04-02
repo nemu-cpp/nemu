@@ -22,12 +22,6 @@ jobs:
           name: Build
           command: cd /projects/nemu/cpp/nemu/build/gnumake && make
       - run:
-          name: Build HelloWorld example
-          command: cd /projects/nemu/cpp/nemu/examples/hello-world/build/gnumake && make
-      - run:
-          name: Build StaticFiles example
-          command: cd /projects/nemu/cpp/nemu/examples/static-files/build/gnumake && make
-      - run:
           name: Build MustacheTemplates example
           command: cd /projects/nemu/cpp/nemu/examples/mustache-templates/build/gnumake && make
 workflows:
