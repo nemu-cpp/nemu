@@ -12,7 +12,7 @@ Nemu provides a framework to write web applications in C++.
 
 # Project Status
 
-This project is intended for use by its author only.
+This project is in early development and not ready for public use yet. 
 
 # Usage
 
@@ -24,7 +24,7 @@ None.
 
 # License
 
-Copyright (c) 2019-2021 Xavier Leclercq
+Copyright (c) 2019-2022 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
