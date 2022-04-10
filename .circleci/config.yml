@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishiko/gcc-ishiko-cpp:0.19.0
+      - image: ishiko/gcc-ishiko-cpp:0.22.0
     steps:
       - run: 
           name: "Set NEMU_CPP environment variable and create workspace directory"
