@@ -9,6 +9,6 @@ FROM alpine:3.15.4
 RUN apk add libgcc
 RUN apk add libstdc++
 
-COPY --from=build /build/gnumake/NemuHelloWorld /usr/local/bin/NemuHelloWorld
+COPY --from=build /bin/NemuHelloWorldServer /usr/local/bin/NemuHelloWorldServer
 
-ENTRYPOINT ["/usr/local/bin/NemuHelloWorld"]
+ENTRYPOINT ["/usr/local/bin/NemuHelloWorldServer"]
