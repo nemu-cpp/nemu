@@ -2,11 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishiko/gcc-ishiko-cpp:0.36.0
+      - image: ishiko/gcc-ishiko-cpp:0.41.0
     steps:
       - run: 
-          name: "Set NEMU_CPP environment variable and create workspace directory"
-          command: mkdir -p /projects/nemu/cpp && echo 'export NEMU_CPP="/projects/nemu/cpp"' >> $BASH_ENV
+          name: "Set NEMU_CPP_ROOT environment variable and create workspace directory"
+          command: mkdir -p /projects/nemu/cpp && echo 'export NEMU_CPP_ROOT="/projects/nemu/cpp"' >> $BASH_ENV
       - run:
           name: "Install build dependency: Nemu/C++ Core"
           command: cd /projects/nemu/cpp && git clone https://github.com/nemu-cpp/core.git && cd core/build/gnumake && make
