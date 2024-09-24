@@ -21,6 +21,10 @@ jobs:
       - run:
           name: Build
           command: cd /projects/nemu/cpp/nemu/build/gnumake && make
+      - run:
+          name: "Build: Nemu/CLI"
+          command: cd /projects/nemu/cpp/nemu/cli/build/gnumake && make
+
 workflows:
   version: 2
   continuous_build:
