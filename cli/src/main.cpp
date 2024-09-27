@@ -8,6 +8,8 @@ int main(int argc, char* argv[])
 {
     Ishiko::Error error;
 
+    Ishiko::NetworkingLibraryInitialization::Startup(error);
+
     Ishiko::NetworkConnectionsManager connection_manager;
 
     Ishiko::HTTPClient http_client{connection_manager};
@@ -21,6 +23,8 @@ int main(int argc, char* argv[])
 
         std::cout << response.toString() << std::endl;
     }
+
+    Ishiko::NetworkingLibraryInitialization::Cleanup(error);
 
     // TODO: use proper error codes class
     return 0;
