@@ -8,8 +8,8 @@ int main(int argc, char* argv[])
 {
     // Nemu/0.1 Windows NT 10.0; +http://nemu.io/tool NemuTool/0.1.0
 
-    // TODO: HTTP case: put back in
     /*
+    // TODO: HTTP case: put back in
     Ishiko::Error error;
 
     Ishiko::NetworkingLibraryInitialization::Startup(error);
