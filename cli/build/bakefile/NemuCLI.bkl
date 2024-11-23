@@ -15,7 +15,7 @@ program NemuCLI : IshikoHTTP, IshikoNetworking
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += IshikoHTTP;
+        libs += IshikoHTTP IshikoNetworking IshikoTime IshikoErrors;
     }
 
     if ($(toolset) != gnu)
