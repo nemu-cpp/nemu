@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 
     Ishiko::Error error;
 
-    Ishiko::NetworkingLibraryInitialization::Startup(error);
+    Ishiko::NetworkingLibraryInitialization network_library_initialization;
 
     Ishiko::NetworkConnectionsManager connection_manager;
     Ishiko::HostnameResolver hostname_resolver;
@@ -54,8 +54,6 @@ int main(int argc, char* argv[])
 
         std::cout << response.toString() << std::endl;
     }
-
-    Ishiko::NetworkingLibraryInitialization::Cleanup(error);
 
     // TODO: use proper error codes class
     return 0;
