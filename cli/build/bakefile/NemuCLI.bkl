@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/configuration/include/Ishiko/Configuration.bkl;
 import $(ishikopath)/http/include/Ishiko/HTTP.bkl;
 import $(ishikopath)/networking/include/Ishiko/Networking.bkl;
 
@@ -9,7 +10,7 @@ vs2022.solutionfile = ../vc17/NemuCLI.sln;
 vs2019.solutionfile = ../vc16/NemuCLI.sln;
 vs2017.solutionfile = ../vc15/NemuCLI.sln;
 
-program NemuCLI : IshikoHTTP, IshikoNetworking
+program NemuCLI : IshikoHTTP, IshikoNetworking, IshikoConfiguration
 {
     if ($(toolset) == gnu)
     {
