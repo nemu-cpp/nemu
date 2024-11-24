@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "GetTests.hpp"
+#include "GetCommandTests.hpp"
 #include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/TestFramework.hpp>
 #include <exception>
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
         Ishiko::TestHarness the_test_harness("Nemu CLI Tests", configuration);
 
         Ishiko::TestSequence& the_tests = the_test_harness.tests();
-        the_tests.append<GetTests>();
+        the_tests.append<GetCommandTests>();
 
         return the_test_harness.run();
     }

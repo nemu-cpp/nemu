@@ -1,18 +1,18 @@
 // SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "GetTests.hpp"
+#include "GetCommandTests.hpp"
 #include <boost/filesystem.hpp>
 
-GetTests::GetTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+GetCommandTests::GetCommandTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
     : Ishiko::TestSequence(number, "get command tests", context)
 {
     GetTest1(*this);
 }
 
-void GetTests::GetTest1(Ishiko::TestSequence& test_sequence)
+void GetCommandTests::GetTest1(Ishiko::TestSequence& test_sequence)
 {
-    const char* output_name = "GetTests_GetTest1.txt";
+    const char* output_name = "GetCommandTests_GetTest1.txt";
 
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
     boost::filesystem::path output_path = test_sequence.context().getOutputPath(output_name);
