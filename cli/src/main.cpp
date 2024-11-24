@@ -3,11 +3,13 @@
 
 #include "CommandLineSpecification.hpp"
 #include <Ishiko/Configuration.hpp>
+#include <Ishiko/FileSystem.hpp>
 #include <Ishiko/HTTP.hpp>
 #include <Ishiko/Networking.hpp>
 #include <Ishiko/Terminal.hpp>
 #include <Ishiko/Types.hpp>
 #include <exception>
+#include <iostream>
 #include <sstream>
 
 using namespace Nemu;
@@ -27,6 +29,7 @@ int main(int argc, char* argv[])
             Ishiko::NetworkingLibraryInitialization network_library_initialization;
 
             Ishiko::Error error;
+            Ishiko::HTTPResponse response(Ishiko::HTTPStatusCode::internalServerError);
 
             // TODO
             // Nemu/0.1 Windows NT 10.0; +http://nemu.io/tool NemuTool/0.1.0
@@ -45,11 +48,7 @@ int main(int argc, char* argv[])
 
                 if (!error)
                 {
-                    Ishiko::HTTPResponse response{ Ishiko::HTTPStatusCode::internalServerError };
-                    //http_client.get(address, 8003, "/", response, error);
                     http_client.get(hostname, Ishiko::Port::http, "/", response, error);
-
-                    std::cout << response.toString() << std::endl;
                 }
             }
             else if (url.scheme() == "https")
@@ -65,12 +64,20 @@ int main(int argc, char* argv[])
 
                 if (!error)
                 {
-                    Ishiko::HTTPResponse response{ Ishiko::HTTPStatusCode::internalServerError };
-                    //http_client.get(address, 8003, "/", response, error);
                     https_client.get(hostname, Ishiko::Port::https, "/", response, error);
-
-                    std::cout << response.toString() << std::endl;
                 }
+            }
+
+            const std::string response_string = response.toString();
+            const Ishiko::Configuration::Value* output_path = configuration.valueOrNull("output-path");
+            if (output_path)
+            {
+                Ishiko::BinaryFile output_file = Ishiko::BinaryFile::Create(output_path->asString(), error);
+                output_file.write(response_string.c_str(), response_string.size(), error);
+            }
+            else
+            {
+                std::cout << response_string << std::endl;
             }
         }
 

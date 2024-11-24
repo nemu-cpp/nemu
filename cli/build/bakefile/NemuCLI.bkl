@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/configuration/include/Ishiko/Configuration.bkl;
+import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/http/include/Ishiko/HTTP.bkl;
 import $(ishikopath)/networking/include/Ishiko/Networking.bkl;
 import $(ishikopath)/terminal/include/Ishiko/Terminal.bkl;
@@ -11,13 +12,13 @@ vs2022.solutionfile = ../vc17/NemuCLI.sln;
 vs2019.solutionfile = ../vc16/NemuCLI.sln;
 vs2017.solutionfile = ../vc15/NemuCLI.sln;
 
-program NemuCLI : IshikoTerminal, IshikoHTTP, IshikoNetworking, IshikoConfiguration
+program NemuCLI : IshikoTerminal, IshikoHTTP, IshikoNetworking, IshikoConfiguration, IshikoFileSystem
 {
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += IshikoTerminal IshikoHTTP IshikoNetworking IshikoConfiguration IshikoTime IshikoText IshikoTypes IshikoMemory IshikoErrors;
+        libs += IshikoTerminal IshikoHTTP IshikoNetworking IshikoConfiguration IshikoFileSystem IshikoTime IshikoText IshikoTypes IshikoMemory IshikoErrors;
         libs += botan-2 fmt;
     }
 
