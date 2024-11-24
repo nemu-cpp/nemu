@@ -1,17 +1,17 @@
-nemupath = envvar("NEMU_CPP");
+nemupath = envvar("NEMU_CPP_ROOT");
 import $(nemupath)/core/include/Nemu/Core.bkl;
-import $(nemupath)/ishiko-connection-engine/include/Nemu/IshikoConnectionEngine.bkl;
-import $(nemupath)/mustache-templating-engine/include/Nemu/MustacheTemplatingEngine.bkl;
+import $(nemupath)/mustache-template-engine/include/Nemu/MustacheTemplateEngine.bkl;
 
-toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+toolsets = gnu vs2022 vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/Nemu.sln;
 vs2019.solutionfile = ../vc16/Nemu.sln;
 vs2017.solutionfile = ../vc15/Nemu.sln;
 vs2015.solutionfile = ../vc14/Nemu.sln;
 vs2013.solutionfile = ../vc12/Nemu.sln;
 
-library Nemu : NemuMustacheTemplatingEngine, NemuIshikoConnectionEngine, NemuCore
+library Nemu : NemuMustacheTemplateEngine, NemuCore
 {
     archs = x86 x86_64;
    
