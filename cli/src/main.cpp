@@ -31,16 +31,17 @@ int main(int argc, char* argv[])
             // TODO
             // Nemu/0.1 Windows NT 10.0; +http://nemu.io/tool NemuTool/0.1.0
 
-            Ishiko::URL url = configuration.value("url").asString();
+            Ishiko::URL url = command_configuration.value("url").asString();
             if (url.scheme() == "http")
             {
                 Ishiko::NetworkConnectionsManager connection_manager;
                 Ishiko::HostnameResolver hostname_resolver;
 
-                Ishiko::HTTPClient http_client{ connection_manager, hostname_resolver };
+                Ishiko::HTTPClient http_client{connection_manager, hostname_resolver};
 
+                // TODO: check the host, valid? IP or name?
                 //Ishiko::IPv4Address address{"51.77.104.151", error};
-                Ishiko::Hostname hostname{ "ishiko.org" };
+                Ishiko::Hostname hostname{*url.host()};
 
                 if (!error)
                 {
@@ -56,10 +57,11 @@ int main(int argc, char* argv[])
                 Ishiko::NetworkConnectionsManager connection_manager;
                 Ishiko::HostnameResolver hostname_resolver;
 
-                Ishiko::HTTPSClient https_client{ connection_manager, hostname_resolver };
+                Ishiko::HTTPSClient https_client{connection_manager, hostname_resolver};
 
+                // TODO: check the host, valid? IP or name?
                 //Ishiko::IPv4Address address{"51.77.104.151", error};
-                Ishiko::Hostname hostname{ "ishiko.org" };
+                Ishiko::Hostname hostname{*url.host()};
 
                 if (!error)
                 {
