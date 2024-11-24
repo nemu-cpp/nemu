@@ -37,17 +37,26 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      ISHIKO_CPP_ERRORS_ROOT                  Path to the Ishiko Errors installation
-#      ISHIKO_CPP_FMT_ROOT                     Path to the fmt installation
-#      ISHIKO_CPP_LOGGING_ROOT                 Path to the Ishiko Logging installation
-#      ISHIKO_CPP_BASEPLATFORM_ROOT            Path to the Ishiko BasePlatform installation
-#      ISHIKO_CPP_TEXT_ROOT                    Path to the Ishiko/Text installation
-#      ISHIKO_CPP_NETWORKING_ROOT              Path to the Ishiko Networking installation
-#      ISHIKO_CPP_BOOST_ROOT                   Path to the Boost installation
-#      NEMU_CPP_CORE_ROOT                      Path to the Nemu installation
-#      NEMU_CPP_ISHIKOCONNECTIONENGINE_ROOT    Path to the Nemu IshikoConnectionEngine installation
-#      MSTCH_ROOT                              Path to the mstch installation
-#      NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT  Path to the Nemu installation
+#      ISHIKO_CPP_BASEPLATFORM_ROOT          Path to the Ishiko/C++ BasePlatform installation
+#      ISHIKO_CPP_ERRORS_ROOT                Path to the Ishiko/C++ Errors installation
+#      ISHIKO_CPP_IO_ROOT                    Path to the Ishiko/C++ IO installation
+#      ISHIKO_CPP_BOOST_ROOT                 Path to the Boost installation
+#      ISHIKO_CPP_FILESYSTEM_ROOT            Path to the Ishiko/C++ FileSystem installation
+#      ISHIKO_CPP_FMT_ROOT                   Path to the fmt installation
+#      ISHIKO_CPP_LOGGING_ROOT               Path to the Ishiko Logging installation
+#      ISHIKO_CPP_MEMORY_ROOT                Path to the Ishiko/C++ Memory installation
+#      ISHIKO_CPP_TEXT_ROOT                  Path to the Ishiko/C++ Text installation
+#      ISHIKO_CPP_BOTAN_ROOT                 Path to the Botan installation
+#      ISHIKO_CPP_NETWORKING_ROOT            Path to the Ishiko/C++ Networking installation
+#      ISHIKO_CPP_TIME_ROOT                  Path to the Ishiko/C++ Time installation
+#      NEMU_CPP_CORE_ROOT                    Path to the Nemu installation
+#      ISHIKO_CPP_PROCESS_ROOT               Path to the Ishiko/C++ Process installation
+#      ISHIKO_CPP_MSTCH_ROOT                 Path to the mstch installation
+#      ISHIKO_CPP_CONFIGURATION_ROOT         Path to the Ishiko/C++ Configuration installation
+#      ISHIKO_CPP_TYPES_ROOT                 Path to the Ishiko/C++ Types installation
+#      ISHIKO_CPP_HTTP_ROOT                  Path to the Ishiko/C++ HTTP installation
+#      NEMU_CPP_WEBFRAMEWORK_ROOT            Path to the Nemu WebFramework installation
+#      NEMU_CPP_MUSTACHETEMPLATEENGINE_ROOT  Path to the Nemu installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -65,28 +74,46 @@ _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 # Configurable settings:
 # 
 
-# Path to the Ishiko Errors installation
-ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
-# Path to the fmt installation
-ISHIKO_CPP_FMT_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_FMT)
-# Path to the Ishiko Logging installation
-ISHIKO_CPP_LOGGING_ROOT ?= $(ISHIKO_CPP)/logging
-# Path to the Ishiko BasePlatform installation
-ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP)/base-platform
-# Path to the Ishiko/Text installation
-ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/text
-# Path to the Ishiko Networking installation
-ISHIKO_CPP_NETWORKING_ROOT ?= $(ISHIKO_CPP)/networking
+# Path to the Ishiko/C++ BasePlatform installation
+ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP_ROOT)/base-platform
+# Path to the Ishiko/C++ Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP_ROOT)/errors
+# Path to the Ishiko/C++ IO installation
+ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP_ROOT)/io
 # Path to the Boost installation
-ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
+ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
+# Path to the Ishiko/C++ FileSystem installation
+ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
+# Path to the Ishiko Logging installation
+ISHIKO_CPP_LOGGING_ROOT ?= $(ISHIKO_CPP_ROOT)/logging
+# Path to the Ishiko/C++ Memory installation
+ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
+# Path to the Ishiko/C++ Text installation
+ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP_ROOT)/text
+# Path to the Botan installation
+ISHIKO_CPP_BOTAN_ROOT ?= $(BOTAN_ROOT)
+# Path to the Ishiko/C++ Networking installation
+ISHIKO_CPP_NETWORKING_ROOT ?= $(ISHIKO_CPP_ROOT)/networking
+# Path to the Ishiko/C++ Time installation
+ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP_ROOT)/time
 # Path to the Nemu installation
-NEMU_CPP_CORE_ROOT ?= $(NEMU_CPP)/core
-# Path to the Nemu IshikoConnectionEngine installation
-NEMU_CPP_ISHIKOCONNECTIONENGINE_ROOT ?= $(NEMU_CPP)/ishiko-connection-engine
+NEMU_CPP_CORE_ROOT ?= $(NEMU_CPP_ROOT)/core
+# Path to the Ishiko/C++ Process installation
+ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP_ROOT)/process
 # Path to the mstch installation
-MSTCH_ROOT ?= $(MSTCH)
+ISHIKO_CPP_MSTCH_ROOT ?= $(MSTCH_ROOT)
+# Path to the Ishiko/C++ Configuration installation
+ISHIKO_CPP_CONFIGURATION_ROOT ?= $(ISHIKO_CPP_ROOT)/configuration
+# Path to the Ishiko/C++ Types installation
+ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP_ROOT)/types
+# Path to the Ishiko/C++ HTTP installation
+ISHIKO_CPP_HTTP_ROOT ?= $(ISHIKO_CPP_ROOT)/http
+# Path to the Nemu WebFramework installation
+NEMU_CPP_WEBFRAMEWORK_ROOT ?= $(NEMU_CPP_ROOT)/web-framework
 # Path to the Nemu installation
-NEMU_CPP_MUSTACHETEMPLATINGENGINE_ROOT ?= $(NEMU_CPP)/mustache-templating-engine
+NEMU_CPP_MUSTACHETEMPLATEENGINE_ROOT ?= $(NEMU_CPP_ROOT)/mustache-template-engine
 
 # ------------
 
