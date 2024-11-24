@@ -25,8 +25,14 @@ program NemuCLI : IshikoHTTP, IshikoNetworking
         outputdir = ../../../bin/$(arch);
     }
 
+    headers
+    {
+        ../../src/CommandLineSpecification.hpp
+    }
+
     sources
     {
+        ../../src/CommandLineSpecification.cpp
         ../../src/main.cpp
     }
 }
