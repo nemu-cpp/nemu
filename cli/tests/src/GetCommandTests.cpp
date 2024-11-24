@@ -12,13 +12,12 @@ GetCommandTests::GetCommandTests(const Ishiko::TestNumber& number, const Ishiko:
 
 void GetCommandTests::GetTest1(Ishiko::TestSequence& test_sequence)
 {
-    const char* output_name = "GetCommandTests_GetTest1.txt";
+    const char* output_name = "GetCommandTests_GetTest1.bin";
 
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
     boost::filesystem::path output_path = test_sequence.context().getOutputPath(output_name);
 
-    std::string command_line = application_path.string()
-        + " get http://nemu.io --output-path=" + output_path.string();
+    std::string command_line = application_path.string() + " get http://nemu.io --output-path=" + output_path.string();
 
     test_sequence.append<Ishiko::ConsoleApplicationTest>("get command test 1", command_line,
         [output_name](int exit_code, Ishiko::ConsoleApplicationTest& test)
