@@ -23,8 +23,14 @@ program NemuCLITests : IshikoTestFramework
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../src/GetTests.hpp
+    }
+
     sources
     {
+        ../../src/GetTests.cpp
         ../../src/main.cpp
     }
 }
