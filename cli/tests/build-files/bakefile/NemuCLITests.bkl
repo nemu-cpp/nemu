@@ -25,12 +25,12 @@ program NemuCLITests : IshikoTestFramework
 
     headers
     {
-        ../../src/GetTests.hpp
+        ../../src/GetCommandTests.hpp
     }
 
     sources
     {
-        ../../src/GetTests.cpp
+        ../../src/GetCommandTests.cpp
         ../../src/main.cpp
     }
 }
