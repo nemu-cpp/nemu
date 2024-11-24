@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 #endif
         Ishiko::CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
-        Ishiko::TestHarness the_test_harness("CodeSmithy CLI Tests", configuration);
+        Ishiko::TestHarness the_test_harness("Nemu CLI Tests", configuration);
 
         Ishiko::TestSequence& the_tests = the_test_harness.tests();
 
