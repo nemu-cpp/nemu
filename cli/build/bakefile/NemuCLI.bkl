@@ -17,7 +17,7 @@ program NemuCLI : IshikoTerminal, IshikoHTTP, IshikoNetworking, IshikoConfigurat
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += IshikoTerminal IshikoHTTP IshikoNetworking IshikoTime IshikoText IshikoTypes IshikoMemory IshikoErrors;
+        libs += IshikoTerminal IshikoHTTP IshikoNetworking IshikoConfiguration IshikoTime IshikoText IshikoTypes IshikoMemory IshikoErrors;
         libs += botan-2 fmt;
     }
 
